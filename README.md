@@ -98,7 +98,7 @@ In particular, plain words such as `er` are treated as normal words, not as fill
 Example:
 
 ```text
-I I [UH] think th* the answer is [laughter] yes
+I mean we we [UH] should go on th* Thursday [laughter]
 ```
 
 The benchmark can also evaluate models that use a slightly different output convention, for example `-` instead of `*` for cutoffs, as long as their output can be mapped to the benchmark format.
@@ -114,8 +114,8 @@ We generate intended transcripts by stripping fillers and sound tags, collapsing
 Example:
 
 ```text
-verbatim: I I [UH] think th* the answer is [laughter] yes
-intended: I think the answer is yes
+verbatim: I mean we we [UH] should go on th* Thursday [laughter]
+intended: we should go on Thursday
 ```
 
 ---
@@ -127,8 +127,8 @@ The benchmark does **not** require manually labeled disfluency tags. Instead, it
 Start with:
 
 ```text
-verbatim: I I [UH] think th* the answer is [laughter] yes
-intended: I think the answer is yes
+verbatim: I mean we we [UH] should go on th* Thursday [laughter]
+intended: we should go on Thursday
 ```
 
 First, cutoffs are normalized internally so everything uses one convention:
@@ -140,8 +140,8 @@ th* -> th-
 Then the benchmark aligns the gold verbatim transcript to the gold intended transcript:
 
 ```text
-verbatim:  I   I   [UH]  think  th-  the  answer  is  [laughter]  yes
-intended:  -   I    -    think   -   the  answer   is      -       yes
+verbatim:  I   mean  we   we   [UH]  should  go  on  th-  Thursday  [laughter]
+intended:  -    -    -    we    -    should  go  on   -   Thursday      -
 ```
 
 What aligns is treated as intended content. What does not align is disfluent.
@@ -158,11 +158,11 @@ From that alignment, labels are derived like this:
 For the running example, the final gold labels are:
 
 ```text
-token: I    I      [UH]   think   th-    the    answer   is    [laughter]  yes
-tag:   REP  FLUENT FILLER FLUENT  CUTOFF FLUENT FLUENT  FLUENT SOUND       FLUENT
+token: I     mean  we   we      [UH]   should  go   on   th-    Thursday  [laughter]
+tag:   OTHER OTHER REP  FLUENT  FILLER FLUENT  FLUENT FLUENT CUTOFF FLUENT    SOUND
 ```
 
-So the typed disfluencies show up explicitly in the alignment and labels. The rest, such as false starts that are not one of the typed categories, remains disfluent and falls into `OTHER`.
+So the typed disfluencies show up explicitly in the alignment and labels. In this example, `I mean` is a false start and falls into `OTHER`, while the repeated `we` becomes `REP`.
 
 ---
 
@@ -179,7 +179,7 @@ This second alignment is **tag-aware**:
 - matching a `FLUENT` token is preferred over matching a disfluent token
 - deleting a disfluent token is preferred over deleting a `FLUENT` token
 
-That matters in ambiguous cases like repetitions:
+That matters in ambiguous cases like repetitions. For example:
 
 ```text
 gold tags: REP  FLUENT FILLER FLUENT CUTOFF FLUENT FLUENT FLUENT SOUND FLUENT
@@ -187,7 +187,7 @@ gold:       I    I     [UH]  think  th-    the   answer   is   [laughter] yes
 pred:       -    I     [UH]  think   -     the   answer   is   [laughter] yes
 ```
 
-Here the predicted `I` is aligned to the **FLUENT** gold `I`, while the `REP` token is deleted.
+Here the predicted `I` is aligned to the **FLUENT** gold `I`, while the `REP` token is deleted. This is why the second alignment is tag-aware.
 
 From this alignment the benchmark computes:
 
