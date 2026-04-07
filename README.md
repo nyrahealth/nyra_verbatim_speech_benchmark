@@ -233,9 +233,9 @@ The transcript accuracy metrics are computed separately from the normalized tran
 - `vCER`: character error rate between the normalized verbatim prediction and normalized verbatim reference.
 - `iWER`: word error rate between the normalized intended prediction and normalized intended reference.
 - `iCER`: character error rate between the normalized intended prediction and normalized intended reference.
-- `iSR`: intended substitution rate, i.e. the fraction of intended reference words replaced by the wrong word.
-- `iDR`: intended deletion rate, i.e. the fraction of intended reference words that are missing.
-- `iIR`: intended insertion rate, i.e. the fraction of extra words added relative to the intended reference.
+- `iSR`: intended substitution rate, i.e. the fraction of intended reference words replaced by the wrong word; this corresponds roughly to ordinary transcription errors.
+- `iDR`: intended deletion rate, i.e. the fraction of intended reference words that are missing; this is a proxy for over-removal of actual content.
+- `iIR`: intended insertion rate, i.e. the fraction of extra words added relative to the intended reference; this is a proxy for under-removal, where disfluent material is kept when it should have been removed.
 - `fluent_deletion_rate`: the fraction of gold FLUENT tokens that are not covered by the prediction.
 
 ### Event Metrics
