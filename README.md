@@ -21,11 +21,18 @@ The benchmark uses paired gold transcripts:
 
 From that pair, the benchmark derives gold disfluency labels automatically and evaluates model predictions against them.
 
-## At a Glance
+## Index
 
-- `transcribe.py`: generate `pred_verbatim` and `pred_intended`
-- `evaluate.py`: derive gold labels, align predictions, and compute metrics
-- `README.md`: annotation conventions, metric definitions, and integration notes
+- [Quick Start](#quick-start-)
+- [Verbatim Transcript Conventions](#verbatim-transcript-conventions-)
+- [Intended Transcript](#intended-transcript)
+- [How Gold Labels Are Derived](#how-gold-labels-are-derived-)
+- [How Evaluation Works](#how-evaluation-works-)
+- [Metrics](#metrics-)
+- [Supported Datasets](#supported-datasets-)
+- [Output Files](#output-files-)
+- [Repository Structure](#repository-structure-)
+- [License](#license)
 
 ---
 
