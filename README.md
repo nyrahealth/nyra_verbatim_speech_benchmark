@@ -106,7 +106,6 @@ The verbatim transcript uses a small set of conventions:
 - **Numbers and dates** are written out as spoken
 - Otherwise, the transcript follows exactly what the speaker says
 
-In particular, plain words such as `er` are treated as normal words, not as fillers. Only the bracketed annotation form such as `[ER]` is treated as a filler tag.
 
 Example:
 
