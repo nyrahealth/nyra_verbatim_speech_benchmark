@@ -94,6 +94,8 @@ The verbatim transcript uses a small set of conventions:
 - **Numbers and dates** are written out as spoken
 - Otherwise, the transcript follows exactly what the speaker says
 
+In particular, plain words such as `er` are treated as normal words, not as fillers. Only the bracketed annotation form such as `[ER]` is treated as a filler tag.
+
 Example:
 
 ```text
@@ -205,30 +207,38 @@ The transcript accuracy metrics are computed separately from the normalized tran
 
 ### Transcript Metrics
 
-- `vWER`, `vCER`: error rate against gold verbatim
-- `iWER`, `iCER`: error rate between the model's **predicted intended transcript** and the gold intended transcript
-- `iSR`, `iDR`, `iIR`: intended substitution, deletion, and insertion rates
-- `fluent_deletion_rate`: how often gold fluent words are missing
+- `vWER`: word error rate between the normalized verbatim prediction and normalized verbatim reference.
+- `vCER`: character error rate between the normalized verbatim prediction and normalized verbatim reference.
+- `iWER`: word error rate between the normalized intended prediction and normalized intended reference.
+- `iCER`: character error rate between the normalized intended prediction and normalized intended reference.
+- `iSR`: intended substitution rate, i.e. the fraction of intended reference words replaced by the wrong word.
+- `iDR`: intended deletion rate, i.e. the fraction of intended reference words that are missing.
+- `iIR`: intended insertion rate, i.e. the fraction of extra words added relative to the intended reference.
+- `fluent_deletion_rate`: the fraction of gold FLUENT tokens that are not covered by the prediction.
 
 ### Event Metrics
 
-- `filler_f1`
-- `sound_f1`
-- `event_f1`
-- `cutoff_f1`
-- `cutoff_strict_f1`
-- `cutoff_lenient_recall`
-- `rep_f1`
-- `exact_filler_f1`
-- `exact_sound_f1`
+- `filler_f1`: F1 for detecting filler tokens such as `[UH]` and `[UM]`.
+- `sound_f1`: F1 for detecting sound-event tokens such as `[laughter]` and `[cough]`.
+- `event_f1`: combined F1 for fillers and sound events together.
+- `cutoff_f1`: F1 for detecting cutoff fragments such as `th-`; here the prediction must itself be marked as a cutoff.
+- `cutoff_strict_f1`: cutoff F1 where the cutoff stem itself must also match; here the prediction does not have to carry the cutoff marker if the aligned token has the correct stem.
+- `cutoff_lenient_recall`: recall for whether a gold cutoff is at least acknowledged by some aligned prediction token; here the prediction does not need a cutoff marker.
+- `rep_f1`: F1 for detecting repetition tokens.
+- `exact_filler_f1`: filler F1 where the exact filler label must match, e.g. `[UH]` vs `[UM]`.
+- `exact_sound_f1`: sound F1 where the exact sound label must match, e.g. `[laughter]` vs `[cough]`.
+- `filler_by_label`: per-label filler scores, e.g. separate metrics for `uh` and `um`.
+- `sound_by_label`: per-label sound scores, e.g. separate metrics for `laughter`, `cough`, `breath`, and `lipsmack`.
 
 ### Diagnostics
 
-- `disfluency_omission_rate`
-- `disfluency_hallucination_rate`
-- `tag_confusion`
-- `tag_prf`
-- repetition count metrics
+- `disfluency_omission_rate`: the fraction of gold disfluencies that the model drops completely.
+- `disfluency_hallucination_rate`: the fraction of disfluencies the model adds that are not supported by the gold transcript.
+- `tag_confusion`: confusion matrix showing which gold disfluency types are predicted as which output types.
+- `tag_prf`: precision, recall, and F1 for each tag type individually.
+- `rep_count_mae`: mean absolute error in the predicted number of repetition groups per utterance.
+- `rep_count_exact`: fraction of utterances where the repetition-group count is exactly correct.
+- `rep_count_within1`: fraction of utterances where the repetition-group count is off by at most one.
 
 ---
 

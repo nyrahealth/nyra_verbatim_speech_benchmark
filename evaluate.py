@@ -370,7 +370,7 @@ def evaluate_sample(
     exact_sound_tp, exact_sound_fp, exact_sound_fn = _exact_label_match(gold_sound_pos)
 
     # Per-label breakdown
-    def _per_label_metrics(gpos: List[int]) -> Dict[str, Dict]:
+    def _per_label_metrics(gpos: List[int], kind: str) -> Dict[str, Dict]:
         gold_by_label: Dict[str, List[int]] = {}
         for g in gpos:
             label = get_event_label(gold_tokens[g])
@@ -379,7 +379,11 @@ def evaluate_sample(
         pred_by_label: Dict[str, List[int]] = {}
         for p, tok in enumerate(pred_tokens):
             label = get_event_label(tok)
-            if label and (is_filler(tok) or is_sound_event(tok)):
+            if not label:
+                continue
+            if kind == "filler" and is_filler(tok):
+                pred_by_label.setdefault(label, []).append(p)
+            elif kind == "sound" and is_sound_event(tok):
                 pred_by_label.setdefault(label, []).append(p)
         all_labels = sorted(set(gold_by_label) | set(pred_by_label))
         result: Dict[str, Dict] = {}
@@ -405,8 +409,8 @@ def evaluate_sample(
             }
         return result
 
-    filler_by_label = _per_label_metrics(gold_filler_pos)
-    sound_by_label = _per_label_metrics(gold_sound_pos)
+    filler_by_label = _per_label_metrics(gold_filler_pos, "filler")
+    sound_by_label = _per_label_metrics(gold_sound_pos, "sound")
 
     # ── Tag confusion matrix ──────────────────────────────────────────────
     pred_rep_set = set(pred_rep_pos)

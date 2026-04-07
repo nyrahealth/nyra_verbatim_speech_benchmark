@@ -52,8 +52,15 @@ def normalize_cutoff_markers(
 # ── Tokenization ──────────────────────────────────────────────────────────────
 
 def tokenize(text: str) -> List[str]:
-    """Whitespace-split tokenization.  Punctuation stays attached to words."""
-    return (text or "").split()
+    """
+    Whitespace-split tokenization with one extra cleanup:
+
+    adjacent bracket tags like ``[UH][cough]`` are split into separate tokens
+    before whitespace tokenization so they are treated as two events rather than
+    one malformed combined token.
+    """
+    text = re.sub(r"(?<=\])(?=\[)", " ", text or "")
+    return text.split()
 
 
 # ── Token Normalization (for alignment) ───────────────────────────────────────
@@ -110,7 +117,7 @@ def normalize_for_wer(text: str) -> str:
 
 FILLER_LABELS = frozenset({
     "[uh]", "[um]", "[er]", "[ah]", "[hm]", "[mm]", "[mhm]", "[erm]",
-    "uh", "um", "er", "ah", "hm", "mm", "mhm", "erm", "uhh", "umm",
+    "uh", "um", "ah", "hm", "mm", "mhm", "erm", "uhh", "umm",
 })
 
 SOUND_EVENT_LABELS = frozenset({
