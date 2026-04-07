@@ -1,17 +1,16 @@
 # Nyra Verbatim Speech Benchmark
 
-`verbatim-speech-benchmark` is the **Nyra Verbatim Speech Benchmark**.
 
-It is used to evaluate **verbatim transcription** in detail and distinguish between different failure modes in verbatim transcription, especially:
+This Benchmark is used to evaluate **verbatim transcription** in detail and distinguish between different failure modes in verbatim transcription, especially:
 
 - sounds
 - fillers
 - cutoffs
 - repetitions
 
-It evaluates verbatim ASR models: models that transcribe not only the intended words, but also the disfluencies and sound events that the speaker actually produced.
+It can be used to evaluate how accurately ASR models transcribe different kinds of disfluencies.
 
-Any model that produces transcripts in these verbatim conventions, or can be mapped to them, can be evaluated with this benchmark.
+Any model that produces transcripts following the [verbatim transcript conventions](#verbatim-transcript-conventions), or whose outputs can be mapped to those conventions, can be evaluated with this benchmark.
 
 The **evaluation** part of the benchmark is model-agnostic. The current `transcribe.py` implementation is specifically written for **CrisperWhisper 2.0 only**. For other models, transcription has to be implemented separately.
 
