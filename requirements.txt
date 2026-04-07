@@ -1,0 +1,6 @@
+torch
+transformers
+datasets
+librosa
+soundfile
+jiwer
