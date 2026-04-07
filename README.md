@@ -27,17 +27,6 @@ From that pair, the benchmark derives gold disfluency labels automatically and e
 - `evaluate.py`: derive gold labels, align predictions, and compute metrics
 - `README.md`: annotation conventions, metric definitions, and integration notes
 
-## Legend
-
-| Symbol / Tag | Meaning |
-|---|---|
-| `[UH]`, `[UM]` | filler |
-| `[laughter]`, `[cough]` | sound event |
-| `th*` / `th-` | cutoff fragment |
-| `REP` | repeated token before the fluent keeper |
-| `FLUENT` | token preserved in the intended meaning |
-| `OTHER` | disfluent material that is not filler, sound, cutoff, or repetition |
-
 ---
 
 ## Quick Start 🚀
