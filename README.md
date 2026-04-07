@@ -1,7 +1,7 @@
 # Nyra Verbatim Speech Benchmark
 
 
-This Benchmark is used to evaluate **verbatim transcription** in detail and distinguish between different failure modes in verbatim transcription, especially:
+Evaluate **verbatim transcription** in detail and distinguish between different failure modes, especially:
 
 - sounds
 - fillers
@@ -21,9 +21,26 @@ The benchmark uses paired gold transcripts:
 
 From that pair, the benchmark derives gold disfluency labels automatically and evaluates model predictions against them.
 
+## At a Glance
+
+- `transcribe.py`: generate `pred_verbatim` and `pred_intended`
+- `evaluate.py`: derive gold labels, align predictions, and compute metrics
+- `README.md`: annotation conventions, metric definitions, and integration notes
+
+## Legend
+
+| Symbol / Tag | Meaning |
+|---|---|
+| `[UH]`, `[UM]` | filler |
+| `[laughter]`, `[cough]` | sound event |
+| `th*` / `th-` | cutoff fragment |
+| `REP` | repeated token before the fluent keeper |
+| `FLUENT` | token preserved in the intended meaning |
+| `OTHER` | disfluent material that is not filler, sound, cutoff, or repetition |
+
 ---
 
-## Quick Start
+## Quick Start 🚀
 
 The commands below use the current built-in transcription path, which is intended for **CrisperWhisper 2.0 models**.
 
@@ -83,7 +100,7 @@ Notes:
 
 ---
 
-## Verbatim Transcript Conventions
+## Verbatim Transcript Conventions 📝
 
 The verbatim transcript uses a small set of conventions:
 
@@ -120,7 +137,7 @@ intended: we should go on Thursday
 
 ---
 
-## How Gold Labels Are Derived
+## How Gold Labels Are Derived 🔬
 
 The benchmark does **not** require manually labeled disfluency tags. Instead, it derives them from the alignment between the gold verbatim and gold intended transcripts.
 
@@ -131,11 +148,15 @@ verbatim: I mean we we [UH] should go on th* Thursday [laughter]
 intended: we should go on Thursday
 ```
 
+### 1. Normalize Cutoffs
+
 First, cutoffs are normalized internally so everything uses one convention:
 
 ```text
 th* -> th-
 ```
+
+### 2. Align Gold Verbatim To Gold Intended
 
 Then the benchmark aligns the gold verbatim transcript to the gold intended transcript:
 
@@ -145,6 +166,8 @@ intended:  -    -    -    we    -    should  go  on   -   Thursday      -
 ```
 
 What aligns is treated as intended content. What does not align is disfluent.
+
+### 3. Derive Token Labels
 
 From that alignment, labels are derived like this:
 
@@ -166,13 +189,15 @@ So the typed disfluencies show up explicitly in the alignment and labels. In thi
 
 ---
 
-## How Evaluation Works
+## How Evaluation Works ⚖️
 
 After gold labels are derived, the model prediction is aligned against the gold verbatim transcript.
 
 For the **intended metrics**, the model should produce a **intended prediction**. That intended prediction is compared against the gold `intended_transcript`.
 
 This is especially interesting for verbatim speech: it tests whether the model removes or ignores the **right** disfluencies while still preserving the intended content.
+
+### 1. Align Gold Verbatim To Predicted Verbatim
 
 This second alignment is **tag-aware**:
 
@@ -195,6 +220,8 @@ From this alignment the benchmark computes:
 - exact-label metrics for filler and sound labels
 - diagnostics such as omission rates, hallucination rates, and tag confusion
 
+### 2. Compute Transcript Metrics Separately
+
 The transcript accuracy metrics are computed separately from the normalized transcripts themselves, not from this alignment:
 
 - the **verbatim prediction** is compared against the **verbatim reference** for `vWER` and `vCER`
@@ -202,7 +229,7 @@ The transcript accuracy metrics are computed separately from the normalized tran
 
 ---
 
-## Metrics
+## Metrics 📊
 
 ### Transcript Metrics
 
@@ -241,7 +268,7 @@ The transcript accuracy metrics are computed separately from the normalized tran
 
 ---
 
-## Supported Datasets
+## Supported Datasets 📚
 
 Any HuggingFace audio dataset with:
 
@@ -259,7 +286,7 @@ Current datasets:
 
 ---
 
-## Output Files
+## Output Files 📦
 
 `report.json` contains the full metric output.
 
@@ -271,7 +298,7 @@ Current datasets:
 
 ---
 
-## Repository Structure
+## Repository Structure 🗂️
 
 ```text
 nyra_verbatim_speech_benchmark/
