@@ -7,7 +7,7 @@
   "models": [
     {
       "id": "assemblyai_p1",
-      "display_name": "AssemblyAI Universal-3 Pro (Prompt 1)",
+      "display_name": "AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 1)",
       "adapter": "assemblyai",
       "single_output": true,
       "languages": {
@@ -27,7 +27,7 @@
     },
     {
       "id": "assemblyai_p2",
-      "display_name": "AssemblyAI Universal-3 Pro (Prompt 2)",
+      "display_name": "AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 2)",
       "adapter": "assemblyai",
       "single_output": true,
       "languages": {
@@ -47,7 +47,7 @@
     },
     {
       "id": "canary",
-      "display_name": "NVIDIA Canary",
+      "display_name": "NVIDIA Canary 1B v2 (nvidia/canary-1b-v2)",
       "adapter": "default",
       "single_output": true,
       "languages": {
@@ -67,7 +67,7 @@
     },
     {
       "id": "cartesia",
-      "display_name": "Cartesia Ink-Whisper",
+      "display_name": "Cartesia Ink-Whisper (ink-whisper)",
       "adapter": "default",
       "single_output": true,
       "languages": {
@@ -87,7 +87,7 @@
     },
     {
       "id": "cohere",
-      "display_name": "Cohere Transcribe",
+      "display_name": "Cohere Transcribe (CohereLabs/cohere-transcribe-03-2026)",
       "adapter": "default",
       "single_output": true,
       "languages": {
@@ -107,7 +107,7 @@
     },
     {
       "id": "crisperwhisper_1",
-      "display_name": "CrisperWhisper 1.0",
+      "display_name": "CrisperWhisper 1.0 (nyrahealth/CrisperWhisper)",
       "adapter": "default",
       "single_output": true,
       "languages": {
@@ -127,7 +127,7 @@
     },
     {
       "id": "deepgram",
-      "display_name": "Deepgram",
+      "display_name": "Deepgram Nova-3 (nova-3)",
       "adapter": "default",
       "single_output": true,
       "languages": {
@@ -167,7 +167,7 @@
     },
     {
       "id": "fish_audio",
-      "display_name": "Fish Audio",
+      "display_name": "Fish Audio ASR",
       "adapter": "default",
       "single_output": true,
       "languages": {
@@ -187,7 +187,7 @@
     },
     {
       "id": "gradium",
-      "display_name": "Gradium",
+      "display_name": "Gradium ASR",
       "adapter": "default",
       "single_output": true,
       "languages": {
@@ -207,7 +207,7 @@
     },
     {
       "id": "inworld",
-      "display_name": "Inworld STT",
+      "display_name": "Inworld STT (inworld/inworld-stt-1)",
       "adapter": "default",
       "single_output": true,
       "languages": {
@@ -227,7 +227,7 @@
     },
     {
       "id": "whisper_large_v3",
-      "display_name": "Whisper Large v3",
+      "display_name": "Whisper Large v3 (openai/whisper-large-v3)",
       "adapter": "default",
       "single_output": true,
       "languages": {
@@ -247,7 +247,7 @@
     },
     {
       "id": "xai_grok",
-      "display_name": "xAI Grok",
+      "display_name": "xAI Grok Speech-to-Text",
       "adapter": "default",
       "single_output": true,
       "languages": {

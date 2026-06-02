@@ -1,0 +1,15 @@
+# Shared by all generation examples.
+datasets
+soundfile
+requests
+
+# Local-model examples.
+torch
+transformers
+librosa
+
+# Provider-specific examples.
+assemblyai
+
+# NVIDIA Canary example.
+nemo_toolkit[asr]
