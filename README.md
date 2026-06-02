@@ -1,26 +1,47 @@
 # Nyra Verbatim Speech Benchmark
 
-**A benchmark for evaluating verbatim automatic speech recognition: not only the words, but also fillers, repetitions, cutoffs, and non-speech sounds.**
+**A benchmark for evaluating verbatim automatic speech recognition: not only the words, but also fillers, repetitions, cutoffs, and vocal sound events.**
 
-Most speech benchmarks focus on clean transcript accuracy. This repository focuses on the messy but important details of real speech: `uh`, `um`, repeated words, interrupted words like `th-`, and events like `[laughter]` or `[cough]`.
+Most speech benchmarks focus on clean transcript accuracy. This repository
+focuses on the messy but important details of real speech: `uh`, `um`, repeated
+words, interrupted words like `th-`, and vocal sound events like `[laughter]` or
+`[cough]`.
 
 The benchmark compares two kinds of transcripts:
 
 - **Verbatim transcript**: what the speaker actually said, including disfluencies.
 - **Intended transcript**: a cleaned version of what the speaker meant to say.
 
-From that pair, the evaluator automatically derives disfluency labels and reports detailed ASR quality metrics. The goal is to make verbatim ASR evaluation reproducible, comparable, and easy to extend across systems.
+From that pair, the evaluator automatically derives disfluency labels and
+reports detailed ASR quality metrics. The goal is to make verbatim ASR
+evaluation reproducible, comparable, and easy to extend across systems.
+
+Designed for:
+
+- 🗣️ conversational and spontaneous speech recognition
+- 🩺 clinical speech and communication research
+- 🎙️ natural text-to-speech and voice data pipelines
+- 🔬 speech science, linguistics, and disfluency analysis
+- 🧪 ASR model comparison beyond ordinary WER
 
 ## Why This Exists ✨
 
-Verbatim ASR is not just ordinary word error rate. A model can have low WER while still dropping the exact phenomena that matter for clinical, conversational, and speech-science use cases.
+WER is useful, but it is not a complete definition of speech recognition
+quality. It means different things on different datasets and often depends on
+underspecified references: should a filler count, should laughter be written
+down, should a false start be preserved, should the transcript represent what
+was said or what was meant?
+
+Many models have low WER on read speech, or optimize implicitly for intended
+transcription, while dropping the exact phenomena that matter for clinical,
+conversational, natural text-to-speech, and speech-science use cases.
 
 This benchmark therefore reports both transcript-level quality and typed
 disfluency scores:
 
 - **Transcript quality**: `vWER`, `iWER`, `vCER`, `iCER`
 - **Fillers**: `[UH]`, `[UM]`, including exact and per-label scores
-- **Sounds**: `[laughter]`, `[cough]`, `[breath]`, and related events
+- **Vocal sound events**: `[laughter]`, `[cough]`, `[breath]`, and related events
 - **Cutoffs**: interrupted words such as `th-`, with several matching criteria
 - **Repetitions**: repeated words and repetition-count accuracy
 - **Diagnostics**: disfluency omission and hallucination rates
@@ -192,7 +213,7 @@ The verbatim transcript uses a small set of conventions:
 
 - **Cutoffs** use `*` in the gold transcript: `th*`, `w*`
 - **Fillers** are bracketed, e.g. `[UH]`, `[UM]`
-- **Sound events** are bracketed, e.g. `[laughter]`, `[cough]`, `[breath]`
+- **Vocal sound events** are bracketed, e.g. `[laughter]`, `[cough]`, `[breath]`
 - **Numbers and dates** are written out as spoken
 - Otherwise, the transcript follows exactly what the speaker says
 
@@ -208,15 +229,31 @@ convention, for example `-` instead of `*` for cutoffs, as long as their output
 can be mapped to the benchmark format.
 
 Cutoffs are inherently a little ambiguous: different systems may spell the same
-interrupted word as `w*`, `w-`, `w—`, `w–`, or even use another Unicode
-dash/minus-like symbol. Cached model predictions are therefore normalized to the
-benchmark's internal `-` cutoff marker before metric calculation. The normalizer
-handles common Unicode dash variants (`‐`, `‑`, `‒`, `–`, `—`, `―`, `−`, `﹘`,
-`﹣`, `－`) when they are attached to a word fragment.
+interrupted word with different cutoff markers. Cached model predictions are
+therefore normalized to the benchmark's internal `-` cutoff marker before metric
+calculation.
 
 Because even normalized cutoff spelling is not always semantically clear, the
 benchmark reports several cutoff metrics: marker-based cutoff F1, stricter
 stem-matching cutoff F1, and lenient positional cutoff scores.
+
+The current English and German reference transcripts contain these vocal sound
+event tags:
+
+- `[breath]`
+- `[cough]`
+- `[laughter]`
+- `[lipsmack]`
+- `[noise]`
+- `[sigh]`
+- `[sniff]`
+- `[throatclearing]`
+- `[yawn]`
+
+These tags are supported by the benchmark. Systems that use different labels
+for vocal sound events should map them to this canonical set before scoring. The
+global normalizer already maps common variants such as `[laughs]` to
+`[laughter]` and `[clears throat]` to `[throatclearing]`.
 
 ---
 
@@ -224,7 +261,9 @@ stem-matching cutoff F1, and lenient positional cutoff scores.
 
 The intended transcript is a cleaned version of the same utterance.
 
-We generate intended transcripts by stripping fillers and sound tags, collapsing repetitions and false starts to their repairs, removing fragments, and reformatting numbers and dates for readability.
+We generate intended transcripts by stripping fillers and vocal sound event
+tags, collapsing repetitions and false starts to their repairs, removing
+fragments, and reformatting numbers and dates for readability.
 
 Example:
 
@@ -271,7 +310,7 @@ What aligns is treated as intended content. What does not align is disfluent.
 From that alignment, labels are derived like this:
 
 - bracketed fillers such as `[UH]`, `[UM]` -> `FILLER`
-- bracketed sound tags such as `[laughter]` -> `SOUND`
+- bracketed vocal sound event tags such as `[laughter]` -> `SOUND`
 - cutoff fragments such as `th-` -> `CUTOFF`
 - aligned content words -> `FLUENT`
 - repeated unmatched words immediately before a fluent keeper -> `REP`
@@ -315,8 +354,8 @@ Here the predicted `I` is aligned to the **FLUENT** gold `I`, while the `REP` to
 
 From this alignment the benchmark computes:
 
-- event metrics for fillers, sounds, cutoffs, and repetitions
-- exact-label metrics for filler and sound labels
+- event metrics for fillers, vocal sound events, cutoffs, and repetitions
+- exact-label metrics for filler and vocal sound event labels
 - diagnostics such as omission rates, hallucination rates, and tag confusion
 
 ### 2. Compute Transcript Metrics Separately
@@ -344,17 +383,17 @@ The transcript accuracy metrics are computed separately from the normalized tran
 ### Event Metrics
 
 - `filler_f1`: F1 for detecting filler tokens such as `[UH]` and `[UM]`.
-- `sound_f1`: F1 for detecting sound-event tokens such as `[laughter]` and `[cough]`.
-- `event_f1`: combined F1 for fillers and sound events together.
+- `sound_f1`: F1 for detecting vocal sound event tokens such as `[laughter]` and `[cough]`.
+- `event_f1`: combined F1 for fillers and vocal sound events together.
 - `cutoff_f1`: F1 for detecting cutoff fragments such as `th-`; here the prediction must itself be marked as a cutoff.
 - `cutoff_strict_f1`: cutoff F1 where the cutoff stem itself must also match; here the prediction does not have to carry the cutoff marker if the aligned token has the correct stem.
 - `cutoff_lenient_f1`: cutoff F1 where a gold cutoff is counted as covered if any predicted token aligns to that cutoff position; hallucinated predicted cutoff markers are still penalized.
 - `cutoff_lenient_recall`: recall for whether a gold cutoff is at least acknowledged by some aligned prediction token; here the prediction does not need a cutoff marker.
 - `rep_f1`: F1 for detecting repetition tokens.
 - `exact_filler_f1`: filler F1 where the exact filler label must match, e.g. `[UH]` vs `[UM]`.
-- `exact_sound_f1`: sound F1 where the exact sound label must match, e.g. `[laughter]` vs `[cough]`.
+- `exact_sound_f1`: vocal sound event F1 where the exact label must match, e.g. `[laughter]` vs `[cough]`.
 - `filler_by_label`: per-label filler scores, e.g. separate metrics for `uh` and `um`.
-- `sound_by_label`: per-label sound scores, e.g. separate metrics for `laughter`, `cough`, `breath`, and `lipsmack`.
+- `sound_by_label`: per-label vocal sound event scores, e.g. separate metrics for `laughter`, `cough`, `breath`, and `lipsmack`.
 
 ### Diagnostics
 
