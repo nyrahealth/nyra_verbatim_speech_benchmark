@@ -62,8 +62,55 @@ disfluency scores:
 The evaluator is model-agnostic: any ASR system can be scored if its outputs are
 converted to the benchmark prediction format.
 
+## Current Results 🏆
+
+Tables are sorted by **Disfluency F1**, the headline metric for detecting
+disfluency-related events. Here, **Disfluency F1** is the benchmark's `event_f1`
+reported under a clearer name, and **Cutoff F1** uses the lenient positional
+cutoff score.
+
+The `n` column shows how many cached predictions were scored. Gradium English is
+reported on the subset of entries with existing predictions.
+
+### English
+
+| Rank | Model | n | Disfluency F1 ↑ | Filler F1 ↑ | Vocal Sound F1 ↑ | Cutoff F1 ↑ | Rep F1 ↑ | vWER ↓ |
+|---:|---|---:|---:|---:|---:|---:|---:|---:|
+| 1 | **ElevenLabs Scribe v2** | 4957 | **92.9%** | 95.5% | 83.4% | 80.1% | 87.9% | 3.2% |
+| 2 | Inworld STT (inworld/inworld-stt-1) | 4957 | 83.3% | 95.2% | 10.7% | 84.8% | 86.8% | 4.0% |
+| 3 | AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 2) | 4957 | 78.2% | 90.8% | 2.8% | 27.9% | 82.7% | 4.5% |
+| 4 | AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 1) | 249 | 75.2% | 92.5% | 0.0% | 28.6% | 79.7% | 3.8% |
+| 5 | xAI Grok Speech-to-Text | 4957 | 72.2% | 84.4% | 0.0% | 60.3% | 83.4% | 4.7% |
+| 6 | CrisperWhisper 1.0 (nyrahealth/CrisperWhisper) | 249 | 67.6% | 77.7% | 0.0% | 85.7% | 67.8% | 5.7% |
+| 7 | Deepgram Nova-3 (nova-3) | 4957 | 37.0% | 45.7% | 0.0% | 72.2% | 83.2% | 6.3% |
+| 8 | Fish Audio ASR | 4957 | 24.3% | 30.5% | 0.0% | 60.1% | 82.1% | 5.9% |
+| 9 | NVIDIA Canary 1B v2 (nvidia/canary-1b-v2) | 4957 | 21.0% | 26.7% | 0.0% | 48.9% | 30.5% | 9.0% |
+| 10 | Cohere Transcribe (CohereLabs/cohere-transcribe-03-2026) | 4957 | 12.4% | 15.8% | 0.0% | 45.0% | 18.9% | 9.9% |
+| 11 | Gradium ASR | 616 | 7.6% | 10.3% | 0.0% | 45.4% | 62.7% | 9.6% |
+| 12 | Whisper Large v3 (openai/whisper-large-v3) | 4957 | 7.3% | 9.4% | 0.0% | 31.4% | 6.4% | 10.2% |
+| 13 | Cartesia Ink-Whisper (ink-whisper) | 4957 | 4.7% | 6.0% | 0.0% | 32.5% | 3.7% | 10.4% |
+
+### German
+
+| Rank | Model | n | Disfluency F1 ↑ | Filler F1 ↑ | Vocal Sound F1 ↑ | Cutoff F1 ↑ | Rep F1 ↑ | vWER ↓ |
+|---:|---|---:|---:|---:|---:|---:|---:|---:|
+| 1 | **ElevenLabs Scribe v2** | 202 | **94.3%** | 98.5% | 80.4% | 77.7% | 88.1% | 4.2% |
+| 2 | CrisperWhisper 1.0 (nyrahealth/CrisperWhisper) | 202 | 57.7% | 70.0% | 0.0% | 61.9% | 60.5% | 15.2% |
+| 3 | Inworld STT (inworld/inworld-stt-1) | 202 | 53.5% | 63.2% | 17.2% | 18.0% | 67.7% | 15.9% |
+| 4 | xAI Grok Speech-to-Text | 202 | 39.7% | 49.8% | 0.9% | 14.2% | 54.1% | 18.2% |
+| 5 | AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 1) | 202 | 7.2% | 9.4% | 0.0% | 34.4% | 70.9% | 18.8% |
+| 6 | Cohere Transcribe (CohereLabs/cohere-transcribe-03-2026) | 202 | 5.3% | 7.2% | 0.0% | 1.5% | 10.3% | 28.2% |
+| 7 | AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 2) | 202 | 3.9% | 5.0% | 0.9% | 23.9% | 79.9% | 18.8% |
+| 8 | NVIDIA Canary 1B v2 (nvidia/canary-1b-v2) | 202 | 1.9% | 2.6% | 0.0% | 1.5% | 2.7% | 24.4% |
+| 9 | Deepgram Nova-3 (nova-3) | 202 | 1.6% | 2.2% | 0.0% | 14.1% | 79.8% | 19.2% |
+| 10 | Cartesia Ink-Whisper (ink-whisper) | 202 | 1.4% | 1.9% | 0.0% | 1.0% | 4.1% | 24.1% |
+| 11 | Fish Audio ASR | 202 | 1.4% | 1.9% | 0.0% | 6.4% | 63.5% | 20.3% |
+| 12 | Whisper Large v3 (openai/whisper-large-v3) | 202 | 1.4% | 1.9% | 0.0% | 0.5% | 4.0% | 24.2% |
+| 13 | Gradium ASR | 202 | 1.2% | 1.6% | 0.0% | 6.4% | 13.7% | 23.5% |
+
 ## Table of Contents
 
+- [Current Results](#current-results-)
 - [Quick Start](#quick-start-)
 - [Benchmark Workflow](#benchmark-workflow-)
 - [Reproducing Results](#reproducing-results-)

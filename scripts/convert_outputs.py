@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Convert cached model output JSON files into benchmark prediction JSONL files.
+"""Convert cached model outputs into benchmark prediction JSONL files.
 
 The converter is manifest-driven. Model metadata lives in
 ``benchmark/models.json`` so adding a model should not require editing this
@@ -14,12 +14,12 @@ import argparse
 import json
 import sys
 from pathlib import Path
-from typing import Any, Callable, Dict, Iterable, List, Optional, Tuple
+from typing import Any, Callable, Dict, Iterable, List, Tuple
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT))
 
-from normalize import normalize_prediction
+from normalize import normalize_prediction  # noqa: E402  pylint: disable=wrong-import-position,import-error
 
 DEFAULT_MANIFEST = REPO_ROOT / "benchmark" / "models.json"
 
@@ -58,10 +58,15 @@ def _assemblyai_source_adapter(text: str, language: str) -> str:
 
     del language
     out = text or ""
-    # Laughter forms observed in AssemblyAI output. These are not global because
-    # bare "ah" can be a normal interjection in other models.
+    # Laughter forms observed in AssemblyAI output. These are not global
+    # because bare "ah" can be a normal interjection in other models.
     out = re.sub(r"\ba?haha+\b", "[laughter]", out, flags=re.IGNORECASE)
-    out = re.sub(r"\b(?:hah|hehe|hihi)\b", "[laughter]", out, flags=re.IGNORECASE)
+    out = re.sub(
+        r"\b(?:hah|hehe|hihi)\b",
+        "[laughter]",
+        out,
+        flags=re.IGNORECASE,
+    )
     out = re.sub(r"\bah\b", "[laughter]", out, flags=re.IGNORECASE)
     return out
 
@@ -159,8 +164,16 @@ def normalize_raw_record(
         raw_intended = raw_verbatim
 
     out = dict(raw)
-    out["pred_verbatim"] = normalize_for_model(raw_verbatim, adapter_name, language)
-    out["pred_intended"] = normalize_for_model(str(raw_intended), adapter_name, language)
+    out["pred_verbatim"] = normalize_for_model(
+        raw_verbatim,
+        adapter_name,
+        language,
+    )
+    out["pred_intended"] = normalize_for_model(
+        str(raw_intended),
+        adapter_name,
+        language,
+    )
     return out
 
 
@@ -186,7 +199,10 @@ def main() -> None:
     parser.add_argument(
         "--source_dir",
         default="/home/ubuntu/code/research/evaluation",
-        help="Optional directory containing legacy source files from models.json.",
+        help=(
+            "Optional directory containing legacy source files from "
+            "models.json."
+        ),
     )
     parser.add_argument(
         "--manifest",
@@ -196,15 +212,26 @@ def main() -> None:
     parser.add_argument(
         "--skip_import",
         action="store_true",
-        help="Do not import legacy source files; read fixed raw files directly.",
+        help=(
+            "Do not import legacy source files; read fixed raw files "
+            "directly."
+        ),
     )
     parser.add_argument(
         "--normalized_dir",
         default=str(REPO_ROOT / "predictions" / "normalized"),
         help="Destination for canonical JSONL files.",
     )
-    parser.add_argument("--model", default="", help="Optional model id to convert.")
-    parser.add_argument("--language", choices=["en", "de", "all"], default="all")
+    parser.add_argument(
+        "--model",
+        default="",
+        help="Optional model id to convert.",
+    )
+    parser.add_argument(
+        "--language",
+        choices=["en", "de", "all"],
+        default="all",
+    )
     args = parser.parse_args()
 
     source_dir = Path(args.source_dir)
@@ -234,6 +261,12 @@ def main() -> None:
                     legacy_to_raw_record(record, model, language, config)
                     for record in legacy_records
                 ]
+                if config.get("drop_empty_predictions"):
+                    raw_records = [
+                        record
+                        for record in raw_records
+                        if (record.get("raw_verbatim_prediction") or "").strip()
+                    ]
                 write_json(raw_path, raw_records)
 
         with raw_path.open(encoding="utf-8") as f:
@@ -253,12 +286,16 @@ def main() -> None:
                 "dataset": config.get("dataset"),
                 "raw_file": str(raw_path.relative_to(REPO_ROOT)),
                 "source_file": config.get("source_file", ""),
-                "normalized_file": str(out_path.relative_to(REPO_ROOT)),
+                "normalized_file": str(
+                    out_path.relative_to(REPO_ROOT),
+                ),
                 "num_records": count,
                 "splits": sorted({r["split"] for r in converted}),
             }
         )
-        print(f"{model_id:20s} {language} {count:5d} -> {out_path}")
+        print(
+            f"{model_id:20s} {language} {count:5d} -> {out_path}",
+        )
 
     manifest_path = normalized_dir / "manifest.json"
     manifest_path.parent.mkdir(parents=True, exist_ok=True)

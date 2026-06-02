@@ -14,15 +14,12 @@ DEFAULT_SUMMARY = REPO_ROOT / "results" / "cached" / "summary.json"
 
 
 METRICS = [
-    ("vWER↓", "vWER"),
-    ("iWER↓", "iWER"),
+    ("Disfluency F1 ↑", "event_f1"),
     ("Filler F1↑", "filler_f1"),
-    ("Sound F1↑", "sound_f1"),
-    ("Cutoff F1↑", "cutoff_f1"),
-    ("Cutoff Lenient F1↑", "cutoff_lenient_f1"),
+    ("Vocal Sound F1↑", "sound_f1"),
+    ("Cutoff F1↑", "cutoff_lenient_f1"),
     ("Rep F1↑", "rep_f1"),
-    ("Omit↓", "disfluency_omission_rate"),
-    ("Halluc↓", "disfluency_hallucination_rate"),
+    ("vWER↓", "vWER"),
 ]
 
 
@@ -52,7 +49,10 @@ def print_table(
     names: Dict[str, str],
 ) -> str:
     selected = [row for row in rows if row["language"] == language]
-    selected.sort(key=lambda row: row.get("vWER") if row.get("vWER") is not None else 999)
+    selected.sort(
+        key=lambda row: row.get("event_f1") if row.get("event_f1") is not None else -1,
+        reverse=True,
+    )
 
     lines = [f"## {title}", ""]
     header = "| Model | n | " + " | ".join(label for label, _ in METRICS) + " |"

@@ -2,7 +2,7 @@
   "outputs": [
     {
       "model": "assemblyai_p1",
-      "display_name": "AssemblyAI Universal-3 Pro (Prompt 1)",
+      "display_name": "AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 1)",
       "language": "en",
       "dataset": "nyrahealth/disfluency_speech_english",
       "raw_file": "predictions/raw/assemblyai_p1/en.json",
@@ -15,7 +15,7 @@
     },
     {
       "model": "assemblyai_p1",
-      "display_name": "AssemblyAI Universal-3 Pro (Prompt 1)",
+      "display_name": "AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 1)",
       "language": "de",
       "dataset": "nyrahealth/disfluency_speech_german",
       "raw_file": "predictions/raw/assemblyai_p1/de.json",
@@ -28,7 +28,7 @@
     },
     {
       "model": "assemblyai_p2",
-      "display_name": "AssemblyAI Universal-3 Pro (Prompt 2)",
+      "display_name": "AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 2)",
       "language": "en",
       "dataset": "nyrahealth/disfluency_speech_english",
       "raw_file": "predictions/raw/assemblyai_p2/en.json",
@@ -43,7 +43,7 @@
     },
     {
       "model": "assemblyai_p2",
-      "display_name": "AssemblyAI Universal-3 Pro (Prompt 2)",
+      "display_name": "AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 2)",
       "language": "de",
       "dataset": "nyrahealth/disfluency_speech_german",
       "raw_file": "predictions/raw/assemblyai_p2/de.json",
@@ -56,7 +56,7 @@
     },
     {
       "model": "canary",
-      "display_name": "NVIDIA Canary",
+      "display_name": "NVIDIA Canary 1B v2 (nvidia/canary-1b-v2)",
       "language": "en",
       "dataset": "nyrahealth/disfluency_speech_english",
       "raw_file": "predictions/raw/canary/en.json",
@@ -71,7 +71,7 @@
     },
     {
       "model": "canary",
-      "display_name": "NVIDIA Canary",
+      "display_name": "NVIDIA Canary 1B v2 (nvidia/canary-1b-v2)",
       "language": "de",
       "dataset": "nyrahealth/disfluency_speech_german",
       "raw_file": "predictions/raw/canary/de.json",
@@ -84,7 +84,7 @@
     },
     {
       "model": "cartesia",
-      "display_name": "Cartesia Ink-Whisper",
+      "display_name": "Cartesia Ink-Whisper (ink-whisper)",
       "language": "en",
       "dataset": "nyrahealth/disfluency_speech_english",
       "raw_file": "predictions/raw/cartesia/en.json",
@@ -99,7 +99,7 @@
     },
     {
       "model": "cartesia",
-      "display_name": "Cartesia Ink-Whisper",
+      "display_name": "Cartesia Ink-Whisper (ink-whisper)",
       "language": "de",
       "dataset": "nyrahealth/disfluency_speech_german",
       "raw_file": "predictions/raw/cartesia/de.json",
@@ -112,7 +112,7 @@
     },
     {
       "model": "cohere",
-      "display_name": "Cohere Transcribe",
+      "display_name": "Cohere Transcribe (CohereLabs/cohere-transcribe-03-2026)",
       "language": "en",
       "dataset": "nyrahealth/disfluency_speech_english",
       "raw_file": "predictions/raw/cohere/en.json",
@@ -127,7 +127,7 @@
     },
     {
       "model": "cohere",
-      "display_name": "Cohere Transcribe",
+      "display_name": "Cohere Transcribe (CohereLabs/cohere-transcribe-03-2026)",
       "language": "de",
       "dataset": "nyrahealth/disfluency_speech_german",
       "raw_file": "predictions/raw/cohere/de.json",
@@ -140,7 +140,7 @@
     },
     {
       "model": "crisperwhisper_1",
-      "display_name": "CrisperWhisper 1.0",
+      "display_name": "CrisperWhisper 1.0 (nyrahealth/CrisperWhisper)",
       "language": "en",
       "dataset": "nyrahealth/disfluency_speech_english",
       "raw_file": "predictions/raw/crisperwhisper_1/en.json",
@@ -153,7 +153,7 @@
     },
     {
       "model": "crisperwhisper_1",
-      "display_name": "CrisperWhisper 1.0",
+      "display_name": "CrisperWhisper 1.0 (nyrahealth/CrisperWhisper)",
       "language": "de",
       "dataset": "nyrahealth/disfluency_speech_german",
       "raw_file": "predictions/raw/crisperwhisper_1/de.json",
@@ -166,7 +166,7 @@
     },
     {
       "model": "deepgram",
-      "display_name": "Deepgram",
+      "display_name": "Deepgram Nova-3 (nova-3)",
       "language": "en",
       "dataset": "nyrahealth/disfluency_speech_english",
       "raw_file": "predictions/raw/deepgram/en.json",
@@ -181,7 +181,7 @@
     },
     {
       "model": "deepgram",
-      "display_name": "Deepgram",
+      "display_name": "Deepgram Nova-3 (nova-3)",
       "language": "de",
       "dataset": "nyrahealth/disfluency_speech_german",
       "raw_file": "predictions/raw/deepgram/de.json",
@@ -222,7 +222,7 @@
     },
     {
       "model": "fish_audio",
-      "display_name": "Fish Audio",
+      "display_name": "Fish Audio ASR",
       "language": "en",
       "dataset": "nyrahealth/disfluency_speech_english",
       "raw_file": "predictions/raw/fish_audio/en.json",
@@ -237,7 +237,7 @@
     },
     {
       "model": "fish_audio",
-      "display_name": "Fish Audio",
+      "display_name": "Fish Audio ASR",
       "language": "de",
       "dataset": "nyrahealth/disfluency_speech_german",
       "raw_file": "predictions/raw/fish_audio/de.json",
@@ -250,22 +250,21 @@
     },
     {
       "model": "gradium",
-      "display_name": "Gradium",
+      "display_name": "Gradium ASR",
       "language": "en",
       "dataset": "nyrahealth/disfluency_speech_english",
       "raw_file": "predictions/raw/gradium/en.json",
       "source_file": "output_english_gradium.json",
       "normalized_file": "predictions/normalized/gradium/en.jsonl",
-      "num_records": 4957,
+      "num_records": 616,
       "splits": [
         "test",
-        "train",
-        "validation"
+        "train"
       ]
     },
     {
       "model": "gradium",
-      "display_name": "Gradium",
+      "display_name": "Gradium ASR",
       "language": "de",
       "dataset": "nyrahealth/disfluency_speech_german",
       "raw_file": "predictions/raw/gradium/de.json",
@@ -278,7 +277,7 @@
     },
     {
       "model": "inworld",
-      "display_name": "Inworld STT",
+      "display_name": "Inworld STT (inworld/inworld-stt-1)",
       "language": "en",
       "dataset": "nyrahealth/disfluency_speech_english",
       "raw_file": "predictions/raw/inworld/en.json",
@@ -293,7 +292,7 @@
     },
     {
       "model": "inworld",
-      "display_name": "Inworld STT",
+      "display_name": "Inworld STT (inworld/inworld-stt-1)",
       "language": "de",
       "dataset": "nyrahealth/disfluency_speech_german",
       "raw_file": "predictions/raw/inworld/de.json",
@@ -306,7 +305,7 @@
     },
     {
       "model": "whisper_large_v3",
-      "display_name": "Whisper Large v3",
+      "display_name": "Whisper Large v3 (openai/whisper-large-v3)",
       "language": "en",
       "dataset": "nyrahealth/disfluency_speech_english",
       "raw_file": "predictions/raw/whisper_large_v3/en.json",
@@ -321,7 +320,7 @@
     },
     {
       "model": "whisper_large_v3",
-      "display_name": "Whisper Large v3",
+      "display_name": "Whisper Large v3 (openai/whisper-large-v3)",
       "language": "de",
       "dataset": "nyrahealth/disfluency_speech_german",
       "raw_file": "predictions/raw/whisper_large_v3/de.json",
@@ -334,7 +333,7 @@
     },
     {
       "model": "xai_grok",
-      "display_name": "xAI Grok",
+      "display_name": "xAI Grok Speech-to-Text",
       "language": "en",
       "dataset": "nyrahealth/disfluency_speech_english",
       "raw_file": "predictions/raw/xai_grok/en.json",
@@ -349,7 +348,7 @@
     },
     {
       "model": "xai_grok",
-      "display_name": "xAI Grok",
+      "display_name": "xAI Grok Speech-to-Text",
       "language": "de",
       "dataset": "nyrahealth/disfluency_speech_german",
       "raw_file": "predictions/raw/xai_grok/de.json",
