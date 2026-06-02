@@ -1,32 +1,53 @@
 # Nyra Verbatim Speech Benchmark
 
+**A benchmark for evaluating verbatim automatic speech recognition: not only the words, but also fillers, repetitions, cutoffs, and non-speech sounds.**
 
-Evaluate **verbatim transcription** in detail and distinguish between different failure modes, especially:
+Most speech benchmarks focus on clean transcript accuracy. This repository focuses on the messy but important details of real speech: `uh`, `um`, repeated words, interrupted words like `th-`, and events like `[laughter]` or `[cough]`.
 
-- sounds
-- fillers
-- cutoffs
-- repetitions
+The benchmark compares two kinds of transcripts:
 
-It can be used to evaluate how accurately ASR models transcribe different kinds of disfluencies.
+- **Verbatim transcript**: what the speaker actually said, including disfluencies.
+- **Intended transcript**: a cleaned version of what the speaker meant to say.
 
-Any model that produces transcripts following the [verbatim transcript conventions](#verbatim-transcript-conventions), or whose outputs can be mapped to those conventions, can be evaluated with this benchmark.
+From that pair, the evaluator automatically derives disfluency labels and reports detailed ASR quality metrics. The goal is to make verbatim ASR evaluation reproducible, comparable, and easy to extend across systems.
 
-The **evaluation** part of the benchmark is model-agnostic. The current `transcribe.py` implementation is specifically written for **CrisperWhisper 2.0 only**. For other models, transcription has to be implemented separately.
+## Why This Exists ✨
 
-The benchmark uses paired gold transcripts:
+Verbatim ASR is not just ordinary word error rate. A model can have low WER while still dropping the exact phenomena that matter for clinical, conversational, and speech-science use cases.
 
-- `verbatim_transcript`: what the speaker actually said
-- `intended_transcript`: a cleaned version of what the speaker meant to say
+This benchmark therefore reports both transcript-level quality and typed
+disfluency scores:
 
-From that pair, the benchmark derives gold disfluency labels automatically and evaluates model predictions against them.
+- **Transcript quality**: `vWER`, `iWER`, `vCER`, `iCER`
+- **Fillers**: `[UH]`, `[UM]`, including exact and per-label scores
+- **Sounds**: `[laughter]`, `[cough]`, `[breath]`, and related events
+- **Cutoffs**: interrupted words such as `th-`, with several matching criteria
+- **Repetitions**: repeated words and repetition-count accuracy
+- **Diagnostics**: disfluency omission and hallucination rates
 
-## Index
+## What You Can Do
+
+- **Reproduce the included model comparisons** from cached predictions.
+- **Evaluate another ASR system** by adding its raw transcripts.
+- **Compare verbatim and intended transcription behavior** when both are available.
+- **Analyze errors by disfluency type**, rather than relying on WER alone.
+
+## Current Scope 🌍
+
+- Languages: **English** and **German**
+- Datasets: [`nyrahealth/disfluency_speech_english`](https://huggingface.co/datasets/nyrahealth/disfluency_speech_english) and [`nyrahealth/disfluency_speech_german`](https://huggingface.co/datasets/nyrahealth/disfluency_speech_german)
+- Cached model families include AssemblyAI, Canary, Cartesia, Cohere, CrisperWhisper, Deepgram, ElevenLabs, Fish Audio, Gradium, Inworld, Whisper Large v3, and xAI Grok.
+
+The evaluator is model-agnostic: any ASR system can be scored if its outputs are
+converted to the benchmark prediction format.
+
+## Table of Contents
 
 - [Quick Start](#quick-start-)
-- [Cached Prediction Evaluation](#cached-prediction-evaluation)
-- [Adding a New Model](#adding-a-new-model)
-- [Normalization Philosophy](#normalization-philosophy)
+- [Benchmark Workflow](#benchmark-workflow-)
+- [Reproducing Results](#reproducing-results-)
+- [Adding a New System](#adding-a-new-system-)
+- [Optional: Run CrisperWhisper Inference](#optional-run-crisperwhisper-inference-)
 - [Verbatim Transcript Conventions](#verbatim-transcript-conventions-)
 - [Intended Transcript](#intended-transcript)
 - [How Gold Labels Are Derived](#how-gold-labels-are-derived-)
@@ -39,13 +60,135 @@ From that pair, the benchmark derives gold disfluency labels automatically and e
 
 ---
 
-## Quick Start 🚀
+## Quick Start
 
-The commands below use the current built-in transcription path, which is intended for **CrisperWhisper 2.0 models**.
+Reproduce the included benchmark tables:
 
 ```bash
 pip install -r requirements.txt
+python scripts/reproduce_results.py
+```
 
+Main outputs:
+
+- `results/cached/summary.json`: machine-readable metrics for all cached runs.
+- `results/cached/leaderboard.md`: markdown tables for English and German.
+- `results/cached/<model>/<language>/report.json`: full per-model metric report.
+- `results/cached/<model>/<language>/summary.md`: human-readable per-model summary.
+
+## Benchmark Workflow
+
+The benchmark uses a simple four-step workflow:
+
+```text
+raw model predictions
+  -> canonical prediction format
+  -> normalized benchmark format
+  -> metrics and leaderboard
+```
+
+The raw predictions remain available for inspection. The normalized files are
+the exact inputs used by the evaluator.
+
+## Reproducing Results
+
+The repository includes cached predictions for the systems listed in
+`benchmark/models.json`. The quick-start command above runs the full cached
+evaluation workflow. The same steps can be run separately:
+
+```bash
+python scripts/validate_predictions.py
+python scripts/convert_outputs.py --skip_import
+python scripts/evaluate_all_cached.py --output_dir results/cached
+python scripts/print_leaderboard.py --output results/cached/leaderboard.md
+```
+
+Raw predictions live under:
+
+```text
+predictions/raw/<model>/<language>.json
+```
+
+Normalized evaluator-ready predictions are generated under:
+
+```text
+predictions/normalized/<model>/<language>.jsonl
+```
+
+Each prediction row contains the sample metadata, raw model output, normalized
+prediction, and gold verbatim/intended transcripts:
+
+```json
+{
+  "id": "DISFLUENCY_TEST_000000",
+  "audio": "audio/DISFLUENCY_TEST_000000.wav",
+  "dataset": "nyrahealth/disfluency_speech_english",
+  "split": "test",
+  "language": "en",
+  "model": "elevenlabs",
+  "raw_verbatim_prediction": "raw model output",
+  "raw_intended_prediction": null,
+  "pred_verbatim": "canonical verbatim prediction",
+  "pred_intended": "intended prediction",
+  "gold_verbatim": "gold verbatim transcript",
+  "gold_intended": "gold intended transcript"
+}
+```
+
+For single-output ASR systems, `pred_intended` is set equal to
+`pred_verbatim`. For systems that produce separate verbatim and intended
+transcripts, both fields can be populated separately.
+
+To evaluate one cached file directly:
+
+```bash
+python evaluate.py \
+    --predictions predictions/normalized/elevenlabs/en.jsonl \
+    --use_prediction_gold \
+    --output_dir results/elevenlabs_english_cached
+```
+
+Dataset-backed evaluation is also supported:
+
+```bash
+python evaluate.py \
+    --predictions predictions/normalized/elevenlabs/en.jsonl \
+    --datasets nyrahealth/disfluency_speech_english \
+    --splits train validation test \
+    --output_dir results/elevenlabs_english_hf
+```
+
+## Adding a New System
+
+Adding a system requires three pieces:
+
+1. Raw predictions:
+
+```text
+predictions/raw/<model_id>/<language>.json
+```
+
+2. A model entry in `benchmark/models.json`.
+
+3. Convert, validate, and evaluate:
+
+```bash
+python scripts/convert_outputs.py --skip_import --model <model_id>
+python scripts/validate_predictions.py
+python scripts/evaluate_all_cached.py --model <model_id>
+python scripts/print_leaderboard.py
+```
+
+See [`docs/adding_a_model.md`](docs/adding_a_model.md) for the full schema and
+checklist. See [`docs/normalization.md`](docs/normalization.md) for how output
+formatting conventions are handled.
+
+## Optional: Run CrisperWhisper Inference 🎙️
+
+The commands below use the built-in transcription path, which is intended for
+**CrisperWhisper 2.0 models**.
+
+```bash
 python run.py \
     --model /path/to/CrisperWhisper_2.0_model \
     --datasets nyrahealth/disfluency_speech_english \
@@ -70,18 +213,8 @@ python evaluate.py \
     --output_dir results/
 ```
 
-Outputs:
-
-- `results/report.json`
-- `results/summary.md`
-
-If you want to evaluate a different model, the easiest path is:
-
-1. write raw predictions in the fixed raw prediction schema
-2. add the model to `benchmark/models.json`
-3. run conversion and evaluation scripts
-
-To be usable by `evaluate.py`, each line in `predictions.jsonl` should contain at least:
+To be usable by `evaluate.py`, each line in `predictions.jsonl` should contain
+at least:
 
 ```json
 {
@@ -93,153 +226,10 @@ To be usable by `evaluate.py`, each line in `predictions.jsonl` should contain a
 
 Notes:
 
-- `id` must match the dataset sample id
-- `pred_verbatim` is compared against the gold `verbatim_transcript` and should follow the verbatim transcription conventions described below
-- `pred_intended` is compared against the gold `intended_transcript`
-- if a model cannot produce intended transcripts yet, you would need to add that transcription path before the intended metrics are meaningful
-
----
-
-## Cached Prediction Evaluation
-
-The repository can also evaluate cached model outputs without running model
-inference. This is the recommended path for reproducing benchmark tables across
-many external ASR systems.
-
-Raw model outputs live under:
-
-```text
-predictions/raw/<model>/<language>.json
-```
-
-Canonical evaluator-ready predictions are generated under:
-
-```text
-predictions/normalized/<model>/<language>.jsonl
-```
-
-Each normalized JSONL row contains:
-
-```json
-{
-  "id": "DISFLUENCY_TEST_000000",
-  "audio": "audio/DISFLUENCY_TEST_000000.wav",
-  "dataset": "nyrahealth/disfluency_speech_english",
-  "split": "test",
-  "language": "en",
-  "model": "elevenlabs",
-  "raw_verbatim_prediction": "raw model output",
-  "raw_intended_prediction": null,
-  "pred_verbatim": "canonical verbatim prediction",
-  "pred_intended": "intended prediction",
-  "gold_verbatim": "gold verbatim transcript",
-  "gold_intended": "gold intended transcript"
-}
-```
-
-For single-output ASR systems, `pred_intended` is set equal to
-`pred_verbatim`. For systems that produce separate verbatim and intended
-transcripts, both fields can be populated separately.
-
-Model metadata lives in:
-
-```text
-benchmark/models.json
-```
-
-That manifest tells the converter where raw files live, which adapter to use,
-which languages are available, and which splits should be considered covered.
-
-To regenerate normalized files from raw cached JSONs:
-
-```bash
-python scripts/convert_outputs.py --skip_import
-```
-
-To evaluate every cached model output:
-
-```bash
-python scripts/evaluate_all_cached.py \
-    --output_dir results/cached
-```
-
-To evaluate one cached file directly:
-
-```bash
-python evaluate.py \
-    --predictions predictions/normalized/elevenlabs/en.jsonl \
-    --use_prediction_gold \
-    --output_dir results/elevenlabs_english_cached
-```
-
-If you prefer to evaluate against datasets downloaded from Hugging Face rather
-than the gold transcripts embedded in the cached JSONL files, use the existing
-dataset-backed mode:
-
-```bash
-python evaluate.py \
-    --predictions predictions/normalized/elevenlabs/en.jsonl \
-    --datasets nyrahealth/disfluency_speech_english \
-    --splits train validation test \
-    --output_dir results/elevenlabs_english_hf
-```
-
-Hugging Face will use its normal cache directory. You can pre-download datasets
-with:
-
-```bash
-python scripts/download_datasets.py
-```
-
----
-
-## Adding a New Model
-
-Adding a model should not require changing the evaluator.
-
-1. Create raw predictions:
-
-```text
-predictions/raw/<model_id>/<language>.json
-```
-
-2. Add a model entry to `benchmark/models.json`.
-
-3. Convert, validate, and evaluate:
-
-```bash
-python scripts/convert_outputs.py --skip_import --model <model_id>
-python scripts/validate_predictions.py
-python scripts/evaluate_all_cached.py --model <model_id>
-python scripts/print_leaderboard.py
-```
-
-See [`docs/adding_a_model.md`](docs/adding_a_model.md) for the full schema and
-checklist.
-
----
-
-## Normalization Philosophy
-
-The benchmark separates raw model outputs from normalized benchmark inputs.
-Contributors submit auditable raw predictions, and the benchmark applies a
-deterministic normalizer before scoring.
-
-```text
-raw model transcript
-  -> fixed raw prediction schema
-  -> global normalizer + optional source adapter
-  -> normalized prediction JSONL
-  -> evaluate.py
-  -> report.json / leaderboard
-```
-
-Rules belong in the global normalizer only when they are conservative and
-idempotent across models. Provider-specific or risky rules belong in a source
-adapter. For example, `[laughs] -> [laughter]` is global, but AssemblyAI's
-observed `ah -> [laughter]` behavior is adapter-only.
-
-See [`docs/normalization.md`](docs/normalization.md) for details.
+- `id` must match the dataset sample id.
+- `pred_verbatim` is compared against the gold `verbatim_transcript`.
+- `pred_intended` is compared against the gold `intended_transcript`.
+- If a model cannot produce intended transcripts, intended metrics are less meaningful.
 
 ---
 
@@ -475,6 +465,7 @@ nyra_verbatim_speech_benchmark/
 │   ├── download_datasets.py
 │   ├── evaluate_all_cached.py
 │   ├── print_leaderboard.py
+│   ├── reproduce_results.py
 │   └── validate_predictions.py
 ├── predictions/
 │   ├── raw/

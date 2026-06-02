@@ -8,6 +8,15 @@ You can reproduce cached benchmark results without running model inference.
 pip install -r requirements.txt
 ```
 
+## One-Command Reproduction
+
+```bash
+python scripts/reproduce_results.py
+```
+
+This validates cached predictions, regenerates normalized files, evaluates all
+registered systems, and writes `results/cached/leaderboard.md`.
+
 ## Validate Inputs
 
 ```bash
@@ -52,8 +61,8 @@ python scripts/print_leaderboard.py --output results/cached/leaderboard.md
 ## Dataset-Backed Evaluation
 
 Cached prediction files include gold transcripts so results can be verified
-without downloading datasets. If you prefer to load gold transcripts directly
-from Hugging Face:
+without downloading datasets. The evaluator can also load references directly
+from the Hugging Face datasets:
 
 ```bash
 python scripts/download_datasets.py
@@ -63,5 +72,3 @@ python evaluate.py \
   --splits train validation test \
   --output_dir results/elevenlabs_english_hf
 ```
-
-Hugging Face uses its normal cache directory unless you configure it otherwise.

@@ -1,46 +1,41 @@
-# Raw Prediction Generation
+# Raw Prediction Provenance
 
 The benchmark can be verified from the cached files in `predictions/` without
 running model inference. This directory documents how the raw JSON files were
-created for users who want to regenerate them independently.
+created for readers who want to understand or independently reproduce the
+reported comparisons.
 
-Do not hardcode API keys in generation scripts. Use environment variables such
-as:
+Raw predictions are stored in the canonical benchmark schema under:
 
-- `ASSEMBLYAI_API_KEY`
-- `CARTESIA_API_KEY`
-- `DEEPGRAM_API_KEY`
-- `ELEVENLABS_API_KEY`
-- `FISH_AUDIO_API_KEY`
-- `GRADIUM_API_KEY`
-- `INWORLD_API_KEY`
-- `XAI_API_KEY`
+```text
+predictions/raw/<model_id>/<language>.json
+```
 
-Expected raw JSON schema:
+Each file is a JSON list:
 
 ```json
 [
   {
+    "id": "DISFLUENCY_TEST_000000",
     "audio": "audio/example.wav",
-    "prediction": "raw model transcript",
-    "verbatim_ground_truth": "gold verbatim transcript",
-    "intended_ground_truth": "gold intended transcript"
+    "dataset": "nyrahealth/disfluency_speech_english",
+    "split": "test",
+    "language": "en",
+    "model": "example_model",
+    "raw_verbatim_prediction": "raw model transcript",
+    "raw_intended_prediction": null,
+    "gold_verbatim": "gold verbatim transcript",
+    "gold_intended": "gold intended transcript"
   }
 ]
 ```
 
-Models that can produce separate outputs may use:
+Models that only produce one transcript set `raw_intended_prediction` to
+`null`. Models that produce separate verbatim and intended outputs can provide
+both fields.
 
-```json
-{
-  "verbatim_prediction": "raw verbatim prediction",
-  "intended_prediction": "raw intended prediction"
-}
+The normalized evaluator inputs are regenerated with:
+
+```bash
+python scripts/convert_outputs.py --skip_import
 ```
-
-The converter accepts both schemas and produces canonical JSONL files with
-`pred_verbatim` and `pred_intended`.
-
-The original experiment scripts used to create the current cached files live in
-the research workspace. When upstreaming public reproducer scripts, sanitize
-them first so credentials are read only from environment variables.
