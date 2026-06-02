@@ -24,6 +24,9 @@ From that pair, the benchmark derives gold disfluency labels automatically and e
 ## Index
 
 - [Quick Start](#quick-start-)
+- [Cached Prediction Evaluation](#cached-prediction-evaluation)
+- [Adding a New Model](#adding-a-new-model)
+- [Normalization Philosophy](#normalization-philosophy)
 - [Verbatim Transcript Conventions](#verbatim-transcript-conventions-)
 - [Intended Transcript](#intended-transcript)
 - [How Gold Labels Are Derived](#how-gold-labels-are-derived-)
@@ -74,8 +77,9 @@ Outputs:
 
 If you want to evaluate a different model, the easiest path is:
 
-1. implement a small transcription adapter that writes `predictions.jsonl`
-2. keep using `evaluate.py` unchanged
+1. write raw predictions in the fixed raw prediction schema
+2. add the model to `benchmark/models.json`
+3. run conversion and evaluation scripts
 
 To be usable by `evaluate.py`, each line in `predictions.jsonl` should contain at least:
 
@@ -96,11 +100,154 @@ Notes:
 
 ---
 
+## Cached Prediction Evaluation
+
+The repository can also evaluate cached model outputs without running model
+inference. This is the recommended path for reproducing benchmark tables across
+many external ASR systems.
+
+Raw model outputs live under:
+
+```text
+predictions/raw/<model>/<language>.json
+```
+
+Canonical evaluator-ready predictions are generated under:
+
+```text
+predictions/normalized/<model>/<language>.jsonl
+```
+
+Each normalized JSONL row contains:
+
+```json
+{
+  "id": "DISFLUENCY_TEST_000000",
+  "audio": "audio/DISFLUENCY_TEST_000000.wav",
+  "dataset": "nyrahealth/disfluency_speech_english",
+  "split": "test",
+  "language": "en",
+  "model": "elevenlabs",
+  "raw_verbatim_prediction": "raw model output",
+  "raw_intended_prediction": null,
+  "pred_verbatim": "canonical verbatim prediction",
+  "pred_intended": "intended prediction",
+  "gold_verbatim": "gold verbatim transcript",
+  "gold_intended": "gold intended transcript"
+}
+```
+
+For single-output ASR systems, `pred_intended` is set equal to
+`pred_verbatim`. For systems that produce separate verbatim and intended
+transcripts, both fields can be populated separately.
+
+Model metadata lives in:
+
+```text
+benchmark/models.json
+```
+
+That manifest tells the converter where raw files live, which adapter to use,
+which languages are available, and which splits should be considered covered.
+
+To regenerate normalized files from raw cached JSONs:
+
+```bash
+python scripts/convert_outputs.py --skip_import
+```
+
+To evaluate every cached model output:
+
+```bash
+python scripts/evaluate_all_cached.py \
+    --output_dir results/cached
+```
+
+To evaluate one cached file directly:
+
+```bash
+python evaluate.py \
+    --predictions predictions/normalized/elevenlabs/en.jsonl \
+    --use_prediction_gold \
+    --output_dir results/elevenlabs_english_cached
+```
+
+If you prefer to evaluate against datasets downloaded from Hugging Face rather
+than the gold transcripts embedded in the cached JSONL files, use the existing
+dataset-backed mode:
+
+```bash
+python evaluate.py \
+    --predictions predictions/normalized/elevenlabs/en.jsonl \
+    --datasets nyrahealth/disfluency_speech_english \
+    --splits train validation test \
+    --output_dir results/elevenlabs_english_hf
+```
+
+Hugging Face will use its normal cache directory. You can pre-download datasets
+with:
+
+```bash
+python scripts/download_datasets.py
+```
+
+---
+
+## Adding a New Model
+
+Adding a model should not require changing the evaluator.
+
+1. Create raw predictions:
+
+```text
+predictions/raw/<model_id>/<language>.json
+```
+
+2. Add a model entry to `benchmark/models.json`.
+
+3. Convert, validate, and evaluate:
+
+```bash
+python scripts/convert_outputs.py --skip_import --model <model_id>
+python scripts/validate_predictions.py
+python scripts/evaluate_all_cached.py --model <model_id>
+python scripts/print_leaderboard.py
+```
+
+See [`docs/adding_a_model.md`](docs/adding_a_model.md) for the full schema and
+checklist.
+
+---
+
+## Normalization Philosophy
+
+The benchmark separates raw model outputs from normalized benchmark inputs.
+Contributors submit auditable raw predictions, and the benchmark applies a
+deterministic normalizer before scoring.
+
+```text
+raw model transcript
+  -> fixed raw prediction schema
+  -> global normalizer + optional source adapter
+  -> normalized prediction JSONL
+  -> evaluate.py
+  -> report.json / leaderboard
+```
+
+Rules belong in the global normalizer only when they are conservative and
+idempotent across models. Provider-specific or risky rules belong in a source
+adapter. For example, `[laughs] -> [laughter]` is global, but AssemblyAI's
+observed `ah -> [laughter]` behavior is adapter-only.
+
+See [`docs/normalization.md`](docs/normalization.md) for details.
+
+---
+
 ## Verbatim Transcript Conventions 📝
 
 The verbatim transcript uses a small set of conventions:
 
-- **Cutoffs** use `*`: `th*`, `w*`
+- **Cutoffs** use `*` in the gold transcript: `th*`, `w*`
 - **Fillers** are bracketed, e.g. `[UH]`, `[UM]`
 - **Sound events** are bracketed, e.g. `[laughter]`, `[cough]`, `[breath]`
 - **Numbers and dates** are written out as spoken
@@ -113,7 +260,20 @@ Example:
 I mean we we [UH] should go on th* Thursday [laughter]
 ```
 
-The benchmark can also evaluate models that use a slightly different output convention, for example `-` instead of `*` for cutoffs, as long as their output can be mapped to the benchmark format.
+The benchmark can also evaluate models that use a slightly different output
+convention, for example `-` instead of `*` for cutoffs, as long as their output
+can be mapped to the benchmark format.
+
+Cutoffs are inherently a little ambiguous: different systems may spell the same
+interrupted word as `w*`, `w-`, `w—`, `w–`, or even use another Unicode
+dash/minus-like symbol. Cached model predictions are therefore normalized to the
+benchmark's internal `-` cutoff marker before metric calculation. The normalizer
+handles common Unicode dash variants (`‐`, `‑`, `‒`, `–`, `—`, `―`, `−`, `﹘`,
+`﹣`, `－`) when they are attached to a word fragment.
+
+Because even normalized cutoff spelling is not always semantically clear, the
+benchmark reports several cutoff metrics: marker-based cutoff F1, stricter
+stem-matching cutoff F1, and lenient positional cutoff scores.
 
 ---
 
@@ -149,6 +309,7 @@ First, cutoffs are normalized internally so everything uses one convention:
 
 ```text
 th* -> th-
+w— -> w-
 ```
 
 ### 2. Align Gold Verbatim To Gold Intended
@@ -244,6 +405,7 @@ The transcript accuracy metrics are computed separately from the normalized tran
 - `event_f1`: combined F1 for fillers and sound events together.
 - `cutoff_f1`: F1 for detecting cutoff fragments such as `th-`; here the prediction must itself be marked as a cutoff.
 - `cutoff_strict_f1`: cutoff F1 where the cutoff stem itself must also match; here the prediction does not have to carry the cutoff marker if the aligned token has the correct stem.
+- `cutoff_lenient_f1`: cutoff F1 where a gold cutoff is counted as covered if any predicted token aligns to that cutoff position; hallucinated predicted cutoff markers are still penalized.
 - `cutoff_lenient_recall`: recall for whether a gold cutoff is at least acknowledged by some aligned prediction token; here the prediction does not need a cutoff marker.
 - `rep_f1`: F1 for detecting repetition tokens.
 - `exact_filler_f1`: filler F1 where the exact filler label must match, e.g. `[UH]` vs `[UM]`.
@@ -305,6 +467,20 @@ nyra_verbatim_speech_benchmark/
 ├── align.py
 ├── tag.py
 ├── run.py
+├── benchmark/
+│   ├── models.json
+│   └── schemas/
+├── scripts/
+│   ├── convert_outputs.py
+│   ├── download_datasets.py
+│   ├── evaluate_all_cached.py
+│   ├── print_leaderboard.py
+│   └── validate_predictions.py
+├── predictions/
+│   ├── raw/
+│   └── normalized/
+├── generation/
+├── docs/
 └── examples/
 ```
 

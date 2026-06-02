@@ -4,3 +4,4 @@ datasets
 librosa
 soundfile
 jiwer
+num2words

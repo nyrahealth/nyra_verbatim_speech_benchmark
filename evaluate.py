@@ -341,6 +341,7 @@ def evaluate_sample(
             cutoff_strict_fn += 1
             cutoff_lenient_fn += 1
     cutoff_strict_fp = cutoff_fp
+    cutoff_lenient_fp = cutoff_fp
 
     # Exact label matching
     def _exact_label_match(
@@ -475,6 +476,7 @@ def evaluate_sample(
     cutoff_lenient_recall = (
         cutoff_lenient_tp / len(gold_cutoff_pos) if gold_cutoff_pos else 0.0
     )
+    cl_p, cl_r, cl_f = _prf(cutoff_lenient_tp, cutoff_lenient_fp, cutoff_lenient_fn)
 
     return {
         # String-level
@@ -493,6 +495,8 @@ def evaluate_sample(
         "cutoff_f1": cutoff_f, "cutoff_precision": cutoff_p, "cutoff_recall": cutoff_r,
         "cutoff_strict_f1": cs_f, "cutoff_strict_precision": cs_p, "cutoff_strict_recall": cs_r,
         "cutoff_lenient_recall": cutoff_lenient_recall,
+        "cutoff_lenient_f1": cl_f,
+        "cutoff_lenient_precision": cl_p,
         "rep_f1": rep_f, "rep_precision": rep_p, "rep_recall": rep_r,
         # Support counts
         "filler_support": len(gold_filler_pos),
@@ -523,7 +527,7 @@ def evaluate_sample(
             "event": {"tp": event_tp, "fp": event_fp, "fn": event_fn},
             "cutoff": {"tp": cutoff_tp, "fp": cutoff_fp, "fn": cutoff_fn},
             "cutoff_strict": {"tp": cutoff_strict_tp, "fp": cutoff_strict_fp, "fn": cutoff_strict_fn},
-            "cutoff_lenient": {"tp": cutoff_lenient_tp, "fp": 0, "fn": cutoff_lenient_fn},
+            "cutoff_lenient": {"tp": cutoff_lenient_tp, "fp": cutoff_lenient_fp, "fn": cutoff_lenient_fn},
             "rep": {"tp": rep_tp, "fp": rep_fp, "fn": rep_fn},
             "exact_filler": {"tp": exact_filler_tp, "fp": exact_filler_fp, "fn": exact_filler_fn},
             "exact_sound": {"tp": exact_sound_tp, "fp": exact_sound_fp, "fn": exact_sound_fn},
@@ -631,6 +635,9 @@ def aggregate_metrics(sample_metrics: List[Dict]) -> Dict:
 
     cl = totals["cutoff_lenient"]
     agg["cutoff_lenient_recall"] = cl["tp"] / max(1, cl["tp"] + cl["fn"])
+    clp, clr, clf = _prf(cl["tp"], cl["fp"], cl["fn"])
+    agg["cutoff_lenient_precision"] = clp
+    agg["cutoff_lenient_f1"] = clf
 
     for key in ("exact_filler", "exact_sound"):
         t = totals[key]
@@ -764,7 +771,13 @@ def print_report(metrics: Dict, title: str = "Evaluation Results") -> str:
     if csf is not None:
         a(f"  {'cutoff_strict':12s} F1={csf:.2%}")
     clr = metrics.get("cutoff_lenient_recall")
-    if clr is not None:
+    clf = metrics.get("cutoff_lenient_f1")
+    if clf is not None:
+        a(
+            f"  {'cutoff_lenient':12s} F1={clf:.2%}  "
+            f"P={metrics.get('cutoff_lenient_precision', 0):.2%}  R={clr or 0:.2%}"
+        )
+    elif clr is not None:
         a(f"  {'cutoff_lenient':12s} R={clr:.2%}")
     a("")
 
@@ -831,6 +844,30 @@ def load_predictions(path: str) -> List[Dict]:
             if line:
                 preds.append(json.loads(line))
     return preds
+
+
+def load_gold_from_predictions(
+    predictions: List[Dict],
+    cutoff_source: str,
+    cutoff_target: str,
+) -> List[Dict]:
+    """Build gold samples from self-contained prediction JSONL rows."""
+    gold_samples: List[Dict] = []
+    seen: Set[str] = set()
+    for row in predictions:
+        sid = str(row.get("id", ""))
+        if not sid or sid in seen:
+            continue
+        verbatim = str(row.get("gold_verbatim", "") or row.get("verbatim_ground_truth", "") or "")
+        intended = str(row.get("gold_intended", "") or row.get("intended_ground_truth", "") or "")
+        if not verbatim or not intended:
+            continue
+        gold = preprocess_gold(verbatim, intended, sid, cutoff_source, cutoff_target)
+        gold["dataset"] = row.get("dataset", "")
+        gold["split"] = row.get("split", "")
+        gold_samples.append(gold)
+        seen.add(sid)
+    return gold_samples
 
 
 def load_gold_from_hf(
@@ -910,7 +947,7 @@ def main() -> None:
         help="Path to predictions JSONL file (from transcribe.py).",
     )
     parser.add_argument(
-        "--datasets", nargs="+", required=True,
+        "--datasets", nargs="+", default=[],
         help="HuggingFace dataset name(s), e.g. nyrahealth/disfluency_speech_english",
     )
     parser.add_argument("--splits", nargs="+", default=["test"], help="Dataset splits to evaluate.")
@@ -918,6 +955,11 @@ def main() -> None:
     parser.add_argument("--cutoff_target", default="-", help="Cutoff marker in model output (default: -).")
     parser.add_argument("--verbatim_key", default="verbatim_transcript")
     parser.add_argument("--intended_key", default="intended_transcript")
+    parser.add_argument(
+        "--use_prediction_gold",
+        action="store_true",
+        help="Use gold_verbatim/gold_intended embedded in the predictions JSONL.",
+    )
     parser.add_argument("--output_dir", default="results/", help="Directory for report output.")
     args = parser.parse_args()
 
@@ -925,22 +967,36 @@ def main() -> None:
     print(f"Loaded {len(predictions)} predictions from {args.predictions}")
 
     all_gold: List[Dict] = []
-    for ds_name in args.datasets:
-        print(f"Loading gold from {ds_name} (splits={args.splits})...")
-        gold = load_gold_from_hf(
-            ds_name, args.splits,
-            args.cutoff_source, args.cutoff_target,
-            args.verbatim_key, args.intended_key,
+    if args.use_prediction_gold:
+        print("Loading gold from prediction JSONL rows...")
+        all_gold = load_gold_from_predictions(
+            predictions,
+            args.cutoff_source,
+            args.cutoff_target,
         )
-        all_gold.extend(gold)
-        print(f"  {len(gold)} samples loaded.")
+        print(f"  {len(all_gold)} samples loaded.")
+    else:
+        if not args.datasets:
+            parser.error("--datasets is required unless --use_prediction_gold is set")
+        for ds_name in args.datasets:
+            print(f"Loading gold from {ds_name} (splits={args.splits})...")
+            gold = load_gold_from_hf(
+                ds_name, args.splits,
+                args.cutoff_source, args.cutoff_target,
+                args.verbatim_key, args.intended_key,
+            )
+            all_gold.extend(gold)
+            print(f"  {len(gold)} samples loaded.")
 
     print(f"\nTotal gold samples: {len(all_gold)}")
     print("Evaluating...")
 
     metrics = evaluate_corpus(all_gold, predictions)
 
-    title = f"Evaluation: {', '.join(args.datasets)} ({'+'.join(args.splits)})"
+    if args.use_prediction_gold:
+        title = f"Evaluation: cached predictions ({os.path.basename(args.predictions)})"
+    else:
+        title = f"Evaluation: {', '.join(args.datasets)} ({'+'.join(args.splits)})"
     summary_text = print_report(metrics, title)
 
     os.makedirs(args.output_dir, exist_ok=True)

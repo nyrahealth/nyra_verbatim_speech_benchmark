@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nyrahealth.github.io/verbatim-speech-benchmark/normalized_prediction.schema.json",
+  "title": "Nyra Verbatim Speech Benchmark Normalized Prediction",
+  "type": "object",
+  "required": [
+    "id",
+    "audio",
+    "dataset",
+    "split",
+    "language",
+    "model",
+    "raw_verbatim_prediction",
+    "pred_verbatim",
+    "pred_intended",
+    "gold_verbatim",
+    "gold_intended"
+  ],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "audio": {"type": "string"},
+    "dataset": {"type": "string"},
+    "split": {"type": "string"},
+    "language": {"enum": ["en", "de"]},
+    "model": {"type": "string", "minLength": 1},
+    "raw_verbatim_prediction": {"type": ["string", "null"]},
+    "raw_intended_prediction": {"type": ["string", "null"]},
+    "pred_verbatim": {"type": "string"},
+    "pred_intended": {"type": "string"},
+    "gold_verbatim": {"type": "string"},
+    "gold_intended": {"type": "string"},
+    "source_file": {"type": "string"}
+  },
+  "additionalProperties": true
+}

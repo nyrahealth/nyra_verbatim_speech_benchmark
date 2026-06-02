@@ -1,0 +1,364 @@
+{
+  "outputs": [
+    {
+      "model": "assemblyai_p1",
+      "display_name": "AssemblyAI Universal-3 Pro (Prompt 1)",
+      "language": "en",
+      "dataset": "nyrahealth/disfluency_speech_english",
+      "raw_file": "predictions/raw/assemblyai_p1/en.json",
+      "source_file": "output_english_assembly_prompt_1.json",
+      "normalized_file": "predictions/normalized/assemblyai_p1/en.jsonl",
+      "num_records": 249,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "assemblyai_p1",
+      "display_name": "AssemblyAI Universal-3 Pro (Prompt 1)",
+      "language": "de",
+      "dataset": "nyrahealth/disfluency_speech_german",
+      "raw_file": "predictions/raw/assemblyai_p1/de.json",
+      "source_file": "output_german_assembly_prompt_1.json",
+      "normalized_file": "predictions/normalized/assemblyai_p1/de.jsonl",
+      "num_records": 202,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "assemblyai_p2",
+      "display_name": "AssemblyAI Universal-3 Pro (Prompt 2)",
+      "language": "en",
+      "dataset": "nyrahealth/disfluency_speech_english",
+      "raw_file": "predictions/raw/assemblyai_p2/en.json",
+      "source_file": "output_english_assembly_prompt_2.json",
+      "normalized_file": "predictions/normalized/assemblyai_p2/en.jsonl",
+      "num_records": 4957,
+      "splits": [
+        "test",
+        "train",
+        "validation"
+      ]
+    },
+    {
+      "model": "assemblyai_p2",
+      "display_name": "AssemblyAI Universal-3 Pro (Prompt 2)",
+      "language": "de",
+      "dataset": "nyrahealth/disfluency_speech_german",
+      "raw_file": "predictions/raw/assemblyai_p2/de.json",
+      "source_file": "output_german_assembly_prompt_2.json",
+      "normalized_file": "predictions/normalized/assemblyai_p2/de.jsonl",
+      "num_records": 202,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "canary",
+      "display_name": "NVIDIA Canary",
+      "language": "en",
+      "dataset": "nyrahealth/disfluency_speech_english",
+      "raw_file": "predictions/raw/canary/en.json",
+      "source_file": "output_english_canary.json",
+      "normalized_file": "predictions/normalized/canary/en.jsonl",
+      "num_records": 4957,
+      "splits": [
+        "test",
+        "train",
+        "validation"
+      ]
+    },
+    {
+      "model": "canary",
+      "display_name": "NVIDIA Canary",
+      "language": "de",
+      "dataset": "nyrahealth/disfluency_speech_german",
+      "raw_file": "predictions/raw/canary/de.json",
+      "source_file": "output_german_canary.json",
+      "normalized_file": "predictions/normalized/canary/de.jsonl",
+      "num_records": 202,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "cartesia",
+      "display_name": "Cartesia Ink-Whisper",
+      "language": "en",
+      "dataset": "nyrahealth/disfluency_speech_english",
+      "raw_file": "predictions/raw/cartesia/en.json",
+      "source_file": "output_english_cartesia.json",
+      "normalized_file": "predictions/normalized/cartesia/en.jsonl",
+      "num_records": 4957,
+      "splits": [
+        "test",
+        "train",
+        "validation"
+      ]
+    },
+    {
+      "model": "cartesia",
+      "display_name": "Cartesia Ink-Whisper",
+      "language": "de",
+      "dataset": "nyrahealth/disfluency_speech_german",
+      "raw_file": "predictions/raw/cartesia/de.json",
+      "source_file": "output_german_cartesia.json",
+      "normalized_file": "predictions/normalized/cartesia/de.jsonl",
+      "num_records": 202,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "cohere",
+      "display_name": "Cohere Transcribe",
+      "language": "en",
+      "dataset": "nyrahealth/disfluency_speech_english",
+      "raw_file": "predictions/raw/cohere/en.json",
+      "source_file": "output_english_cohere.json",
+      "normalized_file": "predictions/normalized/cohere/en.jsonl",
+      "num_records": 4957,
+      "splits": [
+        "test",
+        "train",
+        "validation"
+      ]
+    },
+    {
+      "model": "cohere",
+      "display_name": "Cohere Transcribe",
+      "language": "de",
+      "dataset": "nyrahealth/disfluency_speech_german",
+      "raw_file": "predictions/raw/cohere/de.json",
+      "source_file": "output_german_cohere.json",
+      "normalized_file": "predictions/normalized/cohere/de.jsonl",
+      "num_records": 202,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "crisperwhisper_1",
+      "display_name": "CrisperWhisper 1.0",
+      "language": "en",
+      "dataset": "nyrahealth/disfluency_speech_english",
+      "raw_file": "predictions/raw/crisperwhisper_1/en.json",
+      "source_file": "output_english_crisperwhisper.json",
+      "normalized_file": "predictions/normalized/crisperwhisper_1/en.jsonl",
+      "num_records": 249,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "crisperwhisper_1",
+      "display_name": "CrisperWhisper 1.0",
+      "language": "de",
+      "dataset": "nyrahealth/disfluency_speech_german",
+      "raw_file": "predictions/raw/crisperwhisper_1/de.json",
+      "source_file": "output_german_crisperwhisper.json",
+      "normalized_file": "predictions/normalized/crisperwhisper_1/de.jsonl",
+      "num_records": 202,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "deepgram",
+      "display_name": "Deepgram",
+      "language": "en",
+      "dataset": "nyrahealth/disfluency_speech_english",
+      "raw_file": "predictions/raw/deepgram/en.json",
+      "source_file": "output_english_deepgram.json",
+      "normalized_file": "predictions/normalized/deepgram/en.jsonl",
+      "num_records": 4957,
+      "splits": [
+        "test",
+        "train",
+        "validation"
+      ]
+    },
+    {
+      "model": "deepgram",
+      "display_name": "Deepgram",
+      "language": "de",
+      "dataset": "nyrahealth/disfluency_speech_german",
+      "raw_file": "predictions/raw/deepgram/de.json",
+      "source_file": "output_german_deepgram.json",
+      "normalized_file": "predictions/normalized/deepgram/de.jsonl",
+      "num_records": 202,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "elevenlabs",
+      "display_name": "ElevenLabs Scribe v2",
+      "language": "en",
+      "dataset": "nyrahealth/disfluency_speech_english",
+      "raw_file": "predictions/raw/elevenlabs/en.json",
+      "source_file": "output_english_elevenlabs.json",
+      "normalized_file": "predictions/normalized/elevenlabs/en.jsonl",
+      "num_records": 4957,
+      "splits": [
+        "test",
+        "train",
+        "validation"
+      ]
+    },
+    {
+      "model": "elevenlabs",
+      "display_name": "ElevenLabs Scribe v2",
+      "language": "de",
+      "dataset": "nyrahealth/disfluency_speech_german",
+      "raw_file": "predictions/raw/elevenlabs/de.json",
+      "source_file": "output_german_elevenlabs.json",
+      "normalized_file": "predictions/normalized/elevenlabs/de.jsonl",
+      "num_records": 202,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "fish_audio",
+      "display_name": "Fish Audio",
+      "language": "en",
+      "dataset": "nyrahealth/disfluency_speech_english",
+      "raw_file": "predictions/raw/fish_audio/en.json",
+      "source_file": "output_english_fishaudio.json",
+      "normalized_file": "predictions/normalized/fish_audio/en.jsonl",
+      "num_records": 4957,
+      "splits": [
+        "test",
+        "train",
+        "validation"
+      ]
+    },
+    {
+      "model": "fish_audio",
+      "display_name": "Fish Audio",
+      "language": "de",
+      "dataset": "nyrahealth/disfluency_speech_german",
+      "raw_file": "predictions/raw/fish_audio/de.json",
+      "source_file": "output_german_fishaudio.json",
+      "normalized_file": "predictions/normalized/fish_audio/de.jsonl",
+      "num_records": 202,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "gradium",
+      "display_name": "Gradium",
+      "language": "en",
+      "dataset": "nyrahealth/disfluency_speech_english",
+      "raw_file": "predictions/raw/gradium/en.json",
+      "source_file": "output_english_gradium.json",
+      "normalized_file": "predictions/normalized/gradium/en.jsonl",
+      "num_records": 4957,
+      "splits": [
+        "test",
+        "train",
+        "validation"
+      ]
+    },
+    {
+      "model": "gradium",
+      "display_name": "Gradium",
+      "language": "de",
+      "dataset": "nyrahealth/disfluency_speech_german",
+      "raw_file": "predictions/raw/gradium/de.json",
+      "source_file": "output_german_gradium.json",
+      "normalized_file": "predictions/normalized/gradium/de.jsonl",
+      "num_records": 202,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "inworld",
+      "display_name": "Inworld STT",
+      "language": "en",
+      "dataset": "nyrahealth/disfluency_speech_english",
+      "raw_file": "predictions/raw/inworld/en.json",
+      "source_file": "output_english_inworld.json",
+      "normalized_file": "predictions/normalized/inworld/en.jsonl",
+      "num_records": 4957,
+      "splits": [
+        "test",
+        "train",
+        "validation"
+      ]
+    },
+    {
+      "model": "inworld",
+      "display_name": "Inworld STT",
+      "language": "de",
+      "dataset": "nyrahealth/disfluency_speech_german",
+      "raw_file": "predictions/raw/inworld/de.json",
+      "source_file": "output_german_inworld.json",
+      "normalized_file": "predictions/normalized/inworld/de.jsonl",
+      "num_records": 202,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "whisper_large_v3",
+      "display_name": "Whisper Large v3",
+      "language": "en",
+      "dataset": "nyrahealth/disfluency_speech_english",
+      "raw_file": "predictions/raw/whisper_large_v3/en.json",
+      "source_file": "output_english_whisper_large_v3.json",
+      "normalized_file": "predictions/normalized/whisper_large_v3/en.jsonl",
+      "num_records": 4957,
+      "splits": [
+        "test",
+        "train",
+        "validation"
+      ]
+    },
+    {
+      "model": "whisper_large_v3",
+      "display_name": "Whisper Large v3",
+      "language": "de",
+      "dataset": "nyrahealth/disfluency_speech_german",
+      "raw_file": "predictions/raw/whisper_large_v3/de.json",
+      "source_file": "output_german_whisper_large_v3.json",
+      "normalized_file": "predictions/normalized/whisper_large_v3/de.jsonl",
+      "num_records": 202,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "xai_grok",
+      "display_name": "xAI Grok",
+      "language": "en",
+      "dataset": "nyrahealth/disfluency_speech_english",
+      "raw_file": "predictions/raw/xai_grok/en.json",
+      "source_file": "output_english_xai.json",
+      "normalized_file": "predictions/normalized/xai_grok/en.jsonl",
+      "num_records": 4957,
+      "splits": [
+        "test",
+        "train",
+        "validation"
+      ]
+    },
+    {
+      "model": "xai_grok",
+      "display_name": "xAI Grok",
+      "language": "de",
+      "dataset": "nyrahealth/disfluency_speech_german",
+      "raw_file": "predictions/raw/xai_grok/de.json",
+      "source_file": "output_german_xai.json",
+      "normalized_file": "predictions/normalized/xai_grok/de.jsonl",
+      "num_records": 202,
+      "splits": [
+        "test"
+      ]
+    }
+  ]
+}
