@@ -2,9 +2,8 @@
 """
 Verbatim ASR Evaluation — Step 2.
 
-Loads gold transcripts from a HuggingFace dataset and predicted transcripts
-from a JSONL file produced by ``transcribe.py``, then computes a comprehensive
-suite of verbatim and intended metrics.
+Loads gold transcripts from a HuggingFace dataset or cached prediction rows,
+then evaluates predicted verbatim and intended transcripts.
 
 Usage::
 
@@ -944,7 +943,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--predictions", required=True,
-        help="Path to predictions JSONL file (from transcribe.py).",
+        help="Path to normalized prediction JSONL file.",
     )
     parser.add_argument(
         "--datasets", nargs="+", default=[],

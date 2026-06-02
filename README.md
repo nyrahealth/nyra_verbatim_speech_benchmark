@@ -47,7 +47,6 @@ converted to the benchmark prediction format.
 - [Benchmark Workflow](#benchmark-workflow-)
 - [Reproducing Results](#reproducing-results-)
 - [Adding a New System](#adding-a-new-system-)
-- [Optional: Run CrisperWhisper Inference](#optional-run-crisperwhisper-inference-)
 - [Verbatim Transcript Conventions](#verbatim-transcript-conventions-)
 - [Intended Transcript](#intended-transcript)
 - [How Gold Labels Are Derived](#how-gold-labels-are-derived-)
@@ -179,59 +178,13 @@ python scripts/evaluate_all_cached.py --model <model_id>
 python scripts/print_leaderboard.py
 ```
 
+For reproducible submissions, add a compact script under `generation/` that
+loads the public Hugging Face datasets and writes the same raw prediction
+schema. The existing generation scripts can be used as templates.
+
 See [`docs/adding_a_model.md`](docs/adding_a_model.md) for the full schema and
 checklist. See [`docs/normalization.md`](docs/normalization.md) for how output
 formatting conventions are handled.
-
-## Optional: Run CrisperWhisper Inference 🎙️
-
-The commands below use the built-in transcription path, which is intended for
-**CrisperWhisper 2.0 models**.
-
-```bash
-python run.py \
-    --model /path/to/CrisperWhisper_2.0_model \
-    --datasets nyrahealth/disfluency_speech_english \
-    --splits test \
-    --output_dir results/
-```
-
-Or run transcription and evaluation separately:
-
-```bash
-python transcribe.py \
-    --model /path/to/CrisperWhisper_2.0_model \
-    --datasets nyrahealth/disfluency_speech_english \
-    --splits test \
-    --modes verbatim intended \
-    --output predictions.jsonl
-
-python evaluate.py \
-    --predictions predictions.jsonl \
-    --datasets nyrahealth/disfluency_speech_english \
-    --splits test \
-    --output_dir results/
-```
-
-To be usable by `evaluate.py`, each line in `predictions.jsonl` should contain
-at least:
-
-```json
-{
-  "id": "sample_001",
-  "pred_verbatim": "I [UH] think th- the answer is yes",
-  "pred_intended": "I think the answer is yes"
-}
-```
-
-Notes:
-
-- `id` must match the dataset sample id.
-- `pred_verbatim` is compared against the gold `verbatim_transcript`.
-- `pred_intended` is compared against the gold `intended_transcript`.
-- If a model cannot produce intended transcripts, intended metrics are less meaningful.
-
----
 
 ## Verbatim Transcript Conventions 📝
 
@@ -451,12 +404,10 @@ Current datasets:
 nyra_verbatim_speech_benchmark/
 ├── README.md
 ├── requirements.txt
-├── transcribe.py
 ├── evaluate.py
 ├── normalize.py
 ├── align.py
 ├── tag.py
-├── run.py
 ├── benchmark/
 │   ├── models.json
 │   └── schemas/
