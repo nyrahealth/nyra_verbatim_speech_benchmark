@@ -115,7 +115,7 @@
           "raw_file": "predictions/raw/crisperwhisper_1/en.json",
           "source_file": "output_english_crisperwhisper.json",
           "dataset": "nyrahealth/disfluency_speech_english",
-          "splits": ["test"]
+          "splits": ["train", "validation", "test"]
         },
         "de": {
           "raw_file": "predictions/raw/crisperwhisper_1/de.json",

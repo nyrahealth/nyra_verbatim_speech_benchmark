@@ -146,9 +146,11 @@
       "raw_file": "predictions/raw/crisperwhisper_1/en.json",
       "source_file": "output_english_crisperwhisper.json",
       "normalized_file": "predictions/normalized/crisperwhisper_1/en.jsonl",
-      "num_records": 249,
+      "num_records": 4957,
       "splits": [
-        "test"
+        "test",
+        "train",
+        "validation"
       ]
     },
     {

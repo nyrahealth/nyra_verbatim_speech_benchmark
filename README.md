@@ -80,8 +80,8 @@ reported on the subset of entries with existing predictions.
 | 2 | Inworld STT (inworld/inworld-stt-1) | 4957 | 83.3% | 95.2% | 10.7% | 84.8% | 86.8% | 4.0% |
 | 3 | AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 2) | 4957 | 78.2% | 90.8% | 2.8% | 27.9% | 82.7% | 4.5% |
 | 4 | AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 1) | 249 | 75.2% | 92.5% | 0.0% | 28.6% | 79.7% | 3.8% |
-| 5 | xAI Grok Speech-to-Text | 4957 | 72.2% | 84.4% | 0.0% | 60.3% | 83.4% | 4.7% |
-| 6 | CrisperWhisper 1.0 (nyrahealth/CrisperWhisper) | 249 | 67.6% | 77.7% | 0.0% | 85.7% | 67.8% | 5.7% |
+| 5 | CrisperWhisper 1.0 (nyrahealth/CrisperWhisper) | 4957 | 73.2% | 81.8% | 0.0% | 81.1% | 67.9% | 6.2% |
+| 6 | xAI Grok Speech-to-Text | 4957 | 72.2% | 84.4% | 0.0% | 60.3% | 83.4% | 4.7% |
 | 7 | Deepgram Nova-3 (nova-3) | 4957 | 37.0% | 45.7% | 0.0% | 72.2% | 83.2% | 6.3% |
 | 8 | Fish Audio ASR | 4957 | 24.3% | 30.5% | 0.0% | 60.1% | 82.1% | 5.9% |
 | 9 | NVIDIA Canary 1B v2 (nvidia/canary-1b-v2) | 4957 | 21.0% | 26.7% | 0.0% | 48.9% | 30.5% | 9.0% |
