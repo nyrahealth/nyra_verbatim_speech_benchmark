@@ -22,6 +22,38 @@ METRICS = [
     ("vWER↓", "vWER"),
 ]
 
+PROVIDER_BADGE_CONFIG = {
+    "assemblyai_p1": ("AssemblyAI", "111111", "assemblyai", "white"),
+    "assemblyai_p2": ("AssemblyAI", "111111", "assemblyai", "white"),
+    "canary": ("NVIDIA", "76B900", "nvidia", "white"),
+    "cartesia": ("Cartesia", "5B5BD6", "", "white"),
+    "cohere": ("Cohere", "39594D", "cohere", "white"),
+    "crisperwhisper_1": ("Nyra Health", "0F766E", "", "white"),
+    "deepgram": ("Deepgram", "13EF93", "deepgram", "black"),
+    "elevenlabs": ("ElevenLabs", "000000", "elevenlabs", "white"),
+    "fish_audio": ("Fish Audio", "2563EB", "", "white"),
+    "gradium": ("Gradium", "7C3AED", "", "white"),
+    "inworld": ("Inworld", "FF6B00", "", "white"),
+    "mai_transcribe_15": ("Microsoft", "5E5E5E", "microsoft", "white"),
+    "whisper_large_v3": ("OpenAI", "412991", "openai", "white"),
+    "xai_grok": ("xAI", "111111", "", "white"),
+}
+
+
+def provider_badge(model_id: str) -> str:
+    config = PROVIDER_BADGE_CONFIG.get(model_id)
+    if not config:
+        return ""
+    label, color, logo, logo_color = config
+    escaped_label = label.replace(" ", "%20")
+    query = "style=flat-square"
+    if logo:
+        query = f"{query}&logo={logo}&logoColor={logo_color}"
+    return (
+        f"![{label}]"
+        f"(https://img.shields.io/badge/-{escaped_label}-{color}?{query})"
+    )
+
 
 def load_json(path: Path) -> Dict[str, Any]:
     with path.open(encoding="utf-8") as f:
@@ -42,6 +74,13 @@ def display_names(models_path: Path) -> Dict[str, str]:
     }
 
 
+def model_label(row: Dict[str, Any], names: Dict[str, str]) -> str:
+    model_id = row["model"]
+    name = names.get(model_id, model_id)
+    badge = provider_badge(model_id)
+    return f"{badge} {name}" if badge else name
+
+
 def print_table(
     rows: List[Dict[str, Any]],
     language: str,
@@ -60,7 +99,7 @@ def print_table(
     lines.extend([header, align])
     for row in selected:
         values = [fmt(row.get(key)) for _, key in METRICS]
-        model_name = names.get(row["model"], row["model"])
+        model_name = model_label(row, names)
         lines.append(
             f"| {model_name} | {row['num_records']} | " + " | ".join(values) + " |"
         )
