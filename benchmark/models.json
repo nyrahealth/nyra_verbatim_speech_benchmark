@@ -227,6 +227,26 @@
       }
     },
     {
+      "id": "mai_transcribe_15",
+      "display_name": "MAI-Transcribe-1.5 (Microsoft, mai-transcribe-1.5)",
+      "adapter": "default",
+      "single_output": true,
+      "languages": {
+        "en": {
+          "raw_file": "predictions/raw/mai_transcribe_15/en.json",
+          "source_file": "output_english_mai_transcribe.json",
+          "dataset": "nyrahealth/disfluency_speech_english",
+          "splits": ["train", "validation", "test"]
+        },
+        "de": {
+          "raw_file": "predictions/raw/mai_transcribe_15/de.json",
+          "source_file": "output_german_mai_transcribe.json",
+          "dataset": "nyrahealth/disfluency_speech_german",
+          "splits": ["test"]
+        }
+      }
+    },
+    {
       "id": "whisper_large_v3",
       "display_name": "Whisper Large v3 (openai/whisper-large-v3)",
       "adapter": "default",

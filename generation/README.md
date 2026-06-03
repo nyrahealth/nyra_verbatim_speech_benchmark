@@ -22,6 +22,7 @@ predictions directly into the benchmark schema.
 | `generate_fish_audio_asr.py` | Fish Audio ASR |
 | `generate_gradium_asr.py` | Gradium ASR |
 | `generate_inworld_stt1.py` | Inworld STT (`inworld/inworld-stt-1`) |
+| `generate_mai_transcribe_15.py` | MAI-Transcribe-1.5 (Microsoft, `mai-transcribe-1.5`) |
 | `generate_whisper_large_v3.py` | Whisper Large v3 (`openai/whisper-large-v3`) |
 | `generate_xai_grok_stt.py` | xAI Grok Speech-to-Text |
 

@@ -306,6 +306,34 @@
       ]
     },
     {
+      "model": "mai_transcribe_15",
+      "display_name": "MAI-Transcribe-1.5 (Microsoft, mai-transcribe-1.5)",
+      "language": "en",
+      "dataset": "nyrahealth/disfluency_speech_english",
+      "raw_file": "predictions/raw/mai_transcribe_15/en.json",
+      "source_file": "output_english_mai_transcribe.json",
+      "normalized_file": "predictions/normalized/mai_transcribe_15/en.jsonl",
+      "num_records": 4957,
+      "splits": [
+        "test",
+        "train",
+        "validation"
+      ]
+    },
+    {
+      "model": "mai_transcribe_15",
+      "display_name": "MAI-Transcribe-1.5 (Microsoft, mai-transcribe-1.5)",
+      "language": "de",
+      "dataset": "nyrahealth/disfluency_speech_german",
+      "raw_file": "predictions/raw/mai_transcribe_15/de.json",
+      "source_file": "output_german_mai_transcribe.json",
+      "normalized_file": "predictions/normalized/mai_transcribe_15/de.jsonl",
+      "num_records": 202,
+      "splits": [
+        "test"
+      ]
+    },
+    {
       "model": "whisper_large_v3",
       "display_name": "Whisper Large v3 (openai/whisper-large-v3)",
       "language": "en",
