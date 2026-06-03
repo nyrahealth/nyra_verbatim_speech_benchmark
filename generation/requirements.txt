@@ -7,6 +7,7 @@ requests
 torch
 transformers
 librosa
+faster-whisper
 
 # Provider-specific examples.
 assemblyai

@@ -29,6 +29,7 @@ PROVIDER_BADGE_CONFIG = {
     "cartesia": ("Cartesia", "5B5BD6", "", "white"),
     "cohere": ("Cohere", "39594D", "cohere", "white"),
     "crisperwhisper_1": ("Nyra Health", "0F766E", "", "white"),
+    "crisperwhisper_2": ("Nyra Health", "0F766E", "", "white"),
     "deepgram": ("Deepgram", "13EF93", "deepgram", "black"),
     "elevenlabs": ("ElevenLabs", "000000", "elevenlabs", "white"),
     "fish_audio": ("Fish Audio", "2563EB", "", "white"),

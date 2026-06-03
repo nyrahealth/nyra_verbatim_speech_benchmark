@@ -18,6 +18,7 @@ predictions directly into the benchmark schema.
 | `generate_cartesia_ink_whisper.py` | Cartesia Ink-Whisper (`ink-whisper`) |
 | `generate_cohere_transcribe.py` | Cohere Transcribe (`CohereLabs/cohere-transcribe-03-2026`) |
 | `generate_crisperwhisper_1.py` | CrisperWhisper 1.0 (`nyrahealth/CrisperWhisper`) |
+| `generate_crisperwhisper_2.py` | CrisperWhisper 2.0 (`verbatimize-longform-english-no-timing-large-v2`) |
 | `generate_deepgram_nova3.py` | Deepgram Nova-3 (`nova-3`) |
 | `generate_fish_audio_asr.py` | Fish Audio ASR |
 | `generate_gradium_asr.py` | Gradium ASR |

@@ -126,6 +126,26 @@
       }
     },
     {
+      "id": "crisperwhisper_2",
+      "display_name": "CrisperWhisper 2.0 (verbatimize-longform-english-no-timing-large-v2)",
+      "adapter": "default",
+      "single_output": false,
+      "languages": {
+        "en": {
+          "raw_file": "predictions/raw/crisperwhisper_2/en.json",
+          "source_file": "",
+          "dataset": "nyrahealth/disfluency_speech_english",
+          "splits": ["train", "validation", "test"]
+        },
+        "de": {
+          "raw_file": "predictions/raw/crisperwhisper_2/de.json",
+          "source_file": "",
+          "dataset": "nyrahealth/disfluency_speech_german",
+          "splits": ["test"]
+        }
+      }
+    },
+    {
       "id": "deepgram",
       "display_name": "Deepgram Nova-3 (nova-3)",
       "adapter": "default",
