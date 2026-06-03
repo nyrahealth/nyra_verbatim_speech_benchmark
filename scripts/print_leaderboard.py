@@ -14,7 +14,7 @@ DEFAULT_SUMMARY = REPO_ROOT / "results" / "cached" / "summary.json"
 
 
 METRICS = [
-    ("Disfluency F1 ↑", "event_f1"),
+    ("Disfluency F1 ↑", "disfluency_f1"),
     ("Filler F1↑", "filler_f1"),
     ("Vocal Sound F1↑", "sound_f1"),
     ("Cutoff F1↑", "cutoff_lenient_f1"),
@@ -89,7 +89,10 @@ def print_table(
 ) -> str:
     selected = [row for row in rows if row["language"] == language]
     selected.sort(
-        key=lambda row: row.get("event_f1") if row.get("event_f1") is not None else -1,
+        key=lambda row: (
+            row.get("disfluency_f1")
+            if row.get("disfluency_f1") is not None else -1
+        ),
         reverse=True,
     )
 

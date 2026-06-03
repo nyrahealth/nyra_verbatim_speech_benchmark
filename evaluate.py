@@ -488,6 +488,14 @@ def evaluate_sample(
         cutoff_lenient_tp / len(gold_cutoff_pos) if gold_cutoff_pos else 0.0
     )
     cl_p, cl_r, cl_f = _prf(cutoff_lenient_tp, cutoff_lenient_fp, cutoff_lenient_fn)
+    disfluency_tp = filler_tp + sound_tp + cutoff_lenient_tp + rep_tp
+    disfluency_fp = filler_fp + sound_fp + cutoff_lenient_fp + rep_fp
+    disfluency_fn = filler_fn + sound_fn + cutoff_lenient_fn + rep_fn
+    disfluency_p, disfluency_r, disfluency_f = _prf(
+        disfluency_tp,
+        disfluency_fp,
+        disfluency_fn,
+    )
 
     return {
         # String-level
@@ -500,6 +508,9 @@ def evaluate_sample(
         "iIR": iIR,
         "fluent_deletion_rate": fluent_deletion_rate,
         # Event-level
+        "disfluency_f1": disfluency_f,
+        "disfluency_precision": disfluency_p,
+        "disfluency_recall": disfluency_r,
         "filler_f1": filler_f, "filler_precision": filler_p, "filler_recall": filler_r,
         "sound_f1": sound_f, "sound_precision": sound_p, "sound_recall": sound_r,
         "event_f1": event_f, "event_precision": event_p, "event_recall": event_r,
@@ -512,6 +523,12 @@ def evaluate_sample(
         # Support counts
         "filler_support": len(gold_filler_pos),
         "sound_support": len(gold_sound_pos),
+        "disfluency_support": (
+            len(gold_filler_pos)
+            + len(gold_sound_pos)
+            + len(gold_cutoff_pos)
+            + len(gold_rep_pos)
+        ),
         "event_support": len(gold_event_pos),
         "cutoff_support": len(gold_cutoff_pos),
         "rep_support": len(gold_rep_pos),
@@ -542,6 +559,11 @@ def evaluate_sample(
             "rep": {"tp": rep_tp, "fp": rep_fp, "fn": rep_fn},
             "exact_filler": {"tp": exact_filler_tp, "fp": exact_filler_fp, "fn": exact_filler_fn},
             "exact_sound": {"tp": exact_sound_tp, "fp": exact_sound_fp, "fn": exact_sound_fn},
+            "disfluency": {
+                "tp": disfluency_tp,
+                "fp": disfluency_fp,
+                "fn": disfluency_fn,
+            },
         },
         "_counts_a": {
             "vWER_edits": v_edits, "vWER_ref": v_ref,
@@ -605,11 +627,11 @@ def aggregate_metrics(sample_metrics: List[Dict]) -> Dict:
 
     # ── Event F1 (micro) ─────────────────────────────────────────────────
     event_keys = [
-        "filler", "sound", "event", "cutoff", "cutoff_strict",
+        "disfluency", "filler", "sound", "event", "cutoff", "cutoff_strict",
         "cutoff_lenient", "rep", "exact_filler", "exact_sound",
     ]
     totals: Dict[str, Dict[str, int]] = {k: {"tp": 0, "fp": 0, "fn": 0} for k in event_keys}
-    support_keys = ["filler", "sound", "event", "cutoff", "rep"]
+    support_keys = ["disfluency", "filler", "sound", "event", "cutoff", "rep"]
     total_support: Dict[str, int] = {k: 0 for k in support_keys}
 
     label_totals: Dict[str, Dict[str, Dict[str, int]]] = {"filler": {}, "sound": {}}
@@ -630,7 +652,7 @@ def aggregate_metrics(sample_metrics: List[Dict]) -> Dict:
                 for field in ("tp", "fp", "fn", "support"):
                     label_totals[kind][label][field] += data.get(field, 0)
 
-    for key in ["filler", "sound", "event", "cutoff", "rep"]:
+    for key in ["disfluency", "filler", "sound", "event", "cutoff", "rep"]:
         t = totals[key]
         p, r, f = _prf(t["tp"], t["fp"], t["fn"])
         agg[f"{key}_f1"] = f
@@ -771,7 +793,7 @@ def print_report(metrics: Dict, title: str = "Evaluation Results") -> str:
 
     # Event detection
     a("-- Event Detection (alignment-based) ----------------------------------")
-    for kind in ("filler", "sound", "event", "cutoff", "rep"):
+    for kind in ("disfluency", "filler", "sound", "event", "cutoff", "rep"):
         f1v = metrics.get(f"{kind}_f1")
         pv = metrics.get(f"{kind}_precision", 0)
         rv = metrics.get(f"{kind}_recall", 0)

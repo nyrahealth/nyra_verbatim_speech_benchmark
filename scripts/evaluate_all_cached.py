@@ -84,6 +84,7 @@ def main() -> None:
                 "report": str(report_path.resolve().relative_to(REPO_ROOT)),
                 "vWER": metrics.get("vWER"),
                 "iWER": metrics.get("iWER"),
+                "disfluency_f1": metrics.get("disfluency_f1"),
                 "event_f1": metrics.get("event_f1"),
                 "filler_f1": metrics.get("filler_f1"),
                 "sound_f1": metrics.get("sound_f1"),
