@@ -10,7 +10,8 @@ each verbatim token exactly one tag:
 * **SOUND**  — non-speech sound event (``[laughter]``, ``[cough]``, …)
 * **CUTOFF** — truncated word fragment (``th-``, ``w-``)
 * **REP**    — repeated word preceding its FLUENT counterpart
-* **OTHER**  — none of the above (substitution, false start, discourse marker …)
+* **OTHER**  — none of the above
+  (substitution, false start, discourse marker …)
 """
 
 from __future__ import annotations
@@ -24,14 +25,18 @@ def _is_bracket_event(norm_tok: str) -> bool:
     return norm_tok.startswith("[") and norm_tok.endswith("]")
 
 
-def _is_sound_event(norm_tok: str) -> bool:
-    return _is_bracket_event(norm_tok) and not is_filler(norm_tok)
+def _is_sound_event(norm_tok: str, language: str = "en") -> bool:
+    return _is_bracket_event(norm_tok) and not is_filler(
+        norm_tok,
+        language=language,
+    )
 
 
 def create_gold_labels(
     v_tokens: List[str],
     i_tokens: List[str],
     alignment: List[Tuple[Optional[int], Optional[int]]],
+    language: str = "en",
 ) -> Dict:
     """
     Derive per-token tags for a verbatim/intended pair.
@@ -66,9 +71,9 @@ def create_gold_labels(
         norm = v_norm[v_idx]
         if is_cutoff(tok):
             tags[v_idx] = "CUTOFF"
-        elif is_filler(norm):
+        elif is_filler(norm, language=language):
             tags[v_idx] = "FILLER"
-        elif _is_sound_event(norm):
+        elif _is_sound_event(norm, language=language):
             tags[v_idx] = "SOUND"
         elif v_idx in v_to_i and v_norm[v_idx] == i_norm[v_to_i[v_idx]]:
             tags[v_idx] = "FLUENT"
@@ -115,7 +120,9 @@ def extract_repetition_groups(gold_labels: Dict) -> List[Dict]:
     tokens: List[str] = gold_labels["tokens"]
     tags: List[str] = gold_labels["tags"]
     group_ids: List[Optional[int]] = gold_labels["group_ids"]
-    normalized: List[str] = gold_labels.get("normalized") or normalize_tokens(tokens)
+    normalized: List[str] = (
+        gold_labels.get("normalized") or normalize_tokens(tokens)
+    )
 
     groups: Dict[int, List[int]] = {}
     for idx, (tag, gid) in enumerate(zip(tags, group_ids)):

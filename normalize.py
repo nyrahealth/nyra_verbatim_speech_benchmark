@@ -134,9 +134,12 @@ SOUND_EVENT_LABELS = frozenset({
 })
 
 
-def is_filler(token: str) -> bool:
+def is_filler(token: str, language: str = "en") -> bool:
     """Check whether *token* is a filled pause (``[UH]``, ``um``, etc.)."""
-    return normalize_token(token).lower() in FILLER_LABELS
+    norm = normalize_token(token).lower()
+    if language.lower().startswith("de") and norm == "um":
+        return False
+    return norm in FILLER_LABELS
 
 
 def is_sound_event(token: str) -> bool:
@@ -156,7 +159,7 @@ def is_cutoff(token: str) -> bool:
     return token.rstrip(".,!?;:'\"").endswith("-")
 
 
-def get_event_label(token: str) -> Optional[str]:
+def get_event_label(token: str, language: str = "en") -> Optional[str]:
     """
     Extract the canonical label from an event token.
 
@@ -166,7 +169,7 @@ def get_event_label(token: str) -> Optional[str]:
     norm = normalize_token(token).lower()
     if norm.startswith("[") and norm.endswith("]") and len(norm) > 2:
         return norm[1:-1]
-    if norm in FILLER_LABELS or norm in SOUND_EVENT_LABELS:
+    if is_filler(norm, language=language) or norm in SOUND_EVENT_LABELS:
         return norm
     return None
 

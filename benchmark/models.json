@@ -195,7 +195,6 @@
           "raw_file": "predictions/raw/gradium/en.json",
           "source_file": "output_english_gradium.json",
           "dataset": "nyrahealth/disfluency_speech_english",
-          "drop_empty_predictions": true,
           "splits": ["train", "validation", "test"]
         },
         "de": {

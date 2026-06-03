@@ -258,10 +258,11 @@
       "raw_file": "predictions/raw/gradium/en.json",
       "source_file": "output_english_gradium.json",
       "normalized_file": "predictions/normalized/gradium/en.jsonl",
-      "num_records": 616,
+      "num_records": 4957,
       "splits": [
         "test",
-        "train"
+        "train",
+        "validation"
       ]
     },
     {

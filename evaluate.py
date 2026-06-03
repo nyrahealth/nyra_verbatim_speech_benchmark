@@ -49,6 +49,7 @@ def preprocess_gold(
     verbatim: str,
     intended: str,
     sample_id: str,
+    language: str = "en",
     cutoff_source: str = "*",
     cutoff_target: str = "-",
 ) -> Dict:
@@ -69,19 +70,25 @@ def preprocess_gold(
     i_norm = normalize_tokens(i_tokens)
 
     alignment = align_sequences(v_tokens, i_tokens, v_norm, i_norm, tags=None)
-    gold_labels = create_gold_labels(v_tokens, i_tokens, alignment)
+    gold_labels = create_gold_labels(v_tokens, i_tokens, alignment, language=language)
     rep_groups = extract_repetition_groups(gold_labels)
 
     return {
         "id": sample_id,
         "gold_verbatim": verbatim,
         "gold_intended": intended,
+        "language": language,
         "gold_tokens": gold_labels["tokens"],
         "gold_tags": gold_labels["tags"],
         "gold_group_ids": gold_labels["group_ids"],
         "gold_normalized": gold_labels["normalized"],
         "gold_rep_groups": rep_groups,
     }
+
+
+def _language_from_dataset(dataset_name: str) -> str:
+    """Infer benchmark language from the dataset name when rows omit it."""
+    return "de" if "german" in (dataset_name or "").lower() else "en"
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -229,6 +236,7 @@ def evaluate_sample(
     gold_tokens: List[str] = gold["gold_tokens"]
     gold_tags: List[str] = gold["gold_tags"]
     gold_group_ids = gold["gold_group_ids"]
+    language = gold.get("language", "en")
 
     if pred_intended is None:
         pred_intended = pred_verbatim
@@ -296,7 +304,10 @@ def evaluate_sample(
     gold_event_pos = sorted(set(gold_filler_pos) | set(gold_sound_pos))
 
     # Pred positions by surface form
-    pred_filler_pos = [i for i, tok in enumerate(pred_tokens) if is_filler(tok)]
+    pred_filler_pos = [
+        i for i, tok in enumerate(pred_tokens)
+        if is_filler(tok, language=language)
+    ]
     pred_sound_pos = [i for i, tok in enumerate(pred_tokens) if is_sound_event(tok)]
     pred_cutoff_pos = [i for i, tok in enumerate(pred_tokens) if is_cutoff(tok)]
     pred_event_pos = sorted(set(pred_filler_pos) | set(pred_sound_pos))
@@ -349,10 +360,10 @@ def evaluate_sample(
         tp = fn = 0
         matched_pred: Set[int] = set()
         for g in gpos:
-            gl = get_event_label(gold_tokens[g])
+            gl = get_event_label(gold_tokens[g], language=language)
             if g in gold_to_pred:
                 p = gold_to_pred[g]
-                pl = get_event_label(pred_tokens[p])
+                pl = get_event_label(pred_tokens[p], language=language)
                 if gl and pl and gl == pl:
                     tp += 1
                     matched_pred.add(p)
@@ -361,7 +372,8 @@ def evaluate_sample(
             else:
                 fn += 1
         all_pred_events = {
-            i for i, tok in enumerate(pred_tokens) if is_filler(tok) or is_sound_event(tok)
+            i for i, tok in enumerate(pred_tokens)
+            if is_filler(tok, language=language) or is_sound_event(tok)
         }
         fp = len(all_pred_events - matched_pred)
         return tp, fp, fn
@@ -373,15 +385,15 @@ def evaluate_sample(
     def _per_label_metrics(gpos: List[int], kind: str) -> Dict[str, Dict]:
         gold_by_label: Dict[str, List[int]] = {}
         for g in gpos:
-            label = get_event_label(gold_tokens[g])
+            label = get_event_label(gold_tokens[g], language=language)
             if label:
                 gold_by_label.setdefault(label, []).append(g)
         pred_by_label: Dict[str, List[int]] = {}
         for p, tok in enumerate(pred_tokens):
-            label = get_event_label(tok)
+            label = get_event_label(tok, language=language)
             if not label:
                 continue
-            if kind == "filler" and is_filler(tok):
+            if kind == "filler" and is_filler(tok, language=language):
                 pred_by_label.setdefault(label, []).append(p)
             elif kind == "sound" and is_sound_event(tok):
                 pred_by_label.setdefault(label, []).append(p)
@@ -418,7 +430,7 @@ def evaluate_sample(
     for i, tok in enumerate(pred_tokens):
         if is_cutoff(tok):
             pred_tags_inferred.append("CUTOFF")
-        elif is_filler(tok):
+        elif is_filler(tok, language=language):
             pred_tags_inferred.append("FILLER")
         elif is_sound_event(tok):
             pred_tags_inferred.append("SOUND")
@@ -861,7 +873,15 @@ def load_gold_from_predictions(
         intended = str(row.get("gold_intended", "") or row.get("intended_ground_truth", "") or "")
         if not verbatim or not intended:
             continue
-        gold = preprocess_gold(verbatim, intended, sid, cutoff_source, cutoff_target)
+        language = row.get("language") or _language_from_dataset(row.get("dataset", ""))
+        gold = preprocess_gold(
+            verbatim,
+            intended,
+            sid,
+            language=language,
+            cutoff_source=cutoff_source,
+            cutoff_target=cutoff_target,
+        )
         gold["dataset"] = row.get("dataset", "")
         gold["split"] = row.get("split", "")
         gold_samples.append(gold)
@@ -898,7 +918,14 @@ def load_gold_from_hf(
             intended = str(row.get(intended_key, "") or "")
             if not verbatim or not intended:
                 continue
-            gold = preprocess_gold(verbatim, intended, sid, cutoff_source, cutoff_target)
+            gold = preprocess_gold(
+                verbatim,
+                intended,
+                sid,
+                language=_language_from_dataset(dataset_name),
+                cutoff_source=cutoff_source,
+                cutoff_target=cutoff_target,
+            )
             gold["dataset"] = dataset_name
             gold["split"] = split
             gold_samples.append(gold)
