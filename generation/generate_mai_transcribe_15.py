@@ -18,15 +18,12 @@ from common import (
     generate_raw_predictions,
     languages_from_arg,
 )
+from language_codes import mai_locale
 
 
 MODEL_ID = "mai_transcribe_15"
 DEFAULT_ENDPOINT = "https://eastus.api.cognitive.microsoft.com"
 API_VERSION = "2025-10-15"
-LOCALES = {
-    "en": "en-US",
-    "de": "de-DE",
-}
 
 
 def build_definition(locale: str) -> dict:
@@ -109,7 +106,7 @@ def build_transcriber(api_key: str, endpoint: str):
     def transcribe(audio_path: Path, language: str) -> Optional[str]:
         return transcribe_with_definition(
             audio_path,
-            build_definition(LOCALES[language]),
+            build_definition(mai_locale(language)),
         )
 
     return transcribe

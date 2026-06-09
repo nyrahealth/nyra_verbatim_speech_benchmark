@@ -12,6 +12,7 @@ from typing import Optional
 import assemblyai as aai
 
 from common import add_common_args, generate_raw_predictions, languages_from_arg
+from language_codes import assemblyai_code, assemblyai_speech_models
 
 
 PROMPTS = {
@@ -29,9 +30,10 @@ def build_transcriber(api_key: str, prompt: int):
     aai.settings.api_key = api_key
 
     def transcribe(audio_path: Path, language: str) -> Optional[str]:
+        language_code = assemblyai_code(language)
         config = aai.TranscriptionConfig(
-            language_code=language,
-            speech_models=["universal-3-pro"],
+            language_code=language_code,
+            speech_models=assemblyai_speech_models(language),
             prompt=PROMPTS[prompt],
             punctuate=True,
         )

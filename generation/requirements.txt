@@ -11,6 +11,7 @@ faster-whisper
 
 # Provider-specific examples.
 assemblyai
+elevenlabs
 
 # NVIDIA Canary example.
 nemo_toolkit[asr]

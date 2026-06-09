@@ -2,7 +2,15 @@
   "version": 1,
   "datasets": {
     "en": "nyrahealth/disfluency_speech_english",
-    "de": "nyrahealth/disfluency_speech_german"
+    "de": "nyrahealth/disfluency_speech_german",
+    "es": "synth_verbatim_es",
+    "nl": "synth_verbatim_nl",
+    "fr": "synth_verbatim_fr",
+    "it": "synth_verbatim_it",
+    "pl": "synth_verbatim_pl",
+    "pt": "synth_verbatim_pt",
+    "ru": "synth_verbatim_ru",
+    "sv": "synth_verbatim_sv"
   },
   "models": [
     {
@@ -15,13 +23,81 @@
           "raw_file": "predictions/raw/assemblyai_p1/en.json",
           "source_file": "output_english_assembly_prompt_1.json",
           "dataset": "nyrahealth/disfluency_speech_english",
-          "splits": ["test"]
+          "splits": [
+            "test"
+          ]
         },
         "de": {
           "raw_file": "predictions/raw/assemblyai_p1/de.json",
           "source_file": "output_german_assembly_prompt_1.json",
           "dataset": "nyrahealth/disfluency_speech_german",
-          "splits": ["test"]
+          "splits": [
+            "test"
+          ]
+        },
+        "es": {
+          "raw_file": "predictions/raw/assemblyai_p1/es.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_es",
+          "splits": [
+            "test"
+          ]
+        },
+        "nl": {
+          "raw_file": "predictions/raw/assemblyai_p1/nl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_nl",
+          "splits": [
+            "test"
+          ]
+        },
+        "fr": {
+          "raw_file": "predictions/raw/assemblyai_p1/fr.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_fr",
+          "splits": [
+            "test"
+          ]
+        },
+        "it": {
+          "raw_file": "predictions/raw/assemblyai_p1/it.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_it",
+          "splits": [
+            "test"
+          ]
+        },
+        "pl": {
+          "raw_file": "predictions/raw/assemblyai_p1/pl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pl",
+          "splits": [
+            "test"
+          ]
+        },
+        "pt": {
+          "raw_file": "predictions/raw/assemblyai_p1/pt.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pt",
+          "splits": [
+            "test"
+          ]
+        },
+        "ru": {
+          "raw_file": "predictions/raw/assemblyai_p1/ru.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_ru",
+          "splits": [
+            "test"
+          ]
+        },
+        "sv": {
+          "raw_file": "predictions/raw/assemblyai_p1/sv.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_sv",
+          "splits": [
+            "test"
+          ]
         }
       }
     },
@@ -35,13 +111,83 @@
           "raw_file": "predictions/raw/assemblyai_p2/en.json",
           "source_file": "output_english_assembly_prompt_2.json",
           "dataset": "nyrahealth/disfluency_speech_english",
-          "splits": ["train", "validation", "test"]
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ]
         },
         "de": {
           "raw_file": "predictions/raw/assemblyai_p2/de.json",
           "source_file": "output_german_assembly_prompt_2.json",
           "dataset": "nyrahealth/disfluency_speech_german",
-          "splits": ["test"]
+          "splits": [
+            "test"
+          ]
+        },
+        "es": {
+          "raw_file": "predictions/raw/assemblyai_p2/es.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_es",
+          "splits": [
+            "test"
+          ]
+        },
+        "nl": {
+          "raw_file": "predictions/raw/assemblyai_p2/nl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_nl",
+          "splits": [
+            "test"
+          ]
+        },
+        "fr": {
+          "raw_file": "predictions/raw/assemblyai_p2/fr.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_fr",
+          "splits": [
+            "test"
+          ]
+        },
+        "it": {
+          "raw_file": "predictions/raw/assemblyai_p2/it.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_it",
+          "splits": [
+            "test"
+          ]
+        },
+        "pl": {
+          "raw_file": "predictions/raw/assemblyai_p2/pl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pl",
+          "splits": [
+            "test"
+          ]
+        },
+        "pt": {
+          "raw_file": "predictions/raw/assemblyai_p2/pt.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pt",
+          "splits": [
+            "test"
+          ]
+        },
+        "ru": {
+          "raw_file": "predictions/raw/assemblyai_p2/ru.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_ru",
+          "splits": [
+            "test"
+          ]
+        },
+        "sv": {
+          "raw_file": "predictions/raw/assemblyai_p2/sv.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_sv",
+          "splits": [
+            "test"
+          ]
         }
       }
     },
@@ -55,13 +201,83 @@
           "raw_file": "predictions/raw/canary/en.json",
           "source_file": "output_english_canary.json",
           "dataset": "nyrahealth/disfluency_speech_english",
-          "splits": ["train", "validation", "test"]
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ]
         },
         "de": {
           "raw_file": "predictions/raw/canary/de.json",
           "source_file": "output_german_canary.json",
           "dataset": "nyrahealth/disfluency_speech_german",
-          "splits": ["test"]
+          "splits": [
+            "test"
+          ]
+        },
+        "es": {
+          "raw_file": "predictions/raw/canary/es.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_es",
+          "splits": [
+            "test"
+          ]
+        },
+        "nl": {
+          "raw_file": "predictions/raw/canary/nl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_nl",
+          "splits": [
+            "test"
+          ]
+        },
+        "fr": {
+          "raw_file": "predictions/raw/canary/fr.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_fr",
+          "splits": [
+            "test"
+          ]
+        },
+        "it": {
+          "raw_file": "predictions/raw/canary/it.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_it",
+          "splits": [
+            "test"
+          ]
+        },
+        "pl": {
+          "raw_file": "predictions/raw/canary/pl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pl",
+          "splits": [
+            "test"
+          ]
+        },
+        "pt": {
+          "raw_file": "predictions/raw/canary/pt.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pt",
+          "splits": [
+            "test"
+          ]
+        },
+        "ru": {
+          "raw_file": "predictions/raw/canary/ru.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_ru",
+          "splits": [
+            "test"
+          ]
+        },
+        "sv": {
+          "raw_file": "predictions/raw/canary/sv.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_sv",
+          "splits": [
+            "test"
+          ]
         }
       }
     },
@@ -75,13 +291,83 @@
           "raw_file": "predictions/raw/cartesia/en.json",
           "source_file": "output_english_cartesia.json",
           "dataset": "nyrahealth/disfluency_speech_english",
-          "splits": ["train", "validation", "test"]
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ]
         },
         "de": {
           "raw_file": "predictions/raw/cartesia/de.json",
           "source_file": "output_german_cartesia.json",
           "dataset": "nyrahealth/disfluency_speech_german",
-          "splits": ["test"]
+          "splits": [
+            "test"
+          ]
+        },
+        "es": {
+          "raw_file": "predictions/raw/cartesia/es.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_es",
+          "splits": [
+            "test"
+          ]
+        },
+        "nl": {
+          "raw_file": "predictions/raw/cartesia/nl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_nl",
+          "splits": [
+            "test"
+          ]
+        },
+        "fr": {
+          "raw_file": "predictions/raw/cartesia/fr.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_fr",
+          "splits": [
+            "test"
+          ]
+        },
+        "it": {
+          "raw_file": "predictions/raw/cartesia/it.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_it",
+          "splits": [
+            "test"
+          ]
+        },
+        "pl": {
+          "raw_file": "predictions/raw/cartesia/pl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pl",
+          "splits": [
+            "test"
+          ]
+        },
+        "pt": {
+          "raw_file": "predictions/raw/cartesia/pt.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pt",
+          "splits": [
+            "test"
+          ]
+        },
+        "ru": {
+          "raw_file": "predictions/raw/cartesia/ru.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_ru",
+          "splits": [
+            "test"
+          ]
+        },
+        "sv": {
+          "raw_file": "predictions/raw/cartesia/sv.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_sv",
+          "splits": [
+            "test"
+          ]
         }
       }
     },
@@ -95,13 +381,83 @@
           "raw_file": "predictions/raw/cohere/en.json",
           "source_file": "output_english_cohere.json",
           "dataset": "nyrahealth/disfluency_speech_english",
-          "splits": ["train", "validation", "test"]
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ]
         },
         "de": {
           "raw_file": "predictions/raw/cohere/de.json",
           "source_file": "output_german_cohere.json",
           "dataset": "nyrahealth/disfluency_speech_german",
-          "splits": ["test"]
+          "splits": [
+            "test"
+          ]
+        },
+        "es": {
+          "raw_file": "predictions/raw/cohere/es.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_es",
+          "splits": [
+            "test"
+          ]
+        },
+        "nl": {
+          "raw_file": "predictions/raw/cohere/nl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_nl",
+          "splits": [
+            "test"
+          ]
+        },
+        "fr": {
+          "raw_file": "predictions/raw/cohere/fr.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_fr",
+          "splits": [
+            "test"
+          ]
+        },
+        "it": {
+          "raw_file": "predictions/raw/cohere/it.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_it",
+          "splits": [
+            "test"
+          ]
+        },
+        "pl": {
+          "raw_file": "predictions/raw/cohere/pl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pl",
+          "splits": [
+            "test"
+          ]
+        },
+        "pt": {
+          "raw_file": "predictions/raw/cohere/pt.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pt",
+          "splits": [
+            "test"
+          ]
+        },
+        "ru": {
+          "raw_file": "predictions/raw/cohere/ru.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_ru",
+          "splits": [
+            "test"
+          ]
+        },
+        "sv": {
+          "raw_file": "predictions/raw/cohere/sv.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_sv",
+          "splits": [
+            "test"
+          ]
         }
       }
     },
@@ -115,13 +471,83 @@
           "raw_file": "predictions/raw/crisperwhisper_1/en.json",
           "source_file": "output_english_crisperwhisper.json",
           "dataset": "nyrahealth/disfluency_speech_english",
-          "splits": ["train", "validation", "test"]
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ]
         },
         "de": {
           "raw_file": "predictions/raw/crisperwhisper_1/de.json",
           "source_file": "output_german_crisperwhisper.json",
           "dataset": "nyrahealth/disfluency_speech_german",
-          "splits": ["test"]
+          "splits": [
+            "test"
+          ]
+        },
+        "es": {
+          "raw_file": "predictions/raw/crisperwhisper_1/es.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_es",
+          "splits": [
+            "test"
+          ]
+        },
+        "nl": {
+          "raw_file": "predictions/raw/crisperwhisper_1/nl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_nl",
+          "splits": [
+            "test"
+          ]
+        },
+        "fr": {
+          "raw_file": "predictions/raw/crisperwhisper_1/fr.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_fr",
+          "splits": [
+            "test"
+          ]
+        },
+        "it": {
+          "raw_file": "predictions/raw/crisperwhisper_1/it.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_it",
+          "splits": [
+            "test"
+          ]
+        },
+        "pl": {
+          "raw_file": "predictions/raw/crisperwhisper_1/pl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pl",
+          "splits": [
+            "test"
+          ]
+        },
+        "pt": {
+          "raw_file": "predictions/raw/crisperwhisper_1/pt.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pt",
+          "splits": [
+            "test"
+          ]
+        },
+        "ru": {
+          "raw_file": "predictions/raw/crisperwhisper_1/ru.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_ru",
+          "splits": [
+            "test"
+          ]
+        },
+        "sv": {
+          "raw_file": "predictions/raw/crisperwhisper_1/sv.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_sv",
+          "splits": [
+            "test"
+          ]
         }
       }
     },
@@ -135,13 +561,83 @@
           "raw_file": "predictions/raw/crisperwhisper_2/en.json",
           "source_file": "",
           "dataset": "nyrahealth/disfluency_speech_english",
-          "splits": ["train", "validation", "test"]
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ]
         },
         "de": {
           "raw_file": "predictions/raw/crisperwhisper_2/de.json",
           "source_file": "",
           "dataset": "nyrahealth/disfluency_speech_german",
-          "splits": ["test"]
+          "splits": [
+            "test"
+          ]
+        },
+        "es": {
+          "raw_file": "predictions/raw/crisperwhisper_2/es.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_es",
+          "splits": [
+            "test"
+          ]
+        },
+        "nl": {
+          "raw_file": "predictions/raw/crisperwhisper_2/nl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_nl",
+          "splits": [
+            "test"
+          ]
+        },
+        "fr": {
+          "raw_file": "predictions/raw/crisperwhisper_2/fr.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_fr",
+          "splits": [
+            "test"
+          ]
+        },
+        "it": {
+          "raw_file": "predictions/raw/crisperwhisper_2/it.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_it",
+          "splits": [
+            "test"
+          ]
+        },
+        "pl": {
+          "raw_file": "predictions/raw/crisperwhisper_2/pl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pl",
+          "splits": [
+            "test"
+          ]
+        },
+        "pt": {
+          "raw_file": "predictions/raw/crisperwhisper_2/pt.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pt",
+          "splits": [
+            "test"
+          ]
+        },
+        "ru": {
+          "raw_file": "predictions/raw/crisperwhisper_2/ru.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_ru",
+          "splits": [
+            "test"
+          ]
+        },
+        "sv": {
+          "raw_file": "predictions/raw/crisperwhisper_2/sv.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_sv",
+          "splits": [
+            "test"
+          ]
         }
       }
     },
@@ -155,13 +651,83 @@
           "raw_file": "predictions/raw/deepgram/en.json",
           "source_file": "output_english_deepgram.json",
           "dataset": "nyrahealth/disfluency_speech_english",
-          "splits": ["train", "validation", "test"]
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ]
         },
         "de": {
           "raw_file": "predictions/raw/deepgram/de.json",
           "source_file": "output_german_deepgram.json",
           "dataset": "nyrahealth/disfluency_speech_german",
-          "splits": ["test"]
+          "splits": [
+            "test"
+          ]
+        },
+        "es": {
+          "raw_file": "predictions/raw/deepgram/es.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_es",
+          "splits": [
+            "test"
+          ]
+        },
+        "nl": {
+          "raw_file": "predictions/raw/deepgram/nl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_nl",
+          "splits": [
+            "test"
+          ]
+        },
+        "fr": {
+          "raw_file": "predictions/raw/deepgram/fr.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_fr",
+          "splits": [
+            "test"
+          ]
+        },
+        "it": {
+          "raw_file": "predictions/raw/deepgram/it.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_it",
+          "splits": [
+            "test"
+          ]
+        },
+        "pl": {
+          "raw_file": "predictions/raw/deepgram/pl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pl",
+          "splits": [
+            "test"
+          ]
+        },
+        "pt": {
+          "raw_file": "predictions/raw/deepgram/pt.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pt",
+          "splits": [
+            "test"
+          ]
+        },
+        "ru": {
+          "raw_file": "predictions/raw/deepgram/ru.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_ru",
+          "splits": [
+            "test"
+          ]
+        },
+        "sv": {
+          "raw_file": "predictions/raw/deepgram/sv.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_sv",
+          "splits": [
+            "test"
+          ]
         }
       }
     },
@@ -175,13 +741,83 @@
           "raw_file": "predictions/raw/elevenlabs/en.json",
           "source_file": "output_english_elevenlabs.json",
           "dataset": "nyrahealth/disfluency_speech_english",
-          "splits": ["train", "validation", "test"]
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ]
         },
         "de": {
           "raw_file": "predictions/raw/elevenlabs/de.json",
           "source_file": "output_german_elevenlabs.json",
           "dataset": "nyrahealth/disfluency_speech_german",
-          "splits": ["test"]
+          "splits": [
+            "test"
+          ]
+        },
+        "es": {
+          "raw_file": "predictions/raw/elevenlabs/es.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_es",
+          "splits": [
+            "test"
+          ]
+        },
+        "nl": {
+          "raw_file": "predictions/raw/elevenlabs/nl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_nl",
+          "splits": [
+            "test"
+          ]
+        },
+        "fr": {
+          "raw_file": "predictions/raw/elevenlabs/fr.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_fr",
+          "splits": [
+            "test"
+          ]
+        },
+        "it": {
+          "raw_file": "predictions/raw/elevenlabs/it.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_it",
+          "splits": [
+            "test"
+          ]
+        },
+        "pl": {
+          "raw_file": "predictions/raw/elevenlabs/pl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pl",
+          "splits": [
+            "test"
+          ]
+        },
+        "pt": {
+          "raw_file": "predictions/raw/elevenlabs/pt.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pt",
+          "splits": [
+            "test"
+          ]
+        },
+        "ru": {
+          "raw_file": "predictions/raw/elevenlabs/ru.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_ru",
+          "splits": [
+            "test"
+          ]
+        },
+        "sv": {
+          "raw_file": "predictions/raw/elevenlabs/sv.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_sv",
+          "splits": [
+            "test"
+          ]
         }
       }
     },
@@ -195,13 +831,83 @@
           "raw_file": "predictions/raw/fish_audio/en.json",
           "source_file": "output_english_fishaudio.json",
           "dataset": "nyrahealth/disfluency_speech_english",
-          "splits": ["train", "validation", "test"]
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ]
         },
         "de": {
           "raw_file": "predictions/raw/fish_audio/de.json",
           "source_file": "output_german_fishaudio.json",
           "dataset": "nyrahealth/disfluency_speech_german",
-          "splits": ["test"]
+          "splits": [
+            "test"
+          ]
+        },
+        "es": {
+          "raw_file": "predictions/raw/fish_audio/es.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_es",
+          "splits": [
+            "test"
+          ]
+        },
+        "nl": {
+          "raw_file": "predictions/raw/fish_audio/nl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_nl",
+          "splits": [
+            "test"
+          ]
+        },
+        "fr": {
+          "raw_file": "predictions/raw/fish_audio/fr.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_fr",
+          "splits": [
+            "test"
+          ]
+        },
+        "it": {
+          "raw_file": "predictions/raw/fish_audio/it.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_it",
+          "splits": [
+            "test"
+          ]
+        },
+        "pl": {
+          "raw_file": "predictions/raw/fish_audio/pl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pl",
+          "splits": [
+            "test"
+          ]
+        },
+        "pt": {
+          "raw_file": "predictions/raw/fish_audio/pt.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pt",
+          "splits": [
+            "test"
+          ]
+        },
+        "ru": {
+          "raw_file": "predictions/raw/fish_audio/ru.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_ru",
+          "splits": [
+            "test"
+          ]
+        },
+        "sv": {
+          "raw_file": "predictions/raw/fish_audio/sv.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_sv",
+          "splits": [
+            "test"
+          ]
         }
       }
     },
@@ -215,13 +921,83 @@
           "raw_file": "predictions/raw/gradium/en.json",
           "source_file": "output_english_gradium.json",
           "dataset": "nyrahealth/disfluency_speech_english",
-          "splits": ["train", "validation", "test"]
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ]
         },
         "de": {
           "raw_file": "predictions/raw/gradium/de.json",
           "source_file": "output_german_gradium.json",
           "dataset": "nyrahealth/disfluency_speech_german",
-          "splits": ["test"]
+          "splits": [
+            "test"
+          ]
+        },
+        "es": {
+          "raw_file": "predictions/raw/gradium/es.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_es",
+          "splits": [
+            "test"
+          ]
+        },
+        "nl": {
+          "raw_file": "predictions/raw/gradium/nl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_nl",
+          "splits": [
+            "test"
+          ]
+        },
+        "fr": {
+          "raw_file": "predictions/raw/gradium/fr.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_fr",
+          "splits": [
+            "test"
+          ]
+        },
+        "it": {
+          "raw_file": "predictions/raw/gradium/it.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_it",
+          "splits": [
+            "test"
+          ]
+        },
+        "pl": {
+          "raw_file": "predictions/raw/gradium/pl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pl",
+          "splits": [
+            "test"
+          ]
+        },
+        "pt": {
+          "raw_file": "predictions/raw/gradium/pt.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pt",
+          "splits": [
+            "test"
+          ]
+        },
+        "ru": {
+          "raw_file": "predictions/raw/gradium/ru.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_ru",
+          "splits": [
+            "test"
+          ]
+        },
+        "sv": {
+          "raw_file": "predictions/raw/gradium/sv.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_sv",
+          "splits": [
+            "test"
+          ]
         }
       }
     },
@@ -235,13 +1011,83 @@
           "raw_file": "predictions/raw/inworld/en.json",
           "source_file": "output_english_inworld.json",
           "dataset": "nyrahealth/disfluency_speech_english",
-          "splits": ["train", "validation", "test"]
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ]
         },
         "de": {
           "raw_file": "predictions/raw/inworld/de.json",
           "source_file": "output_german_inworld.json",
           "dataset": "nyrahealth/disfluency_speech_german",
-          "splits": ["test"]
+          "splits": [
+            "test"
+          ]
+        },
+        "es": {
+          "raw_file": "predictions/raw/inworld/es.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_es",
+          "splits": [
+            "test"
+          ]
+        },
+        "nl": {
+          "raw_file": "predictions/raw/inworld/nl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_nl",
+          "splits": [
+            "test"
+          ]
+        },
+        "fr": {
+          "raw_file": "predictions/raw/inworld/fr.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_fr",
+          "splits": [
+            "test"
+          ]
+        },
+        "it": {
+          "raw_file": "predictions/raw/inworld/it.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_it",
+          "splits": [
+            "test"
+          ]
+        },
+        "pl": {
+          "raw_file": "predictions/raw/inworld/pl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pl",
+          "splits": [
+            "test"
+          ]
+        },
+        "pt": {
+          "raw_file": "predictions/raw/inworld/pt.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pt",
+          "splits": [
+            "test"
+          ]
+        },
+        "ru": {
+          "raw_file": "predictions/raw/inworld/ru.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_ru",
+          "splits": [
+            "test"
+          ]
+        },
+        "sv": {
+          "raw_file": "predictions/raw/inworld/sv.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_sv",
+          "splits": [
+            "test"
+          ]
         }
       }
     },
@@ -255,13 +1101,83 @@
           "raw_file": "predictions/raw/mai_transcribe_15/en.json",
           "source_file": "output_english_mai_transcribe.json",
           "dataset": "nyrahealth/disfluency_speech_english",
-          "splits": ["train", "validation", "test"]
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ]
         },
         "de": {
           "raw_file": "predictions/raw/mai_transcribe_15/de.json",
           "source_file": "output_german_mai_transcribe.json",
           "dataset": "nyrahealth/disfluency_speech_german",
-          "splits": ["test"]
+          "splits": [
+            "test"
+          ]
+        },
+        "es": {
+          "raw_file": "predictions/raw/mai_transcribe_15/es.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_es",
+          "splits": [
+            "test"
+          ]
+        },
+        "nl": {
+          "raw_file": "predictions/raw/mai_transcribe_15/nl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_nl",
+          "splits": [
+            "test"
+          ]
+        },
+        "fr": {
+          "raw_file": "predictions/raw/mai_transcribe_15/fr.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_fr",
+          "splits": [
+            "test"
+          ]
+        },
+        "it": {
+          "raw_file": "predictions/raw/mai_transcribe_15/it.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_it",
+          "splits": [
+            "test"
+          ]
+        },
+        "pl": {
+          "raw_file": "predictions/raw/mai_transcribe_15/pl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pl",
+          "splits": [
+            "test"
+          ]
+        },
+        "pt": {
+          "raw_file": "predictions/raw/mai_transcribe_15/pt.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pt",
+          "splits": [
+            "test"
+          ]
+        },
+        "ru": {
+          "raw_file": "predictions/raw/mai_transcribe_15/ru.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_ru",
+          "splits": [
+            "test"
+          ]
+        },
+        "sv": {
+          "raw_file": "predictions/raw/mai_transcribe_15/sv.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_sv",
+          "splits": [
+            "test"
+          ]
         }
       }
     },
@@ -275,13 +1191,83 @@
           "raw_file": "predictions/raw/whisper_large_v3/en.json",
           "source_file": "output_english_whisper_large_v3.json",
           "dataset": "nyrahealth/disfluency_speech_english",
-          "splits": ["train", "validation", "test"]
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ]
         },
         "de": {
           "raw_file": "predictions/raw/whisper_large_v3/de.json",
           "source_file": "output_german_whisper_large_v3.json",
           "dataset": "nyrahealth/disfluency_speech_german",
-          "splits": ["test"]
+          "splits": [
+            "test"
+          ]
+        },
+        "es": {
+          "raw_file": "predictions/raw/whisper_large_v3/es.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_es",
+          "splits": [
+            "test"
+          ]
+        },
+        "nl": {
+          "raw_file": "predictions/raw/whisper_large_v3/nl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_nl",
+          "splits": [
+            "test"
+          ]
+        },
+        "fr": {
+          "raw_file": "predictions/raw/whisper_large_v3/fr.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_fr",
+          "splits": [
+            "test"
+          ]
+        },
+        "it": {
+          "raw_file": "predictions/raw/whisper_large_v3/it.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_it",
+          "splits": [
+            "test"
+          ]
+        },
+        "pl": {
+          "raw_file": "predictions/raw/whisper_large_v3/pl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pl",
+          "splits": [
+            "test"
+          ]
+        },
+        "pt": {
+          "raw_file": "predictions/raw/whisper_large_v3/pt.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pt",
+          "splits": [
+            "test"
+          ]
+        },
+        "ru": {
+          "raw_file": "predictions/raw/whisper_large_v3/ru.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_ru",
+          "splits": [
+            "test"
+          ]
+        },
+        "sv": {
+          "raw_file": "predictions/raw/whisper_large_v3/sv.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_sv",
+          "splits": [
+            "test"
+          ]
         }
       }
     },
@@ -295,13 +1281,83 @@
           "raw_file": "predictions/raw/xai_grok/en.json",
           "source_file": "output_english_xai.json",
           "dataset": "nyrahealth/disfluency_speech_english",
-          "splits": ["train", "validation", "test"]
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ]
         },
         "de": {
           "raw_file": "predictions/raw/xai_grok/de.json",
           "source_file": "output_german_xai.json",
           "dataset": "nyrahealth/disfluency_speech_german",
-          "splits": ["test"]
+          "splits": [
+            "test"
+          ]
+        },
+        "es": {
+          "raw_file": "predictions/raw/xai_grok/es.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_es",
+          "splits": [
+            "test"
+          ]
+        },
+        "nl": {
+          "raw_file": "predictions/raw/xai_grok/nl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_nl",
+          "splits": [
+            "test"
+          ]
+        },
+        "fr": {
+          "raw_file": "predictions/raw/xai_grok/fr.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_fr",
+          "splits": [
+            "test"
+          ]
+        },
+        "it": {
+          "raw_file": "predictions/raw/xai_grok/it.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_it",
+          "splits": [
+            "test"
+          ]
+        },
+        "pl": {
+          "raw_file": "predictions/raw/xai_grok/pl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pl",
+          "splits": [
+            "test"
+          ]
+        },
+        "pt": {
+          "raw_file": "predictions/raw/xai_grok/pt.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pt",
+          "splits": [
+            "test"
+          ]
+        },
+        "ru": {
+          "raw_file": "predictions/raw/xai_grok/ru.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_ru",
+          "splits": [
+            "test"
+          ]
+        },
+        "sv": {
+          "raw_file": "predictions/raw/xai_grok/sv.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_sv",
+          "splits": [
+            "test"
+          ]
         }
       }
     }

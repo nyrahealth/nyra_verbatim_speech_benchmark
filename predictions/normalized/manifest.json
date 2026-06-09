@@ -27,6 +27,110 @@
       ]
     },
     {
+      "model": "assemblyai_p1",
+      "display_name": "AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 1)",
+      "language": "es",
+      "dataset": "synth_verbatim_es",
+      "raw_file": "predictions/raw/assemblyai_p1/es.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/assemblyai_p1/es.jsonl",
+      "num_records": 499,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "assemblyai_p1",
+      "display_name": "AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 1)",
+      "language": "nl",
+      "dataset": "synth_verbatim_nl",
+      "raw_file": "predictions/raw/assemblyai_p1/nl.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/assemblyai_p1/nl.jsonl",
+      "num_records": 495,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "assemblyai_p1",
+      "display_name": "AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 1)",
+      "language": "fr",
+      "dataset": "synth_verbatim_fr",
+      "raw_file": "predictions/raw/assemblyai_p1/fr.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/assemblyai_p1/fr.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "assemblyai_p1",
+      "display_name": "AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 1)",
+      "language": "it",
+      "dataset": "synth_verbatim_it",
+      "raw_file": "predictions/raw/assemblyai_p1/it.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/assemblyai_p1/it.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "assemblyai_p1",
+      "display_name": "AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 1)",
+      "language": "pl",
+      "dataset": "synth_verbatim_pl",
+      "raw_file": "predictions/raw/assemblyai_p1/pl.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/assemblyai_p1/pl.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "assemblyai_p1",
+      "display_name": "AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 1)",
+      "language": "pt",
+      "dataset": "synth_verbatim_pt",
+      "raw_file": "predictions/raw/assemblyai_p1/pt.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/assemblyai_p1/pt.jsonl",
+      "num_records": 499,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "assemblyai_p1",
+      "display_name": "AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 1)",
+      "language": "ru",
+      "dataset": "synth_verbatim_ru",
+      "raw_file": "predictions/raw/assemblyai_p1/ru.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/assemblyai_p1/ru.jsonl",
+      "num_records": 495,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "assemblyai_p1",
+      "display_name": "AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 1)",
+      "language": "sv",
+      "dataset": "synth_verbatim_sv",
+      "raw_file": "predictions/raw/assemblyai_p1/sv.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/assemblyai_p1/sv.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
       "model": "assemblyai_p2",
       "display_name": "AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 2)",
       "language": "en",
@@ -50,6 +154,110 @@
       "source_file": "output_german_assembly_prompt_2.json",
       "normalized_file": "predictions/normalized/assemblyai_p2/de.jsonl",
       "num_records": 202,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "assemblyai_p2",
+      "display_name": "AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 2)",
+      "language": "es",
+      "dataset": "synth_verbatim_es",
+      "raw_file": "predictions/raw/assemblyai_p2/es.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/assemblyai_p2/es.jsonl",
+      "num_records": 499,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "assemblyai_p2",
+      "display_name": "AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 2)",
+      "language": "nl",
+      "dataset": "synth_verbatim_nl",
+      "raw_file": "predictions/raw/assemblyai_p2/nl.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/assemblyai_p2/nl.jsonl",
+      "num_records": 495,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "assemblyai_p2",
+      "display_name": "AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 2)",
+      "language": "fr",
+      "dataset": "synth_verbatim_fr",
+      "raw_file": "predictions/raw/assemblyai_p2/fr.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/assemblyai_p2/fr.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "assemblyai_p2",
+      "display_name": "AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 2)",
+      "language": "it",
+      "dataset": "synth_verbatim_it",
+      "raw_file": "predictions/raw/assemblyai_p2/it.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/assemblyai_p2/it.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "assemblyai_p2",
+      "display_name": "AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 2)",
+      "language": "pl",
+      "dataset": "synth_verbatim_pl",
+      "raw_file": "predictions/raw/assemblyai_p2/pl.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/assemblyai_p2/pl.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "assemblyai_p2",
+      "display_name": "AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 2)",
+      "language": "pt",
+      "dataset": "synth_verbatim_pt",
+      "raw_file": "predictions/raw/assemblyai_p2/pt.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/assemblyai_p2/pt.jsonl",
+      "num_records": 499,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "assemblyai_p2",
+      "display_name": "AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 2)",
+      "language": "ru",
+      "dataset": "synth_verbatim_ru",
+      "raw_file": "predictions/raw/assemblyai_p2/ru.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/assemblyai_p2/ru.jsonl",
+      "num_records": 495,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "assemblyai_p2",
+      "display_name": "AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 2)",
+      "language": "sv",
+      "dataset": "synth_verbatim_sv",
+      "raw_file": "predictions/raw/assemblyai_p2/sv.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/assemblyai_p2/sv.jsonl",
+      "num_records": 500,
       "splits": [
         "test"
       ]
@@ -106,6 +314,110 @@
       "source_file": "output_german_cartesia.json",
       "normalized_file": "predictions/normalized/cartesia/de.jsonl",
       "num_records": 202,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "cartesia",
+      "display_name": "Cartesia Ink-Whisper (ink-whisper)",
+      "language": "es",
+      "dataset": "synth_verbatim_es",
+      "raw_file": "predictions/raw/cartesia/es.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/cartesia/es.jsonl",
+      "num_records": 499,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "cartesia",
+      "display_name": "Cartesia Ink-Whisper (ink-whisper)",
+      "language": "nl",
+      "dataset": "synth_verbatim_nl",
+      "raw_file": "predictions/raw/cartesia/nl.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/cartesia/nl.jsonl",
+      "num_records": 495,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "cartesia",
+      "display_name": "Cartesia Ink-Whisper (ink-whisper)",
+      "language": "fr",
+      "dataset": "synth_verbatim_fr",
+      "raw_file": "predictions/raw/cartesia/fr.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/cartesia/fr.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "cartesia",
+      "display_name": "Cartesia Ink-Whisper (ink-whisper)",
+      "language": "it",
+      "dataset": "synth_verbatim_it",
+      "raw_file": "predictions/raw/cartesia/it.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/cartesia/it.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "cartesia",
+      "display_name": "Cartesia Ink-Whisper (ink-whisper)",
+      "language": "pl",
+      "dataset": "synth_verbatim_pl",
+      "raw_file": "predictions/raw/cartesia/pl.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/cartesia/pl.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "cartesia",
+      "display_name": "Cartesia Ink-Whisper (ink-whisper)",
+      "language": "pt",
+      "dataset": "synth_verbatim_pt",
+      "raw_file": "predictions/raw/cartesia/pt.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/cartesia/pt.jsonl",
+      "num_records": 499,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "cartesia",
+      "display_name": "Cartesia Ink-Whisper (ink-whisper)",
+      "language": "ru",
+      "dataset": "synth_verbatim_ru",
+      "raw_file": "predictions/raw/cartesia/ru.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/cartesia/ru.jsonl",
+      "num_records": 495,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "cartesia",
+      "display_name": "Cartesia Ink-Whisper (ink-whisper)",
+      "language": "sv",
+      "dataset": "synth_verbatim_sv",
+      "raw_file": "predictions/raw/cartesia/sv.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/cartesia/sv.jsonl",
+      "num_records": 500,
       "splits": [
         "test"
       ]
@@ -223,6 +535,110 @@
       ]
     },
     {
+      "model": "deepgram",
+      "display_name": "Deepgram Nova-3 (nova-3)",
+      "language": "es",
+      "dataset": "synth_verbatim_es",
+      "raw_file": "predictions/raw/deepgram/es.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/deepgram/es.jsonl",
+      "num_records": 499,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "deepgram",
+      "display_name": "Deepgram Nova-3 (nova-3)",
+      "language": "nl",
+      "dataset": "synth_verbatim_nl",
+      "raw_file": "predictions/raw/deepgram/nl.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/deepgram/nl.jsonl",
+      "num_records": 495,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "deepgram",
+      "display_name": "Deepgram Nova-3 (nova-3)",
+      "language": "fr",
+      "dataset": "synth_verbatim_fr",
+      "raw_file": "predictions/raw/deepgram/fr.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/deepgram/fr.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "deepgram",
+      "display_name": "Deepgram Nova-3 (nova-3)",
+      "language": "it",
+      "dataset": "synth_verbatim_it",
+      "raw_file": "predictions/raw/deepgram/it.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/deepgram/it.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "deepgram",
+      "display_name": "Deepgram Nova-3 (nova-3)",
+      "language": "pl",
+      "dataset": "synth_verbatim_pl",
+      "raw_file": "predictions/raw/deepgram/pl.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/deepgram/pl.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "deepgram",
+      "display_name": "Deepgram Nova-3 (nova-3)",
+      "language": "pt",
+      "dataset": "synth_verbatim_pt",
+      "raw_file": "predictions/raw/deepgram/pt.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/deepgram/pt.jsonl",
+      "num_records": 499,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "deepgram",
+      "display_name": "Deepgram Nova-3 (nova-3)",
+      "language": "ru",
+      "dataset": "synth_verbatim_ru",
+      "raw_file": "predictions/raw/deepgram/ru.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/deepgram/ru.jsonl",
+      "num_records": 495,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "deepgram",
+      "display_name": "Deepgram Nova-3 (nova-3)",
+      "language": "sv",
+      "dataset": "synth_verbatim_sv",
+      "raw_file": "predictions/raw/deepgram/sv.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/deepgram/sv.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
       "model": "elevenlabs",
       "display_name": "ElevenLabs Scribe v2",
       "language": "en",
@@ -246,6 +662,110 @@
       "source_file": "output_german_elevenlabs.json",
       "normalized_file": "predictions/normalized/elevenlabs/de.jsonl",
       "num_records": 202,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "elevenlabs",
+      "display_name": "ElevenLabs Scribe v2",
+      "language": "es",
+      "dataset": "synth_verbatim_es",
+      "raw_file": "predictions/raw/elevenlabs/es.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/elevenlabs/es.jsonl",
+      "num_records": 499,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "elevenlabs",
+      "display_name": "ElevenLabs Scribe v2",
+      "language": "nl",
+      "dataset": "synth_verbatim_nl",
+      "raw_file": "predictions/raw/elevenlabs/nl.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/elevenlabs/nl.jsonl",
+      "num_records": 495,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "elevenlabs",
+      "display_name": "ElevenLabs Scribe v2",
+      "language": "fr",
+      "dataset": "synth_verbatim_fr",
+      "raw_file": "predictions/raw/elevenlabs/fr.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/elevenlabs/fr.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "elevenlabs",
+      "display_name": "ElevenLabs Scribe v2",
+      "language": "it",
+      "dataset": "synth_verbatim_it",
+      "raw_file": "predictions/raw/elevenlabs/it.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/elevenlabs/it.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "elevenlabs",
+      "display_name": "ElevenLabs Scribe v2",
+      "language": "pl",
+      "dataset": "synth_verbatim_pl",
+      "raw_file": "predictions/raw/elevenlabs/pl.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/elevenlabs/pl.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "elevenlabs",
+      "display_name": "ElevenLabs Scribe v2",
+      "language": "pt",
+      "dataset": "synth_verbatim_pt",
+      "raw_file": "predictions/raw/elevenlabs/pt.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/elevenlabs/pt.jsonl",
+      "num_records": 499,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "elevenlabs",
+      "display_name": "ElevenLabs Scribe v2",
+      "language": "ru",
+      "dataset": "synth_verbatim_ru",
+      "raw_file": "predictions/raw/elevenlabs/ru.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/elevenlabs/ru.jsonl",
+      "num_records": 495,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "elevenlabs",
+      "display_name": "ElevenLabs Scribe v2",
+      "language": "sv",
+      "dataset": "synth_verbatim_sv",
+      "raw_file": "predictions/raw/elevenlabs/sv.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/elevenlabs/sv.jsonl",
+      "num_records": 500,
       "splits": [
         "test"
       ]
@@ -279,6 +799,110 @@
       ]
     },
     {
+      "model": "fish_audio",
+      "display_name": "Fish Audio ASR",
+      "language": "es",
+      "dataset": "synth_verbatim_es",
+      "raw_file": "predictions/raw/fish_audio/es.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/fish_audio/es.jsonl",
+      "num_records": 499,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "fish_audio",
+      "display_name": "Fish Audio ASR",
+      "language": "nl",
+      "dataset": "synth_verbatim_nl",
+      "raw_file": "predictions/raw/fish_audio/nl.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/fish_audio/nl.jsonl",
+      "num_records": 495,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "fish_audio",
+      "display_name": "Fish Audio ASR",
+      "language": "fr",
+      "dataset": "synth_verbatim_fr",
+      "raw_file": "predictions/raw/fish_audio/fr.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/fish_audio/fr.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "fish_audio",
+      "display_name": "Fish Audio ASR",
+      "language": "it",
+      "dataset": "synth_verbatim_it",
+      "raw_file": "predictions/raw/fish_audio/it.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/fish_audio/it.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "fish_audio",
+      "display_name": "Fish Audio ASR",
+      "language": "pl",
+      "dataset": "synth_verbatim_pl",
+      "raw_file": "predictions/raw/fish_audio/pl.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/fish_audio/pl.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "fish_audio",
+      "display_name": "Fish Audio ASR",
+      "language": "pt",
+      "dataset": "synth_verbatim_pt",
+      "raw_file": "predictions/raw/fish_audio/pt.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/fish_audio/pt.jsonl",
+      "num_records": 499,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "fish_audio",
+      "display_name": "Fish Audio ASR",
+      "language": "ru",
+      "dataset": "synth_verbatim_ru",
+      "raw_file": "predictions/raw/fish_audio/ru.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/fish_audio/ru.jsonl",
+      "num_records": 495,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "fish_audio",
+      "display_name": "Fish Audio ASR",
+      "language": "sv",
+      "dataset": "synth_verbatim_sv",
+      "raw_file": "predictions/raw/fish_audio/sv.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/fish_audio/sv.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
       "model": "gradium",
       "display_name": "Gradium ASR",
       "language": "en",
@@ -302,6 +926,110 @@
       "source_file": "output_german_gradium.json",
       "normalized_file": "predictions/normalized/gradium/de.jsonl",
       "num_records": 202,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "gradium",
+      "display_name": "Gradium ASR",
+      "language": "es",
+      "dataset": "synth_verbatim_es",
+      "raw_file": "predictions/raw/gradium/es.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/gradium/es.jsonl",
+      "num_records": 499,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "gradium",
+      "display_name": "Gradium ASR",
+      "language": "nl",
+      "dataset": "synth_verbatim_nl",
+      "raw_file": "predictions/raw/gradium/nl.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/gradium/nl.jsonl",
+      "num_records": 495,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "gradium",
+      "display_name": "Gradium ASR",
+      "language": "fr",
+      "dataset": "synth_verbatim_fr",
+      "raw_file": "predictions/raw/gradium/fr.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/gradium/fr.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "gradium",
+      "display_name": "Gradium ASR",
+      "language": "it",
+      "dataset": "synth_verbatim_it",
+      "raw_file": "predictions/raw/gradium/it.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/gradium/it.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "gradium",
+      "display_name": "Gradium ASR",
+      "language": "pl",
+      "dataset": "synth_verbatim_pl",
+      "raw_file": "predictions/raw/gradium/pl.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/gradium/pl.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "gradium",
+      "display_name": "Gradium ASR",
+      "language": "pt",
+      "dataset": "synth_verbatim_pt",
+      "raw_file": "predictions/raw/gradium/pt.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/gradium/pt.jsonl",
+      "num_records": 499,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "gradium",
+      "display_name": "Gradium ASR",
+      "language": "ru",
+      "dataset": "synth_verbatim_ru",
+      "raw_file": "predictions/raw/gradium/ru.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/gradium/ru.jsonl",
+      "num_records": 495,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "gradium",
+      "display_name": "Gradium ASR",
+      "language": "sv",
+      "dataset": "synth_verbatim_sv",
+      "raw_file": "predictions/raw/gradium/sv.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/gradium/sv.jsonl",
+      "num_records": 500,
       "splits": [
         "test"
       ]
@@ -335,6 +1063,110 @@
       ]
     },
     {
+      "model": "inworld",
+      "display_name": "Inworld STT (inworld/inworld-stt-1)",
+      "language": "es",
+      "dataset": "synth_verbatim_es",
+      "raw_file": "predictions/raw/inworld/es.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/inworld/es.jsonl",
+      "num_records": 499,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "inworld",
+      "display_name": "Inworld STT (inworld/inworld-stt-1)",
+      "language": "nl",
+      "dataset": "synth_verbatim_nl",
+      "raw_file": "predictions/raw/inworld/nl.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/inworld/nl.jsonl",
+      "num_records": 495,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "inworld",
+      "display_name": "Inworld STT (inworld/inworld-stt-1)",
+      "language": "fr",
+      "dataset": "synth_verbatim_fr",
+      "raw_file": "predictions/raw/inworld/fr.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/inworld/fr.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "inworld",
+      "display_name": "Inworld STT (inworld/inworld-stt-1)",
+      "language": "it",
+      "dataset": "synth_verbatim_it",
+      "raw_file": "predictions/raw/inworld/it.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/inworld/it.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "inworld",
+      "display_name": "Inworld STT (inworld/inworld-stt-1)",
+      "language": "pl",
+      "dataset": "synth_verbatim_pl",
+      "raw_file": "predictions/raw/inworld/pl.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/inworld/pl.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "inworld",
+      "display_name": "Inworld STT (inworld/inworld-stt-1)",
+      "language": "pt",
+      "dataset": "synth_verbatim_pt",
+      "raw_file": "predictions/raw/inworld/pt.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/inworld/pt.jsonl",
+      "num_records": 499,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "inworld",
+      "display_name": "Inworld STT (inworld/inworld-stt-1)",
+      "language": "ru",
+      "dataset": "synth_verbatim_ru",
+      "raw_file": "predictions/raw/inworld/ru.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/inworld/ru.jsonl",
+      "num_records": 495,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "inworld",
+      "display_name": "Inworld STT (inworld/inworld-stt-1)",
+      "language": "sv",
+      "dataset": "synth_verbatim_sv",
+      "raw_file": "predictions/raw/inworld/sv.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/inworld/sv.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
       "model": "mai_transcribe_15",
       "display_name": "MAI-Transcribe-1.5 (Microsoft, mai-transcribe-1.5)",
       "language": "en",
@@ -358,6 +1190,110 @@
       "source_file": "output_german_mai_transcribe.json",
       "normalized_file": "predictions/normalized/mai_transcribe_15/de.jsonl",
       "num_records": 202,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "mai_transcribe_15",
+      "display_name": "MAI-Transcribe-1.5 (Microsoft, mai-transcribe-1.5)",
+      "language": "es",
+      "dataset": "synth_verbatim_es",
+      "raw_file": "predictions/raw/mai_transcribe_15/es.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/mai_transcribe_15/es.jsonl",
+      "num_records": 499,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "mai_transcribe_15",
+      "display_name": "MAI-Transcribe-1.5 (Microsoft, mai-transcribe-1.5)",
+      "language": "nl",
+      "dataset": "synth_verbatim_nl",
+      "raw_file": "predictions/raw/mai_transcribe_15/nl.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/mai_transcribe_15/nl.jsonl",
+      "num_records": 495,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "mai_transcribe_15",
+      "display_name": "MAI-Transcribe-1.5 (Microsoft, mai-transcribe-1.5)",
+      "language": "fr",
+      "dataset": "synth_verbatim_fr",
+      "raw_file": "predictions/raw/mai_transcribe_15/fr.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/mai_transcribe_15/fr.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "mai_transcribe_15",
+      "display_name": "MAI-Transcribe-1.5 (Microsoft, mai-transcribe-1.5)",
+      "language": "it",
+      "dataset": "synth_verbatim_it",
+      "raw_file": "predictions/raw/mai_transcribe_15/it.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/mai_transcribe_15/it.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "mai_transcribe_15",
+      "display_name": "MAI-Transcribe-1.5 (Microsoft, mai-transcribe-1.5)",
+      "language": "pl",
+      "dataset": "synth_verbatim_pl",
+      "raw_file": "predictions/raw/mai_transcribe_15/pl.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/mai_transcribe_15/pl.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "mai_transcribe_15",
+      "display_name": "MAI-Transcribe-1.5 (Microsoft, mai-transcribe-1.5)",
+      "language": "pt",
+      "dataset": "synth_verbatim_pt",
+      "raw_file": "predictions/raw/mai_transcribe_15/pt.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/mai_transcribe_15/pt.jsonl",
+      "num_records": 499,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "mai_transcribe_15",
+      "display_name": "MAI-Transcribe-1.5 (Microsoft, mai-transcribe-1.5)",
+      "language": "ru",
+      "dataset": "synth_verbatim_ru",
+      "raw_file": "predictions/raw/mai_transcribe_15/ru.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/mai_transcribe_15/ru.jsonl",
+      "num_records": 495,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "mai_transcribe_15",
+      "display_name": "MAI-Transcribe-1.5 (Microsoft, mai-transcribe-1.5)",
+      "language": "sv",
+      "dataset": "synth_verbatim_sv",
+      "raw_file": "predictions/raw/mai_transcribe_15/sv.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/mai_transcribe_15/sv.jsonl",
+      "num_records": 500,
       "splits": [
         "test"
       ]
@@ -414,6 +1350,110 @@
       "source_file": "output_german_xai.json",
       "normalized_file": "predictions/normalized/xai_grok/de.jsonl",
       "num_records": 202,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "xai_grok",
+      "display_name": "xAI Grok Speech-to-Text",
+      "language": "es",
+      "dataset": "synth_verbatim_es",
+      "raw_file": "predictions/raw/xai_grok/es.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/xai_grok/es.jsonl",
+      "num_records": 499,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "xai_grok",
+      "display_name": "xAI Grok Speech-to-Text",
+      "language": "nl",
+      "dataset": "synth_verbatim_nl",
+      "raw_file": "predictions/raw/xai_grok/nl.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/xai_grok/nl.jsonl",
+      "num_records": 495,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "xai_grok",
+      "display_name": "xAI Grok Speech-to-Text",
+      "language": "fr",
+      "dataset": "synth_verbatim_fr",
+      "raw_file": "predictions/raw/xai_grok/fr.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/xai_grok/fr.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "xai_grok",
+      "display_name": "xAI Grok Speech-to-Text",
+      "language": "it",
+      "dataset": "synth_verbatim_it",
+      "raw_file": "predictions/raw/xai_grok/it.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/xai_grok/it.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "xai_grok",
+      "display_name": "xAI Grok Speech-to-Text",
+      "language": "pl",
+      "dataset": "synth_verbatim_pl",
+      "raw_file": "predictions/raw/xai_grok/pl.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/xai_grok/pl.jsonl",
+      "num_records": 500,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "xai_grok",
+      "display_name": "xAI Grok Speech-to-Text",
+      "language": "pt",
+      "dataset": "synth_verbatim_pt",
+      "raw_file": "predictions/raw/xai_grok/pt.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/xai_grok/pt.jsonl",
+      "num_records": 499,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "xai_grok",
+      "display_name": "xAI Grok Speech-to-Text",
+      "language": "ru",
+      "dataset": "synth_verbatim_ru",
+      "raw_file": "predictions/raw/xai_grok/ru.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/xai_grok/ru.jsonl",
+      "num_records": 495,
+      "splits": [
+        "test"
+      ]
+    },
+    {
+      "model": "xai_grok",
+      "display_name": "xAI Grok Speech-to-Text",
+      "language": "sv",
+      "dataset": "synth_verbatim_sv",
+      "raw_file": "predictions/raw/xai_grok/sv.json",
+      "source_file": "",
+      "normalized_file": "predictions/normalized/xai_grok/sv.jsonl",
+      "num_records": 500,
       "splits": [
         "test"
       ]

@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import time
 import urllib.parse
 from pathlib import Path
 from typing import Optional
@@ -22,22 +23,38 @@ API_URL = "https://api.gradium.ai/api/post/speech/asr"
 def build_transcriber(api_key: str):
     def transcribe(audio_path: Path, language: str) -> Optional[str]:
         config = urllib.parse.quote(json.dumps({"language": language}))
-        with audio_path.open("rb") as audio_file:
-            response = requests.post(
-                f"{API_URL}?json_config={config}",
-                headers={"x-api-key": api_key, "Content-Type": "audio/wav"},
-                data=audio_file.read(),
-                timeout=120,
-            )
-        response.raise_for_status()
-        words = []
-        for line in response.text.splitlines():
-            if not line.strip():
-                continue
-            obj = json.loads(line)
-            if obj.get("type") == "text" and obj.get("text"):
-                words.append(obj["text"])
-        return " ".join(words)
+        url = f"{API_URL}?json_config={config}"
+        headers = {"x-api-key": api_key, "Content-Type": "audio/wav"}
+
+        for attempt in range(3):
+            try:
+                with audio_path.open("rb") as audio_file:
+                    response = requests.post(
+                        url,
+                        headers=headers,
+                        data=audio_file.read(),
+                        timeout=120,
+                    )
+                if response.status_code == 200:
+                    words = []
+                    for line in response.text.splitlines():
+                        if not line.strip():
+                            continue
+                        obj = json.loads(line)
+                        if obj.get("type") == "text" and obj.get("text"):
+                            words.append(obj["text"])
+                    return " ".join(words)
+                if response.status_code == 429:
+                    time.sleep(2 ** (attempt + 1))
+                    continue
+                if response.status_code in (401, 403):
+                    return None
+                if attempt < 2:
+                    time.sleep(2 ** attempt)
+            except requests.exceptions.RequestException:
+                if attempt < 2:
+                    time.sleep(2)
+        return None
 
     return transcribe
 

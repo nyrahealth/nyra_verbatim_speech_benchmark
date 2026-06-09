@@ -1,0 +1,737 @@
+{
+  "version": 1,
+  "datasets": {
+    "en": "nyrahealth/disfluency_speech_english",
+    "de": "nyrahealth/disfluency_speech_german",
+    "es": "synth_verbatim_es",
+    "nl": "synth_verbatim_nl",
+    "fr": "synth_verbatim_fr",
+    "it": "synth_verbatim_it",
+    "pl": "synth_verbatim_pl",
+    "pt": "synth_verbatim_pt",
+    "ru": "synth_verbatim_ru",
+    "sv": "synth_verbatim_sv"
+  },
+  "models": [
+    {
+      "id": "release-turbo-no-timing",
+      "display_name": "Release turbo verbatimize longform EN (no timing)",
+      "adapter": "default",
+      "single_output": false,
+      "languages": {
+        "en": {
+          "raw_file": "predictions/raw/release-turbo-no-timing/en.json",
+          "source_file": "",
+          "dataset": "nyrahealth/disfluency_speech_english",
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ]
+        },
+        "de": {
+          "raw_file": "predictions/raw/release-turbo-no-timing/de.json",
+          "source_file": "",
+          "dataset": "nyrahealth/disfluency_speech_german",
+          "splits": [
+            "test"
+          ]
+        },
+        "es": {
+          "raw_file": "predictions/raw/release-turbo-no-timing/es.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_es",
+          "splits": [
+            "test"
+          ]
+        },
+        "nl": {
+          "raw_file": "predictions/raw/release-turbo-no-timing/nl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_nl",
+          "splits": [
+            "test"
+          ]
+        },
+        "fr": {
+          "raw_file": "predictions/raw/release-turbo-no-timing/fr.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_fr",
+          "splits": [
+            "test"
+          ]
+        },
+        "it": {
+          "raw_file": "predictions/raw/release-turbo-no-timing/it.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_it",
+          "splits": [
+            "test"
+          ]
+        },
+        "pl": {
+          "raw_file": "predictions/raw/release-turbo-no-timing/pl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pl",
+          "splits": [
+            "test"
+          ]
+        },
+        "pt": {
+          "raw_file": "predictions/raw/release-turbo-no-timing/pt.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pt",
+          "splits": [
+            "test"
+          ]
+        },
+        "ru": {
+          "raw_file": "predictions/raw/release-turbo-no-timing/ru.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_ru",
+          "splits": [
+            "test"
+          ]
+        },
+        "sv": {
+          "raw_file": "predictions/raw/release-turbo-no-timing/sv.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_sv",
+          "splits": [
+            "test"
+          ]
+        }
+      }
+    },
+    {
+      "id": "release-small-no-timing",
+      "display_name": "Release small verbatimize longform EN (no timing)",
+      "adapter": "default",
+      "single_output": false,
+      "languages": {
+        "en": {
+          "raw_file": "predictions/raw/release-small-no-timing/en.json",
+          "source_file": "",
+          "dataset": "nyrahealth/disfluency_speech_english",
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ]
+        },
+        "de": {
+          "raw_file": "predictions/raw/release-small-no-timing/de.json",
+          "source_file": "",
+          "dataset": "nyrahealth/disfluency_speech_german",
+          "splits": [
+            "test"
+          ]
+        },
+        "es": {
+          "raw_file": "predictions/raw/release-small-no-timing/es.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_es",
+          "splits": [
+            "test"
+          ]
+        },
+        "nl": {
+          "raw_file": "predictions/raw/release-small-no-timing/nl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_nl",
+          "splits": [
+            "test"
+          ]
+        },
+        "fr": {
+          "raw_file": "predictions/raw/release-small-no-timing/fr.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_fr",
+          "splits": [
+            "test"
+          ]
+        },
+        "it": {
+          "raw_file": "predictions/raw/release-small-no-timing/it.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_it",
+          "splits": [
+            "test"
+          ]
+        },
+        "pl": {
+          "raw_file": "predictions/raw/release-small-no-timing/pl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pl",
+          "splits": [
+            "test"
+          ]
+        },
+        "pt": {
+          "raw_file": "predictions/raw/release-small-no-timing/pt.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pt",
+          "splits": [
+            "test"
+          ]
+        },
+        "ru": {
+          "raw_file": "predictions/raw/release-small-no-timing/ru.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_ru",
+          "splits": [
+            "test"
+          ]
+        },
+        "sv": {
+          "raw_file": "predictions/raw/release-small-no-timing/sv.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_sv",
+          "splits": [
+            "test"
+          ]
+        }
+      }
+    },
+    {
+      "id": "release-medium-no-timing",
+      "display_name": "Release medium verbatimize longform EN (no timing)",
+      "adapter": "default",
+      "single_output": false,
+      "languages": {
+        "en": {
+          "raw_file": "predictions/raw/release-medium-no-timing/en.json",
+          "source_file": "",
+          "dataset": "nyrahealth/disfluency_speech_english",
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ]
+        },
+        "de": {
+          "raw_file": "predictions/raw/release-medium-no-timing/de.json",
+          "source_file": "",
+          "dataset": "nyrahealth/disfluency_speech_german",
+          "splits": [
+            "test"
+          ]
+        },
+        "es": {
+          "raw_file": "predictions/raw/release-medium-no-timing/es.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_es",
+          "splits": [
+            "test"
+          ]
+        },
+        "nl": {
+          "raw_file": "predictions/raw/release-medium-no-timing/nl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_nl",
+          "splits": [
+            "test"
+          ]
+        },
+        "fr": {
+          "raw_file": "predictions/raw/release-medium-no-timing/fr.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_fr",
+          "splits": [
+            "test"
+          ]
+        },
+        "it": {
+          "raw_file": "predictions/raw/release-medium-no-timing/it.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_it",
+          "splits": [
+            "test"
+          ]
+        },
+        "pl": {
+          "raw_file": "predictions/raw/release-medium-no-timing/pl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pl",
+          "splits": [
+            "test"
+          ]
+        },
+        "pt": {
+          "raw_file": "predictions/raw/release-medium-no-timing/pt.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pt",
+          "splits": [
+            "test"
+          ]
+        },
+        "ru": {
+          "raw_file": "predictions/raw/release-medium-no-timing/ru.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_ru",
+          "splits": [
+            "test"
+          ]
+        },
+        "sv": {
+          "raw_file": "predictions/raw/release-medium-no-timing/sv.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_sv",
+          "splits": [
+            "test"
+          ]
+        }
+      }
+    },
+    {
+      "id": "release-large-v2-no-timing",
+      "display_name": "Release large-v2 verbatimize longform EN (no timing)",
+      "adapter": "default",
+      "single_output": false,
+      "languages": {
+        "en": {
+          "raw_file": "predictions/raw/release-large-v2-no-timing/en.json",
+          "source_file": "",
+          "dataset": "nyrahealth/disfluency_speech_english",
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ]
+        },
+        "de": {
+          "raw_file": "predictions/raw/release-large-v2-no-timing/de.json",
+          "source_file": "",
+          "dataset": "nyrahealth/disfluency_speech_german",
+          "splits": [
+            "test"
+          ]
+        },
+        "es": {
+          "raw_file": "predictions/raw/release-large-v2-no-timing/es.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_es",
+          "splits": [
+            "test"
+          ]
+        },
+        "nl": {
+          "raw_file": "predictions/raw/release-large-v2-no-timing/nl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_nl",
+          "splits": [
+            "test"
+          ]
+        },
+        "fr": {
+          "raw_file": "predictions/raw/release-large-v2-no-timing/fr.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_fr",
+          "splits": [
+            "test"
+          ]
+        },
+        "it": {
+          "raw_file": "predictions/raw/release-large-v2-no-timing/it.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_it",
+          "splits": [
+            "test"
+          ]
+        },
+        "pl": {
+          "raw_file": "predictions/raw/release-large-v2-no-timing/pl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pl",
+          "splits": [
+            "test"
+          ]
+        },
+        "pt": {
+          "raw_file": "predictions/raw/release-large-v2-no-timing/pt.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pt",
+          "splits": [
+            "test"
+          ]
+        },
+        "ru": {
+          "raw_file": "predictions/raw/release-large-v2-no-timing/ru.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_ru",
+          "splits": [
+            "test"
+          ]
+        },
+        "sv": {
+          "raw_file": "predictions/raw/release-large-v2-no-timing/sv.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_sv",
+          "splits": [
+            "test"
+          ]
+        }
+      }
+    },
+    {
+      "id": "release-turbo-with-timing",
+      "display_name": "Release turbo verbatimize longform EN (with timing)",
+      "adapter": "default",
+      "single_output": false,
+      "languages": {
+        "en": {
+          "raw_file": "predictions/raw/release-turbo-with-timing/en.json",
+          "source_file": "",
+          "dataset": "nyrahealth/disfluency_speech_english",
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ]
+        },
+        "de": {
+          "raw_file": "predictions/raw/release-turbo-with-timing/de.json",
+          "source_file": "",
+          "dataset": "nyrahealth/disfluency_speech_german",
+          "splits": [
+            "test"
+          ]
+        },
+        "es": {
+          "raw_file": "predictions/raw/release-turbo-with-timing/es.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_es",
+          "splits": [
+            "test"
+          ]
+        },
+        "nl": {
+          "raw_file": "predictions/raw/release-turbo-with-timing/nl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_nl",
+          "splits": [
+            "test"
+          ]
+        },
+        "fr": {
+          "raw_file": "predictions/raw/release-turbo-with-timing/fr.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_fr",
+          "splits": [
+            "test"
+          ]
+        },
+        "it": {
+          "raw_file": "predictions/raw/release-turbo-with-timing/it.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_it",
+          "splits": [
+            "test"
+          ]
+        },
+        "pl": {
+          "raw_file": "predictions/raw/release-turbo-with-timing/pl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pl",
+          "splits": [
+            "test"
+          ]
+        },
+        "pt": {
+          "raw_file": "predictions/raw/release-turbo-with-timing/pt.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pt",
+          "splits": [
+            "test"
+          ]
+        },
+        "ru": {
+          "raw_file": "predictions/raw/release-turbo-with-timing/ru.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_ru",
+          "splits": [
+            "test"
+          ]
+        },
+        "sv": {
+          "raw_file": "predictions/raw/release-turbo-with-timing/sv.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_sv",
+          "splits": [
+            "test"
+          ]
+        }
+      }
+    },
+    {
+      "id": "release-small-with-timing",
+      "display_name": "Release small verbatimize longform EN (with timing)",
+      "adapter": "default",
+      "single_output": false,
+      "languages": {
+        "en": {
+          "raw_file": "predictions/raw/release-small-with-timing/en.json",
+          "source_file": "",
+          "dataset": "nyrahealth/disfluency_speech_english",
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ]
+        },
+        "de": {
+          "raw_file": "predictions/raw/release-small-with-timing/de.json",
+          "source_file": "",
+          "dataset": "nyrahealth/disfluency_speech_german",
+          "splits": [
+            "test"
+          ]
+        },
+        "es": {
+          "raw_file": "predictions/raw/release-small-with-timing/es.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_es",
+          "splits": [
+            "test"
+          ]
+        },
+        "nl": {
+          "raw_file": "predictions/raw/release-small-with-timing/nl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_nl",
+          "splits": [
+            "test"
+          ]
+        },
+        "fr": {
+          "raw_file": "predictions/raw/release-small-with-timing/fr.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_fr",
+          "splits": [
+            "test"
+          ]
+        },
+        "it": {
+          "raw_file": "predictions/raw/release-small-with-timing/it.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_it",
+          "splits": [
+            "test"
+          ]
+        },
+        "pl": {
+          "raw_file": "predictions/raw/release-small-with-timing/pl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pl",
+          "splits": [
+            "test"
+          ]
+        },
+        "pt": {
+          "raw_file": "predictions/raw/release-small-with-timing/pt.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pt",
+          "splits": [
+            "test"
+          ]
+        },
+        "ru": {
+          "raw_file": "predictions/raw/release-small-with-timing/ru.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_ru",
+          "splits": [
+            "test"
+          ]
+        },
+        "sv": {
+          "raw_file": "predictions/raw/release-small-with-timing/sv.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_sv",
+          "splits": [
+            "test"
+          ]
+        }
+      }
+    },
+    {
+      "id": "release-medium-with-timing",
+      "display_name": "Release medium verbatimize longform EN (with timing)",
+      "adapter": "default",
+      "single_output": false,
+      "languages": {
+        "en": {
+          "raw_file": "predictions/raw/release-medium-with-timing/en.json",
+          "source_file": "",
+          "dataset": "nyrahealth/disfluency_speech_english",
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ]
+        },
+        "de": {
+          "raw_file": "predictions/raw/release-medium-with-timing/de.json",
+          "source_file": "",
+          "dataset": "nyrahealth/disfluency_speech_german",
+          "splits": [
+            "test"
+          ]
+        },
+        "es": {
+          "raw_file": "predictions/raw/release-medium-with-timing/es.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_es",
+          "splits": [
+            "test"
+          ]
+        },
+        "nl": {
+          "raw_file": "predictions/raw/release-medium-with-timing/nl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_nl",
+          "splits": [
+            "test"
+          ]
+        },
+        "fr": {
+          "raw_file": "predictions/raw/release-medium-with-timing/fr.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_fr",
+          "splits": [
+            "test"
+          ]
+        },
+        "it": {
+          "raw_file": "predictions/raw/release-medium-with-timing/it.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_it",
+          "splits": [
+            "test"
+          ]
+        },
+        "pl": {
+          "raw_file": "predictions/raw/release-medium-with-timing/pl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pl",
+          "splits": [
+            "test"
+          ]
+        },
+        "pt": {
+          "raw_file": "predictions/raw/release-medium-with-timing/pt.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pt",
+          "splits": [
+            "test"
+          ]
+        },
+        "ru": {
+          "raw_file": "predictions/raw/release-medium-with-timing/ru.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_ru",
+          "splits": [
+            "test"
+          ]
+        },
+        "sv": {
+          "raw_file": "predictions/raw/release-medium-with-timing/sv.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_sv",
+          "splits": [
+            "test"
+          ]
+        }
+      }
+    },
+    {
+      "id": "release-large-v2-with-timing",
+      "display_name": "Release large-v2 verbatimize longform EN (with timing)",
+      "adapter": "default",
+      "single_output": false,
+      "languages": {
+        "en": {
+          "raw_file": "predictions/raw/release-large-v2-with-timing/en.json",
+          "source_file": "",
+          "dataset": "nyrahealth/disfluency_speech_english",
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ]
+        },
+        "de": {
+          "raw_file": "predictions/raw/release-large-v2-with-timing/de.json",
+          "source_file": "",
+          "dataset": "nyrahealth/disfluency_speech_german",
+          "splits": [
+            "test"
+          ]
+        },
+        "es": {
+          "raw_file": "predictions/raw/release-large-v2-with-timing/es.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_es",
+          "splits": [
+            "test"
+          ]
+        },
+        "nl": {
+          "raw_file": "predictions/raw/release-large-v2-with-timing/nl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_nl",
+          "splits": [
+            "test"
+          ]
+        },
+        "fr": {
+          "raw_file": "predictions/raw/release-large-v2-with-timing/fr.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_fr",
+          "splits": [
+            "test"
+          ]
+        },
+        "it": {
+          "raw_file": "predictions/raw/release-large-v2-with-timing/it.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_it",
+          "splits": [
+            "test"
+          ]
+        },
+        "pl": {
+          "raw_file": "predictions/raw/release-large-v2-with-timing/pl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pl",
+          "splits": [
+            "test"
+          ]
+        },
+        "pt": {
+          "raw_file": "predictions/raw/release-large-v2-with-timing/pt.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pt",
+          "splits": [
+            "test"
+          ]
+        },
+        "ru": {
+          "raw_file": "predictions/raw/release-large-v2-with-timing/ru.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_ru",
+          "splits": [
+            "test"
+          ]
+        },
+        "sv": {
+          "raw_file": "predictions/raw/release-large-v2-with-timing/sv.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_sv",
+          "splits": [
+            "test"
+          ]
+        }
+      }
+    }
+  ]
+}

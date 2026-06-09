@@ -26,8 +26,10 @@ def build_transcriber(model_name_or_path: str, device: str):
     )
 
     def transcribe(audio_path: Path, language: str) -> Optional[str]:
-        del language
-        result = asr(str(audio_path))
+        result = asr(
+            str(audio_path),
+            generate_kwargs={"language": language, "task": "transcribe"},
+        )
         return str(result.get("text", "")).strip()
 
     return transcribe

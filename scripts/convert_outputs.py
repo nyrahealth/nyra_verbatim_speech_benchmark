@@ -229,7 +229,9 @@ def main() -> None:
     )
     parser.add_argument(
         "--language",
-        choices=["en", "de", "all"],
+        choices=[
+            "en", "de", "es", "nl", "fr", "it", "pl", "pt", "ru", "sv", "all",
+        ],
         default="all",
     )
     args = parser.parse_args()
@@ -247,6 +249,9 @@ def main() -> None:
             continue
 
         raw_path = REPO_ROOT / config["raw_file"]
+        if args.skip_import and not raw_path.exists():
+            print(f"{model_id:20s} {language} SKIP (no raw file: {raw_path})")
+            continue
         if not args.skip_import:
             source_name = config.get("source_file")
             if source_name:

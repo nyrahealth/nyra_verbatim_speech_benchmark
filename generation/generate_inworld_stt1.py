@@ -12,6 +12,7 @@ from typing import Optional
 import requests
 
 from common import add_common_args, generate_raw_predictions, languages_from_arg
+from language_codes import inworld_code
 
 
 MODEL_ID = "inworld"
@@ -22,21 +23,33 @@ def build_transcriber(api_key: str):
     def transcribe(audio_path: Path, language: str) -> Optional[str]:
         with audio_path.open("rb") as audio_file:
             audio_b64 = base64.b64encode(audio_file.read()).decode("ascii")
+        language_code = inworld_code(language)
         payload = {
-            "audio": {"content": audio_b64},
             "transcribeConfig": {
                 "modelId": "inworld/inworld-stt-1",
-                "languageCode": language,
+                "audioEncoding": "LINEAR16",
+                "sampleRateHertz": 16000,
+                "enableLanguageDetection": True,
+                "languageCode": language_code,
             },
+            "audioData": {"content": audio_b64},
         }
         response = requests.post(
             API_URL,
-            headers={"Authorization": f"Basic {api_key}"},
+            headers={
+                "Authorization": f"Basic {api_key}",
+                "Content-Type": "application/json",
+            },
             json=payload,
             timeout=120,
         )
         response.raise_for_status()
         data = response.json()
+        transcription = data.get("transcription") or {}
+        if isinstance(transcription, dict):
+            text = transcription.get("transcript")
+            if text:
+                return text
         return data.get("text") or data.get("transcript") or ""
 
     return transcribe

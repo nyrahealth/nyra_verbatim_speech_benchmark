@@ -137,7 +137,8 @@ SOUND_EVENT_LABELS = frozenset({
 def is_filler(token: str, language: str = "en") -> bool:
     """Check whether *token* is a filled pause (``[UH]``, ``um``, etc.)."""
     norm = normalize_token(token).lower()
-    if language.lower().startswith("de") and norm == "um":
+    lang = _primary_language_code(language)
+    if lang == "de" and norm == "um":
         return False
     return norm in FILLER_LABELS
 
@@ -176,6 +177,15 @@ def get_event_label(token: str, language: str = "en") -> Optional[str]:
 
 # ── Prediction Normalization ───────────────────────────────────────────────
 
+_SYNTH_LANGUAGES = frozenset({"es", "nl", "fr", "it", "pl", "pt", "ru", "sv"})
+
+_NUM2WORDS_LANGUAGES = frozenset(_SYNTH_LANGUAGES | {"en", "de"})
+
+
+def _primary_language_code(language: str) -> str:
+    return (language or "en").lower().split("-")[0]
+
+
 _SOUND_ALIASES = {
     # Laughter
     (
@@ -211,6 +221,75 @@ _SOUND_ALIASES = {
     r"\[gähnt\]": "[yawn]",
 }
 
+# Observed in multilingual API outputs. Applied only for the matching language
+# so the existing English/German alias table above stays unchanged.
+_LANG_SOUND_ALIASES = {
+    "es": [
+        (r"\[carraspe[ao]\]", "[throatclearing]"),
+        (r"\[(?:risa|risas|ríe|sonidos de risa)\]", "[laughter]"),
+        (r"\[(?:tos|tose)\]", "[cough]"),
+        (r"\[suspiro\]", "[sigh]"),
+        (r"\[exhala\]", "[breath]"),
+        (r"\[bostezo\]", "[yawn]"),
+        (r"\[chasquido de lengua\]", "[lipsmack]"),
+    ],
+    "nl": [
+        (r"\[schraapt keel\]", "[throatclearing]"),
+        (r"\[(?:kucht|hoest)\]", "[cough]"),
+        (r"\[gniffelt\]", "[laughter]"),
+        (r"\[zucht\]", "[sigh]"),
+        (r"\[klikt met tong\]", "[lipsmack]"),
+    ],
+    "fr": [
+        (r"\[raclement de gorge\]", "[throatclearing]"),
+        (r"\[(?:rire|rires)\]", "[laughter]"),
+        (r"\[(?:tousse|toux)\]", "[cough]"),
+        (r"\[bâillement\]", "[yawn]"),
+        (r"\[claquement de langue\]", "[lipsmack]"),
+        (r"\[soupir\]", "[sigh]"),
+    ],
+    "it": [
+        (r"\[(?:schiarisce la voce|si schiarisce la gola)\]", "[throatclearing]"),
+        (r"\[(?:risatina|ride|risata)\]", "[laughter]"),
+        (r"\[tossisce\]", "[cough]"),
+        (
+            r"\[(?:schiocco(?: di lingua)?|schiocca la lingua)\]",
+            "[lipsmack]",
+        ),
+        (r"\[sbuffa\]", "[sigh]"),
+    ],
+    "pl": [
+        (r"\[(?:chrząknięcie|odchrząknięcie)\]", "[throatclearing]"),
+        (r"\[śmiech\]", "[laughter]"),
+        (r"\[(?:ziewa|ziewnięcie)\]", "[yawn]"),
+        (r"\[(?:kaszle|kaszlnięcie|kaszel)\]", "[cough]"),
+        (r"\[westchnięcie\]", "[sigh]"),
+    ],
+    "pt": [
+        (r"\[pigarro\]", "[throatclearing]"),
+        (r"\[(?:riso|risada|chuckle)\]", "[laughter]"),
+        (r"\[tosse\]", "[cough]"),
+        (r"\[suspiro\]", "[sigh]"),
+        (r"\[estalo de língua\]", "[lipsmack]"),
+        (r"\[bocejo\]", "[yawn]"),
+    ],
+    "ru": [
+        (r"\[прочищает горло\]", "[throatclearing]"),
+        (r"\[(?:смешок|смеется)\]", "[laughter]"),
+        (r"\[(?:кашляет|кашель)\]", "[cough]"),
+        (r"\[вздыхает\]", "[sigh]"),
+        (r"\[цокает\]", "[lipsmack]"),
+    ],
+    "sv": [
+        (r"\[(?:harklar sig|harkling)\]", "[throatclearing]"),
+        (r"\[(?:skratt|skrattar)\]", "[laughter]"),
+        (r"\[(?:hostar|hosta)\]", "[cough]"),
+        (r"\[(?:suck|suckar)\]", "[sigh]"),
+        (r"\[(?:smackar med munnen|smack|klickljud)\]", "[lipsmack]"),
+        (r"\[gäspar\]", "[yawn]"),
+    ],
+}
+
 # Non-ASCII dash/minus variants. ASCII "-" is already the canonical marker and
 # must not be rewritten before another word, otherwise compounds like
 # "day-care" would become "day- care".
@@ -236,10 +315,83 @@ def normalize_prediction_cutoffs(text: str) -> str:
 
 def normalize_sound_aliases(text: str, language: str = "en") -> str:
     """Map bracketed sound aliases to the benchmark's canonical sound tags."""
-    del language  # currently aliases are language-independent regexes.
     out = text or ""
     for pattern, replacement in _SOUND_ALIASES.items():
         out = re.sub(pattern, replacement, out, flags=re.IGNORECASE)
+    lang = _primary_language_code(language)
+    for pattern, replacement in _LANG_SOUND_ALIASES.get(lang, ()):
+        out = re.sub(pattern, replacement, out, flags=re.IGNORECASE)
+    return out
+
+
+def _normalize_fillers_multilingual(text: str, language: str) -> str:
+    """Map language-specific filled pauses observed in synth API outputs."""
+    out = text or ""
+    lang = _primary_language_code(language)
+    if lang not in _SYNTH_LANGUAGES:
+        return out
+
+    for pattern, replacement in (
+        (r"\[eh\]", "[UH]"),
+        (r"\[euh\]", "[UH]"),
+        (r"\[ehm\]", "[UM]"),
+        (r"\[emm\]", "[UM]"),
+        (r"\[öh\]", "[UH]"),
+    ):
+        out = re.sub(pattern, replacement, out, flags=re.IGNORECASE)
+
+    # Drawn-out "mmm" hesitation is unambiguous across the synth languages.
+    # (English/German keep their existing 1-2 char "mm" rule untouched.)
+    out = re.sub(r"\bm{3,}\b", "[UM]", out, flags=re.IGNORECASE)
+
+    # Cyrillic filled pauses sometimes leak into Latin-script transcripts. The
+    # characters never form real words there, so map them for every synth lang.
+    out = re.sub(r"\bэ+м+\b", "[UM]", out, flags=re.IGNORECASE)
+    out = re.sub(r"\bэ+\b", "[UH]", out, flags=re.IGNORECASE)
+
+    if lang == "es":
+        out = re.sub(r"\b[Ee]h+\b", "[UH]", out)
+        out = re.sub(r"\b[Ee]hm+\b", "[UM]", out)
+        out = re.sub(r"\b[Ee]mm*\b", "[UM]", out)
+    elif lang == "nl":
+        out = re.sub(r"\b[Ee]uhm\b", "[UM]", out)
+        out = re.sub(r"\b[Ee]h\b", "[UH]", out)
+        out = re.sub(r"\b[Uu]h\b", "[UH]", out)
+        out = re.sub(r"\b(?:[Ee]hm|[Uu]hm)\b", "[UM]", out)
+        out = re.sub(r"\b[Ee]uh\b", "[UH]", out)
+    elif lang == "fr":
+        out = re.sub(r"\b[Ee]uhm\b", "[UM]", out)
+        out = re.sub(r"\b[Ee]uh+\b", "[UH]", out)
+        out = re.sub(r"\b[Ee]hm+\b", "[UM]", out)
+        out = re.sub(r"\b[Bb]ah\b", "[UH]", out)
+    elif lang == "it":
+        out = re.sub(r"\b[Ee]hm+\b", "[UM]", out)
+        out = re.sub(r"\b[Ee]h+\b", "[UH]", out)
+        out = re.sub(r"\b[Ee]m\b", "[UM]", out)
+    elif lang == "pl":
+        out = re.sub(r"\b[Ee]hm+\b", "[UM]", out)
+        out = re.sub(r"\b[Ee]h+\b", "[UH]", out)
+        # Drawn-out vowel hesitations written as repeated letters ("yyy", "eee").
+        # Require 2+ repeats so single-letter words ("a", "e") are untouched.
+        out = re.sub(r"\by{2,}\b", "[UM]", out, flags=re.IGNORECASE)
+        out = re.sub(r"\be{2,}\b", "[UH]", out, flags=re.IGNORECASE)
+        # Some models transcribe the hesitation in Cyrillic.
+        out = re.sub(r"\bэ+м+\b", "[UM]", out, flags=re.IGNORECASE)
+        out = re.sub(r"\bэ+\b", "[UH]", out, flags=re.IGNORECASE)
+    elif lang == "ru":
+        # Cyrillic filled pauses: "э"/"ээ" → uh, "эм"/"эмм" → um.
+        # "ну", "это", "вот" are real discourse words and are left untouched.
+        out = re.sub(r"\bэ+м+\b", "[UM]", out, flags=re.IGNORECASE)
+        out = re.sub(r"\bэ+\b", "[UH]", out, flags=re.IGNORECASE)
+        out = re.sub(r"\bм{2,}\b", "[UM]", out, flags=re.IGNORECASE)
+    elif lang == "pt":
+        out = re.sub(r"\b[Ee]h+\b", "[UH]", out)
+        out = re.sub(r"\b[Ee]hm+\b", "[UM]", out)
+    elif lang == "sv":
+        out = re.sub(r"\b[Ee]h+\b", "[UH]", out)
+        out = re.sub(r"\b[Ee]hm+\b", "[UM]", out)
+        out = re.sub(r"\b[Öö]h\b", "[UH]", out)
+
     return out
 
 
@@ -264,7 +416,17 @@ def normalize_fillers(text: str, language: str = "en") -> str:
     out = re.sub(r"\b[Hh]mm?\b", "[UM]", out)
     out = re.sub(r"\b[Mm]hm\b", "[UM]", out)
     out = re.sub(r"\b[Mm]m\b", "[UM]", out)
+    out = _normalize_fillers_multilingual(out, language)
     return out
+
+
+def _num2words_language(language: str) -> str:
+    lang = _primary_language_code(language)
+    if lang.startswith("de"):
+        return "de"
+    if lang in _NUM2WORDS_LANGUAGES:
+        return lang
+    return "en"
 
 
 def normalize_numbers(text: str, language: str = "en") -> str:
@@ -272,7 +434,7 @@ def normalize_numbers(text: str, language: str = "en") -> str:
     if not text or num2words is None:
         return text or ""
 
-    lang = "de" if language.lower().startswith("de") else "en"
+    lang = _num2words_language(language)
 
     def _safe_num(word: str, *, to: Optional[str] = None) -> Optional[str]:
         try:
