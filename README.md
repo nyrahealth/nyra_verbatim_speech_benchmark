@@ -77,8 +77,8 @@ The `n` column shows how many cached predictions were scored.
 
 | Rank | Model | n | Disfluency F1 ↑ | Filler F1 ↑ | Vocal Sound F1 ↑ | Cutoff F1 ↑ | Rep F1 ↑ | vWER ↓ |
 |---:|---|---:|---:|---:|---:|---:|---:|---:|
-| 1 | ![Nyra Health](https://img.shields.io/badge/-Nyra%20Health-0F766E?style=flat-square) CrisperWhisper2.0 pro | 4957 | **93.2%** | 95.7% | 94.8% | 55.9% | 88.3% | 3.0% |
-| 2 | ![Nyra Health](https://img.shields.io/badge/-Nyra%20Health-0F766E?style=flat-square) CrisperWhisper2.0 | 4957 | 90.7% | 94.3% | 83.5% | 52.0% | 87.8% | 3.6% |
+| 1 | ![Nyra Health](https://img.shields.io/badge/-Nyra%20Health-0F766E?style=flat-square) CrisperWhisper2.0 pro | 4957 | **93.2%** | 95.7% | 94.8% | 90.7% | 88.3% | 3.0% |
+| 2 | ![Nyra Health](https://img.shields.io/badge/-Nyra%20Health-0F766E?style=flat-square) CrisperWhisper2.0 | 4957 | 90.7% | 94.3% | 83.5% | 89.3% | 87.8% | 3.6% |
 | 3 | ![ElevenLabs](https://img.shields.io/badge/-ElevenLabs-000000?style=flat-square&logo=elevenlabs&logoColor=white) ElevenLabs Scribe v2 | 4957 | 90.3% | 95.5% | 83.4% | 80.1% | 87.9% | 3.2% |
 | 4 | ![Inworld](https://img.shields.io/badge/-Inworld-FF6B00?style=flat-square) Inworld STT (inworld/inworld-stt-1) | 4957 | 84.4% | 95.2% | 10.7% | 84.8% | 86.8% | 4.0% |
 | 5 | ![Microsoft](https://img.shields.io/badge/-Microsoft-5E5E5E?style=flat-square&logo=microsoft&logoColor=white) MAI-Transcribe-1.5 (Microsoft, mai-transcribe-1.5) | 4957 | 84.0% | 95.8% | 0.0% | 83.3% | 86.8% | 3.6% |
@@ -98,8 +98,8 @@ The `n` column shows how many cached predictions were scored.
 
 | Rank | Model | n | Disfluency F1 ↑ | Filler F1 ↑ | Vocal Sound F1 ↑ | Cutoff F1 ↑ | Rep F1 ↑ | vWER ↓ |
 |---:|---|---:|---:|---:|---:|---:|---:|---:|
-| 1 | ![Nyra Health](https://img.shields.io/badge/-Nyra%20Health-0F766E?style=flat-square) CrisperWhisper2.0 pro | 202 | **96.0%** | 98.2% | 94.5% | 90.8% | 91.5% | 3.7% |
-| 2 | ![Nyra Health](https://img.shields.io/badge/-Nyra%20Health-0F766E?style=flat-square) CrisperWhisper2.0 | 202 | 89.9% | 97.5% | 85.4% | 76.6% | 87.6% | 5.8% |
+| 1 | ![Nyra Health](https://img.shields.io/badge/-Nyra%20Health-0F766E?style=flat-square) CrisperWhisper2.0 pro | 202 | **96.0%** | 98.2% | 94.5% | 94.9% | 91.5% | 3.7% |
+| 2 | ![Nyra Health](https://img.shields.io/badge/-Nyra%20Health-0F766E?style=flat-square) CrisperWhisper2.0 | 202 | 89.9% | 97.5% | 85.4% | 82.2% | 87.6% | 5.8% |
 | 3 | ![ElevenLabs](https://img.shields.io/badge/-ElevenLabs-000000?style=flat-square&logo=elevenlabs&logoColor=white) ElevenLabs Scribe v2 | 202 | 89.3% | 98.5% | 80.4% | 77.7% | 88.1% | 4.2% |
 | 4 | ![Microsoft](https://img.shields.io/badge/-Microsoft-5E5E5E?style=flat-square&logo=microsoft&logoColor=white) MAI-Transcribe-1.5 (Microsoft, mai-transcribe-1.5) | 202 | 85.0% | 97.5% | 0.0% | 89.5% | 88.9% | 6.6% |
 | 5 | ![Nyra Health](https://img.shields.io/badge/-Nyra%20Health-0F766E?style=flat-square) CrisperWhisper 1.0 (nyrahealth/CrisperWhisper) | 202 | 58.3% | 69.6% | 0.0% | 61.9% | 60.5% | 15.2% |
