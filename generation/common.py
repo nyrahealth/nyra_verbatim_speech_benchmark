@@ -185,7 +185,9 @@ def iter_dataset_rows(
     emitted = 0
     for split in split_list:
         dataset = load_dataset(DATASETS[language], split=split)
-        dataset = dataset.cast_column("audio", Audio(decode=True))
+        # decode=False keeps the raw (wav) bytes so we can decode with
+        # soundfile and avoid the optional torchcodec dependency.
+        dataset = dataset.cast_column("audio", Audio(decode=False))
         for row in dataset:
             row = dict(row)
             row["split"] = row.get("split") or split
@@ -249,6 +251,14 @@ def wav_path(row: Dict[str, Any]) -> Iterator[Path]:
         yield Path(audio)
         return
 
+    # Undecoded Hugging Face Audio field: raw (wav) bytes from decode=False.
+    if isinstance(audio, dict) and audio.get("bytes"):
+        with tempfile.NamedTemporaryFile(suffix=".wav", delete=True) as tmp:
+            tmp.write(audio["bytes"])
+            tmp.flush()
+            yield Path(tmp.name)
+        return
+
     if not isinstance(audio, dict) or "array" not in audio:
         raise ValueError("Expected decoded Hugging Face Audio field or local audio path")
 
@@ -293,6 +303,12 @@ def resolve_generation_config(
         out_path = output_path or default_raw_output_path(model_id, language)
         dataset_name = dataset_name_for_language(language)
         return out_path, effective_splits, dataset_name
+
+    # When the caller provides both splits and an explicit output path there is
+    # no need to consult benchmark/models.json (lets models that live in other
+    # manifests, e.g. pro_models.json, generate en/de directly).
+    if splits and output_path is not None:
+        return output_path, list(splits), DATASETS[language]
 
     manifest_config = manifest_language_config(model_id, language)
     effective_splits = list(splits) if splits else manifest_config.get("splits")
