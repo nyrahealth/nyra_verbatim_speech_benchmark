@@ -1,11 +1,11 @@
 # Nyra Verbatim Speech Benchmark
 
-**A benchmark for evaluating verbatim automatic speech recognition: not only the words, but also fillers, repetitions, cutoffs, and vocal sound events.**
+**A benchmark for evaluating verbatim automatic speech recognition: not only the words, but also fillers, repetitions, interrupted words/word fragments, and vocal sound events.**
 
 Most speech benchmarks focus on clean transcript accuracy. This repository
 focuses on the messy but important details of real speech: `uh`, `um`, repeated
-words, interrupted words like `th-`, and vocal sound events like `[laughter]` or
-`[cough]`.
+words, interrupted words/word fragments, and vocal sound events like
+`[laughter]` or `[cough]`.
 
 The benchmark compares two kinds of transcripts:
 
@@ -42,16 +42,9 @@ disfluency scores:
 - **Transcript quality**: `vWER`, `iWER`, `vCER`, `iCER`
 - **Fillers**: `[UH]`, `[UM]`, including exact and per-label scores
 - **Vocal sound events**: `[laughter]`, `[cough]`, `[breath]`, and related events
-- **Cutoffs**: interrupted words such as `th-`, with several matching criteria
+- **Cutoffs**: interrupted words/word fragments, with several matching criteria
 - **Repetitions**: repeated words and repetition-count accuracy
 - **Diagnostics**: disfluency omission and hallucination rates
-
-## What You Can Do
-
-- **Reproduce the included model comparisons** from cached predictions.
-- **Evaluate another ASR system** by adding its raw transcripts.
-- **Compare verbatim and intended transcription behavior** when both are available.
-- **Analyze errors by disfluency type**, rather than relying on WER alone.
 
 ## Current Scope 🌍
 
@@ -62,10 +55,17 @@ disfluency scores:
 The evaluator is model-agnostic: any ASR system can be scored if its outputs are
 converted to the benchmark prediction format.
 
-## Current Results 🏆
+## What You Can Do
+
+- **Reproduce the included model comparisons** from cached predictions.
+- **Evaluate another ASR system** by adding its raw transcripts.
+- **Compare verbatim and intended transcription behavior** when both are available.
+- **Analyze errors by disfluency type**, rather than relying on WER alone.
+
+## Results Leaderboard 🏆
 
 Tables are sorted by **Disfluency F1**, the headline metric for detecting
-fillers, vocal sound events, cutoffs, and repetitions. In this table,
+fillers, vocal sound events, interrupted words/word fragments, and repetitions. In this table,
 **Cutoff F1** means `cutoff_lenient_f1`: a gold cutoff is counted as covered if
 the model places any aligned token at that cutoff position. This is the fairest
 headline cutoff score because some systems preserve interrupted speech without
@@ -117,7 +117,9 @@ The `n` column shows how many cached predictions were scored.
 
 ## Table of Contents
 
-- [Current Results](#current-results-)
+- [Current Scope](#current-scope-)
+- [What You Can Do](#what-you-can-do)
+- [Results Leaderboard](#results-leaderboard-)
 - [Quick Start](#quick-start-)
 - [Benchmark Workflow](#benchmark-workflow-)
 - [Reproducing Results](#reproducing-results-)
@@ -265,7 +267,7 @@ formatting conventions are handled.
 
 The verbatim transcript uses a small set of conventions:
 
-- **Cutoffs** use `*` in the gold transcript: `th*`, `w*`
+- **Cutoffs** mark interrupted words/word fragments with `*` in the gold transcript
 - **Fillers** are bracketed, e.g. `[UH]`, `[UM]`
 - **Vocal sound events** are bracketed, e.g. `[laughter]`, `[cough]`, `[breath]`
 - **Numbers and dates** are written out as spoken
@@ -283,9 +285,9 @@ convention, for example `-` instead of `*` for cutoffs, as long as their output
 can be mapped to the benchmark format.
 
 Cutoffs are inherently a little ambiguous: different systems may spell the same
-interrupted word with different cutoff markers. Cached model predictions are
-therefore normalized to the benchmark's internal `-` cutoff marker before metric
-calculation.
+interrupted word or word fragment with different cutoff markers. Cached model
+predictions are therefore normalized to the benchmark's internal `-` cutoff
+marker before metric calculation.
 
 Because even normalized cutoff spelling is not always semantically clear, the
 benchmark reports several cutoff metrics: marker-based cutoff F1, stricter
@@ -365,7 +367,7 @@ From that alignment, labels are derived like this:
 
 - bracketed fillers such as `[UH]`, `[UM]` -> `FILLER`
 - bracketed vocal sound event tags such as `[laughter]` -> `SOUND`
-- cutoff fragments such as `th-` -> `CUTOFF`
+- interrupted words/word fragments marked as cutoffs -> `CUTOFF`
 - aligned content words -> `FLUENT`
 - repeated unmatched words immediately before a fluent keeper -> `REP`
 - remaining unmatched disfluent material -> `OTHER`
@@ -408,7 +410,7 @@ Here the predicted `I` is aligned to the **FLUENT** gold `I`, while the `REP` to
 
 From this alignment the benchmark computes:
 
-- disfluency metrics for fillers, vocal sound events, cutoffs, and repetitions
+- disfluency metrics for fillers, vocal sound events, interrupted words/word fragments, and repetitions
 - exact-label metrics for filler and vocal sound event labels
 - diagnostics such as omission rates, hallucination rates, and tag confusion
 
@@ -438,10 +440,10 @@ The transcript accuracy metrics are computed separately from the normalized tran
 
 - `filler_f1`: F1 for detecting filler tokens such as `[UH]` and `[UM]`.
 - `sound_f1`: F1 for detecting vocal sound event tokens such as `[laughter]` and `[cough]`.
-- `disfluency_f1`: combined F1 for fillers, vocal sound events, lenient cutoffs, and repetitions. This is the headline leaderboard metric.
+- `disfluency_f1`: combined F1 for fillers, vocal sound events, lenient cutoffs for interrupted words/word fragments, and repetitions. This is the headline leaderboard metric.
 - `event_f1`: combined F1 for fillers and vocal sound events together.
 - `cutoff_lenient_f1`: the cutoff score shown as **Cutoff F1** in the leaderboard. A gold cutoff is counted as covered if any predicted token aligns to that cutoff position; hallucinated predicted cutoff markers are still penalized. This is the fairest headline cutoff score because some models do not emit explicit cutoff markers.
-- `cutoff_f1`: marker-based F1 for detecting cutoff fragments such as `th-`; here the prediction must itself be marked as a cutoff.
+- `cutoff_f1`: marker-based F1 for detecting interrupted words/word fragments marked as cutoffs; here the prediction must itself be marked as a cutoff.
 - `cutoff_strict_f1`: cutoff F1 where the cutoff stem itself must also match; here the prediction does not have to carry the cutoff marker if the aligned token has the correct stem.
 - `cutoff_lenient_recall`: recall for whether a gold cutoff is at least acknowledged by some aligned prediction token; here the prediction does not need a cutoff marker.
 - `rep_f1`: F1 for detecting repetition tokens.
