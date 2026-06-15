@@ -46,22 +46,6 @@ disfluency scores:
 - **Repetitions**: repeated words and repetition-count accuracy
 - **Diagnostics**: disfluency omission and hallucination rates
 
-## Current Scope 🌍
-
-- Languages: **English** and **German**
-- Datasets: [`nyrahealth/disfluency_speech_english`](https://huggingface.co/datasets/nyrahealth/disfluency_speech_english) and [`nyrahealth/disfluency_speech_german`](https://huggingface.co/datasets/nyrahealth/disfluency_speech_german)
-- Cached model families include AssemblyAI, Canary, Cartesia, Cohere, CrisperWhisper 1.0/2.0, Deepgram, ElevenLabs, Fish Audio, Gradium, Inworld, MAI-Transcribe, Whisper Large v3, and xAI Grok.
-
-The evaluator is model-agnostic: any ASR system can be scored if its outputs are
-converted to the benchmark prediction format.
-
-## What You Can Do
-
-- **Reproduce the included model comparisons** from cached predictions.
-- **Evaluate another ASR system** by adding its raw transcripts.
-- **Compare verbatim and intended transcription behavior** when both are available.
-- **Analyze errors by disfluency type**, rather than relying on WER alone.
-
 ## Results Leaderboard 🏆
 
 Tables are sorted by **Disfluency F1**, the headline metric for detecting
@@ -117,9 +101,9 @@ The `n` column shows how many cached predictions were scored.
 
 ## Table of Contents
 
+- [Results Leaderboard](#results-leaderboard-)
 - [Current Scope](#current-scope-)
 - [What You Can Do](#what-you-can-do)
-- [Results Leaderboard](#results-leaderboard-)
 - [Quick Start](#quick-start-)
 - [Benchmark Workflow](#benchmark-workflow-)
 - [Reproducing Results](#reproducing-results-)
@@ -133,6 +117,24 @@ The `n` column shows how many cached predictions were scored.
 - [Output Files](#output-files-)
 - [Repository Structure](#repository-structure-)
 - [License](#license)
+
+---
+
+## Current Scope 🌍
+
+- Languages: **English** and **German**
+- Datasets: [`nyrahealth/disfluency_speech_english`](https://huggingface.co/datasets/nyrahealth/disfluency_speech_english) and [`nyrahealth/disfluency_speech_german`](https://huggingface.co/datasets/nyrahealth/disfluency_speech_german)
+- Cached model families include AssemblyAI, Canary, Cartesia, Cohere, CrisperWhisper 1.0/2.0, Deepgram, ElevenLabs, Fish Audio, Gradium, Inworld, MAI-Transcribe, Whisper Large v3, and xAI Grok.
+
+The evaluator is model-agnostic: any ASR system can be scored if its outputs are
+converted to the benchmark prediction format.
+
+## What You Can Do
+
+- **Reproduce the included model comparisons** from cached predictions.
+- **Evaluate another ASR system** by adding its raw transcripts.
+- **Compare verbatim and intended transcription behavior** when both are available.
+- **Analyze errors by disfluency type**, rather than relying on WER alone.
 
 ---
 
