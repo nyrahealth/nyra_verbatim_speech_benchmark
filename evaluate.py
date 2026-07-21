@@ -9,7 +9,7 @@ Usage::
 
     python evaluate.py \\
         --predictions predictions.jsonl \\
-        --datasets nyrahealth/disfluency_speech_english \\
+        --datasets nyralabs/disfluency_speech_english \\
         --splits test \\
         --output_dir results/
 """
@@ -996,7 +996,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--datasets", nargs="+", default=[],
-        help="HuggingFace dataset name(s), e.g. nyrahealth/disfluency_speech_english",
+        help="HuggingFace dataset name(s), e.g. nyralabs/disfluency_speech_english",
     )
     parser.add_argument("--splits", nargs="+", default=["test"], help="Dataset splits to evaluate.")
     parser.add_argument("--cutoff_source", default="*", help="Cutoff marker in dataset (default: *).")

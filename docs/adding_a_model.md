@@ -42,12 +42,12 @@ Add an entry to `benchmark/models.json`:
   "languages": {
     "en": {
       "raw_file": "predictions/raw/my_model/en.json",
-      "dataset": "nyrahealth/disfluency_speech_english",
+      "dataset": "nyralabs/disfluency_speech_english",
       "splits": ["train", "validation", "test"]
     },
     "de": {
       "raw_file": "predictions/raw/my_model/de.json",
-      "dataset": "nyrahealth/disfluency_speech_german",
+      "dataset": "nyralabs/disfluency_speech_german",
       "splits": ["test"]
     }
   }
@@ -71,7 +71,7 @@ Each record must use the fixed raw schema:
 {
   "id": "DISFLUENCY_TEST_000000",
   "audio": "audio/DISFLUENCY_TEST_000000.wav",
-  "dataset": "nyrahealth/disfluency_speech_english",
+  "dataset": "nyralabs/disfluency_speech_english",
   "split": "test",
   "language": "en",
   "model": "my_model",

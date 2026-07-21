@@ -14,8 +14,8 @@ from datasets import load_dataset
 
 
 DATASETS = {
-    "english": "nyrahealth/disfluency_speech_english",
-    "german": "nyrahealth/disfluency_speech_german",
+    "english": "nyralabs/disfluency_speech_english",
+    "german": "nyralabs/disfluency_speech_german",
 }
 
 

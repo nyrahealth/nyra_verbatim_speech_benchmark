@@ -3,11 +3,17 @@ datasets
 soundfile
 requests
 
-# Local-model examples.
+# CrisperWhisper examples (generate_crisperwhisper_1.py / _2.py).
+# [ct2] installs the fast CTranslate2 backend (ctranslate2-crisperwhisper).
+# Do NOT add faster-whisper here: it depends on upstream ctranslate2, which
+# installs into the same site-packages/ctranslate2/ directory as the fork
+# and silently clobbers it.
+crisperwhisper[ct2]
+
+# Local-model examples (also the crisperwhisper transformers backend).
 torch
 transformers
 librosa
-faster-whisper
 
 # Provider-specific examples.
 assemblyai

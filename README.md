@@ -123,7 +123,7 @@ The `n` column shows how many cached predictions were scored.
 ## Current Scope 🌍
 
 - Languages: **English** and **German**
-- Datasets: [`nyrahealth/disfluency_speech_english`](https://huggingface.co/datasets/nyrahealth/disfluency_speech_english) and [`nyrahealth/disfluency_speech_german`](https://huggingface.co/datasets/nyrahealth/disfluency_speech_german)
+- Datasets: [`nyralabs/disfluency_speech_english`](https://huggingface.co/datasets/nyralabs/disfluency_speech_english) and [`nyralabs/disfluency_speech_german`](https://huggingface.co/datasets/nyralabs/disfluency_speech_german)
 - Cached model families include AssemblyAI, Canary, Cartesia, Cohere, CrisperWhisper 1.0/2.0, Deepgram, ElevenLabs, Fish Audio, Gradium, Inworld, MAI-Transcribe, Whisper Large v3, and xAI Grok.
 
 The evaluator is model-agnostic: any ASR system can be scored if its outputs are
@@ -200,7 +200,7 @@ prediction, and gold verbatim/intended transcripts:
 {
   "id": "DISFLUENCY_TEST_000000",
   "audio": "audio/DISFLUENCY_TEST_000000.wav",
-  "dataset": "nyrahealth/disfluency_speech_english",
+  "dataset": "nyralabs/disfluency_speech_english",
   "split": "test",
   "language": "en",
   "model": "elevenlabs",
@@ -231,7 +231,7 @@ Dataset-backed evaluation is also supported:
 ```bash
 python evaluate.py \
     --predictions predictions/normalized/elevenlabs/en.jsonl \
-    --datasets nyrahealth/disfluency_speech_english \
+    --datasets nyralabs/disfluency_speech_english \
     --splits train validation test \
     --output_dir results/elevenlabs_english_hf
 ```
@@ -259,7 +259,9 @@ python scripts/print_leaderboard.py
 
 For reproducible submissions, add a compact script under `generation/` that
 loads the public Hugging Face datasets and writes the same raw prediction
-schema. The existing generation scripts can be used as templates.
+schema. The existing generation scripts can be used as templates. Hosted-model
+scripts read their API keys from `secrets.env` (copy `secrets.env.example` and
+fill in what you need); see [`generation/README.md`](generation/README.md).
 
 See [`docs/adding_a_model.md`](docs/adding_a_model.md) for the full schema and
 checklist. See [`docs/normalization.md`](docs/normalization.md) for how output
@@ -479,8 +481,8 @@ Local `load_from_disk` datasets are also supported.
 
 Current datasets:
 
-- [`nyrahealth/disfluency_speech_english`](https://huggingface.co/datasets/nyrahealth/disfluency_speech_english)
-- [`nyrahealth/disfluency_speech_german`](https://huggingface.co/datasets/nyrahealth/disfluency_speech_german)
+- [`nyralabs/disfluency_speech_english`](https://huggingface.co/datasets/nyralabs/disfluency_speech_english)
+- [`nyralabs/disfluency_speech_german`](https://huggingface.co/datasets/nyralabs/disfluency_speech_german)
 
 ---
 

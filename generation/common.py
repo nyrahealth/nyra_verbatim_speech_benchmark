@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import contextlib
 import json
+import os
 import tempfile
 from pathlib import Path
 from typing import Any, Callable, Dict, Iterable, Iterator, List, Optional
@@ -15,10 +16,35 @@ from datasets import Audio, load_dataset
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 MODELS_PATH = REPO_ROOT / "benchmark" / "models.json"
+SECRETS_PATH = REPO_ROOT / "secrets.env"
+
+
+def load_secrets(path: Path = SECRETS_PATH) -> None:
+    """Export ``KEY=VALUE`` lines from ``secrets.env`` into ``os.environ``.
+
+    Copy ``secrets.env.example`` to ``secrets.env`` (gitignored) and fill in
+    the API keys for the hosted-model scripts you want to run.  Variables
+    already present in the environment take precedence over the file.
+    """
+    if not path.exists():
+        return
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, _, value = line.partition("=")
+        key, value = key.strip(), value.strip().strip("'\"")
+        if key and value:
+            os.environ.setdefault(key, value)
+
+
+# Loaded at import time so every generation script's os.environ.get() default
+# sees the keys without per-script wiring.
+load_secrets()
 
 DATASETS = {
-    "en": "nyrahealth/disfluency_speech_english",
-    "de": "nyrahealth/disfluency_speech_german",
+    "en": "nyralabs/disfluency_speech_english",
+    "de": "nyralabs/disfluency_speech_german",
 }
 DEFAULT_SPLITS = {
     "en": ["train", "validation", "test"],

@@ -1,8 +1,8 @@
 {
   "version": 1,
   "datasets": {
-    "en": "nyrahealth/disfluency_speech_english",
-    "de": "nyrahealth/disfluency_speech_german",
+    "en": "nyralabs/disfluency_speech_english",
+    "de": "nyralabs/disfluency_speech_german",
     "es": "synth_verbatim_es",
     "nl": "synth_verbatim_nl",
     "fr": "synth_verbatim_fr",
@@ -22,7 +22,7 @@
         "en": {
           "raw_file": "predictions/raw/release-turbo-no-timing/en.json",
           "source_file": "",
-          "dataset": "nyrahealth/disfluency_speech_english",
+          "dataset": "nyralabs/disfluency_speech_english",
           "splits": [
             "train",
             "validation",
@@ -32,7 +32,7 @@
         "de": {
           "raw_file": "predictions/raw/release-turbo-no-timing/de.json",
           "source_file": "",
-          "dataset": "nyrahealth/disfluency_speech_german",
+          "dataset": "nyralabs/disfluency_speech_german",
           "splits": [
             "test"
           ]
@@ -112,7 +112,7 @@
         "en": {
           "raw_file": "predictions/raw/release-small-no-timing/en.json",
           "source_file": "",
-          "dataset": "nyrahealth/disfluency_speech_english",
+          "dataset": "nyralabs/disfluency_speech_english",
           "splits": [
             "train",
             "validation",
@@ -122,7 +122,7 @@
         "de": {
           "raw_file": "predictions/raw/release-small-no-timing/de.json",
           "source_file": "",
-          "dataset": "nyrahealth/disfluency_speech_german",
+          "dataset": "nyralabs/disfluency_speech_german",
           "splits": [
             "test"
           ]
@@ -202,7 +202,7 @@
         "en": {
           "raw_file": "predictions/raw/release-medium-no-timing/en.json",
           "source_file": "",
-          "dataset": "nyrahealth/disfluency_speech_english",
+          "dataset": "nyralabs/disfluency_speech_english",
           "splits": [
             "train",
             "validation",
@@ -212,7 +212,7 @@
         "de": {
           "raw_file": "predictions/raw/release-medium-no-timing/de.json",
           "source_file": "",
-          "dataset": "nyrahealth/disfluency_speech_german",
+          "dataset": "nyralabs/disfluency_speech_german",
           "splits": [
             "test"
           ]
@@ -292,7 +292,7 @@
         "en": {
           "raw_file": "predictions/raw/release-large-v2-no-timing/en.json",
           "source_file": "",
-          "dataset": "nyrahealth/disfluency_speech_english",
+          "dataset": "nyralabs/disfluency_speech_english",
           "splits": [
             "train",
             "validation",
@@ -302,7 +302,7 @@
         "de": {
           "raw_file": "predictions/raw/release-large-v2-no-timing/de.json",
           "source_file": "",
-          "dataset": "nyrahealth/disfluency_speech_german",
+          "dataset": "nyralabs/disfluency_speech_german",
           "splits": [
             "test"
           ]
@@ -382,7 +382,7 @@
         "en": {
           "raw_file": "predictions/raw/release-turbo-with-timing/en.json",
           "source_file": "",
-          "dataset": "nyrahealth/disfluency_speech_english",
+          "dataset": "nyralabs/disfluency_speech_english",
           "splits": [
             "train",
             "validation",
@@ -392,7 +392,7 @@
         "de": {
           "raw_file": "predictions/raw/release-turbo-with-timing/de.json",
           "source_file": "",
-          "dataset": "nyrahealth/disfluency_speech_german",
+          "dataset": "nyralabs/disfluency_speech_german",
           "splits": [
             "test"
           ]
@@ -472,7 +472,7 @@
         "en": {
           "raw_file": "predictions/raw/release-small-with-timing/en.json",
           "source_file": "",
-          "dataset": "nyrahealth/disfluency_speech_english",
+          "dataset": "nyralabs/disfluency_speech_english",
           "splits": [
             "train",
             "validation",
@@ -482,7 +482,7 @@
         "de": {
           "raw_file": "predictions/raw/release-small-with-timing/de.json",
           "source_file": "",
-          "dataset": "nyrahealth/disfluency_speech_german",
+          "dataset": "nyralabs/disfluency_speech_german",
           "splits": [
             "test"
           ]
@@ -562,7 +562,7 @@
         "en": {
           "raw_file": "predictions/raw/release-medium-with-timing/en.json",
           "source_file": "",
-          "dataset": "nyrahealth/disfluency_speech_english",
+          "dataset": "nyralabs/disfluency_speech_english",
           "splits": [
             "train",
             "validation",
@@ -572,7 +572,7 @@
         "de": {
           "raw_file": "predictions/raw/release-medium-with-timing/de.json",
           "source_file": "",
-          "dataset": "nyrahealth/disfluency_speech_german",
+          "dataset": "nyralabs/disfluency_speech_german",
           "splits": [
             "test"
           ]
@@ -652,7 +652,7 @@
         "en": {
           "raw_file": "predictions/raw/release-large-v2-with-timing/en.json",
           "source_file": "",
-          "dataset": "nyrahealth/disfluency_speech_english",
+          "dataset": "nyralabs/disfluency_speech_english",
           "splits": [
             "train",
             "validation",
@@ -662,7 +662,7 @@
         "de": {
           "raw_file": "predictions/raw/release-large-v2-with-timing/de.json",
           "source_file": "",
-          "dataset": "nyrahealth/disfluency_speech_german",
+          "dataset": "nyralabs/disfluency_speech_german",
           "splits": [
             "test"
           ]

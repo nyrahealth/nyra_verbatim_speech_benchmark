@@ -68,7 +68,7 @@ from the Hugging Face datasets:
 python scripts/download_datasets.py
 python evaluate.py \
   --predictions predictions/normalized/elevenlabs/en.jsonl \
-  --datasets nyrahealth/disfluency_speech_english \
+  --datasets nyralabs/disfluency_speech_english \
   --splits train validation test \
   --output_dir results/elevenlabs_english_hf
 ```
