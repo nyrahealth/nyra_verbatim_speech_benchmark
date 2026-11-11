@@ -64,19 +64,20 @@ The `n` column shows how many cached predictions were scored.
 | 1 | ![Nyra Health](https://img.shields.io/badge/-Nyra%20Health-0F766E?style=flat-square) CrisperWhisper2.0 pro | 4957 | **93.2%** | 95.7% | 94.8% | 90.7% | 88.3% | 3.0% |
 | 2 | ![Nyra Health](https://img.shields.io/badge/-Nyra%20Health-0F766E?style=flat-square) CrisperWhisper2.0 | 4957 | 90.7% | 94.3% | 83.5% | 89.3% | 87.8% | 3.6% |
 | 3 | ![ElevenLabs](https://img.shields.io/badge/-ElevenLabs-000000?style=flat-square&logo=elevenlabs&logoColor=white) ElevenLabs Scribe v2 | 4957 | 90.3% | 95.5% | 83.4% | 80.1% | 87.9% | 3.2% |
-| 4 | ![Inworld](https://img.shields.io/badge/-Inworld-FF6B00?style=flat-square) Inworld STT (inworld/inworld-stt-1) | 4957 | 84.4% | 95.2% | 10.7% | 84.8% | 86.8% | 4.0% |
-| 5 | ![Microsoft](https://img.shields.io/badge/-Microsoft-5E5E5E?style=flat-square&logo=microsoft&logoColor=white) MAI-Transcribe-1.5 (Microsoft, mai-transcribe-1.5) | 4957 | 84.0% | 95.8% | 0.0% | 83.3% | 86.8% | 3.6% |
-| 6 | ![xAI](https://img.shields.io/badge/-xAI-111111?style=flat-square) xAI Grok Speech-to-Text | 4957 | 73.9% | 84.4% | 0.0% | 60.3% | 83.4% | 4.7% |
-| 7 | ![Nyra Health](https://img.shields.io/badge/-Nyra%20Health-0F766E?style=flat-square) CrisperWhisper 1.0 (nyrahealth/CrisperWhisper) | 4957 | 71.4% | 81.8% | 0.0% | 81.1% | 67.9% | 6.2% |
-| 8 | ![AssemblyAI](https://img.shields.io/badge/-AssemblyAI-111111?style=flat-square&logo=assemblyai&logoColor=white) AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 2) | 4957 | 67.9% | 90.8% | 2.8% | 27.9% | 82.7% | 4.5% |
-| 9 | ![AssemblyAI](https://img.shields.io/badge/-AssemblyAI-111111?style=flat-square&logo=assemblyai&logoColor=white) AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 1) | 249 | 65.8% | 92.5% | 0.0% | 28.6% | 79.7% | 3.8% |
-| 10 | ![Deepgram](https://img.shields.io/badge/-Deepgram-13EF93?style=flat-square&logo=deepgram&logoColor=black) Deepgram Nova-3 (nova-3) | 4957 | 57.3% | 45.7% | 0.0% | 72.2% | 83.2% | 6.3% |
-| 11 | ![Fish Audio](https://img.shields.io/badge/-Fish%20Audio-2563EB?style=flat-square) Fish Audio ASR | 4957 | 49.7% | 30.5% | 0.0% | 60.1% | 82.1% | 5.9% |
-| 12 | ![Gradium](https://img.shields.io/badge/-Gradium-7C3AED?style=flat-square) Gradium ASR | 4957 | 34.0% | 13.7% | 0.0% | 57.5% | 61.3% | 9.7% |
-| 13 | ![NVIDIA](https://img.shields.io/badge/-NVIDIA-76B900?style=flat-square&logo=nvidia&logoColor=white) NVIDIA Canary 1B v2 (nvidia/canary-1b-v2) | 4957 | 26.6% | 26.7% | 0.0% | 48.9% | 30.5% | 9.0% |
-| 14 | ![Cohere](https://img.shields.io/badge/-Cohere-39594D?style=flat-square&logo=cohere&logoColor=white) Cohere Transcribe (CohereLabs/cohere-transcribe-03-2026) | 4957 | 17.6% | 15.8% | 0.0% | 45.0% | 18.9% | 9.9% |
-| 15 | ![OpenAI](https://img.shields.io/badge/-OpenAI-412991?style=flat-square&logo=openai&logoColor=white) Whisper Large v3 (openai/whisper-large-v3) | 4957 | 9.7% | 9.4% | 0.0% | 31.4% | 6.4% | 10.2% |
-| 16 | ![Cartesia](https://img.shields.io/badge/-Cartesia-5B5BD6?style=flat-square) Cartesia Ink-Whisper (ink-whisper) | 4957 | 7.6% | 6.0% | 0.0% | 32.5% | 3.7% | 10.4% |
+| 4 | ![ElevenLabs](https://img.shields.io/badge/-ElevenLabs-000000?style=flat-square&logo=elevenlabs&logoColor=white) ElevenLabs Scribe v3 (scribe_v3) | 4957 | 88.8% | 95.0% | 85.9% | 67.8% | 87.3% | 3.1% |
+| 5 | ![Inworld](https://img.shields.io/badge/-Inworld-FF6B00?style=flat-square) Inworld STT (inworld/inworld-stt-1) | 4957 | 84.4% | 95.2% | 10.7% | 84.8% | 86.8% | 4.0% |
+| 6 | ![Microsoft](https://img.shields.io/badge/-Microsoft-5E5E5E?style=flat-square&logo=microsoft&logoColor=white) MAI-Transcribe-1.5 (Microsoft, mai-transcribe-1.5) | 4957 | 84.0% | 95.8% | 0.0% | 83.3% | 86.8% | 3.6% |
+| 7 | ![xAI](https://img.shields.io/badge/-xAI-111111?style=flat-square) xAI Grok Speech-to-Text | 4957 | 73.9% | 84.4% | 0.0% | 60.3% | 83.4% | 4.7% |
+| 8 | ![Nyra Health](https://img.shields.io/badge/-Nyra%20Health-0F766E?style=flat-square) CrisperWhisper 1.0 (nyrahealth/CrisperWhisper) | 4957 | 71.4% | 81.8% | 0.0% | 81.1% | 67.9% | 6.2% |
+| 9 | ![AssemblyAI](https://img.shields.io/badge/-AssemblyAI-111111?style=flat-square&logo=assemblyai&logoColor=white) AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 2) | 4957 | 67.9% | 90.8% | 2.8% | 27.9% | 82.7% | 4.5% |
+| 10 | ![AssemblyAI](https://img.shields.io/badge/-AssemblyAI-111111?style=flat-square&logo=assemblyai&logoColor=white) AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 1) | 249 | 65.8% | 92.5% | 0.0% | 28.6% | 79.7% | 3.8% |
+| 11 | ![Deepgram](https://img.shields.io/badge/-Deepgram-13EF93?style=flat-square&logo=deepgram&logoColor=black) Deepgram Nova-3 (nova-3) | 4957 | 57.3% | 45.7% | 0.0% | 72.2% | 83.2% | 6.3% |
+| 12 | ![Fish Audio](https://img.shields.io/badge/-Fish%20Audio-2563EB?style=flat-square) Fish Audio ASR | 4957 | 49.7% | 30.5% | 0.0% | 60.1% | 82.1% | 5.9% |
+| 13 | ![Gradium](https://img.shields.io/badge/-Gradium-7C3AED?style=flat-square) Gradium ASR | 4957 | 34.0% | 13.7% | 0.0% | 57.5% | 61.3% | 9.7% |
+| 14 | ![NVIDIA](https://img.shields.io/badge/-NVIDIA-76B900?style=flat-square&logo=nvidia&logoColor=white) NVIDIA Canary 1B v2 (nvidia/canary-1b-v2) | 4957 | 26.6% | 26.7% | 0.0% | 48.9% | 30.5% | 9.0% |
+| 15 | ![Cohere](https://img.shields.io/badge/-Cohere-39594D?style=flat-square&logo=cohere&logoColor=white) Cohere Transcribe (CohereLabs/cohere-transcribe-03-2026) | 4957 | 17.6% | 15.8% | 0.0% | 45.0% | 18.9% | 9.9% |
+| 16 | ![OpenAI](https://img.shields.io/badge/-OpenAI-412991?style=flat-square&logo=openai&logoColor=white) Whisper Large v3 (openai/whisper-large-v3) | 4957 | 9.7% | 9.4% | 0.0% | 31.4% | 6.4% | 10.2% |
+| 17 | ![Cartesia](https://img.shields.io/badge/-Cartesia-5B5BD6?style=flat-square) Cartesia Ink-Whisper (ink-whisper) | 4957 | 7.6% | 6.0% | 0.0% | 32.5% | 3.7% | 10.4% |
 
 ### German
 
@@ -84,20 +85,21 @@ The `n` column shows how many cached predictions were scored.
 |---:|---|---:|---:|---:|---:|---:|---:|---:|
 | 1 | ![Nyra Health](https://img.shields.io/badge/-Nyra%20Health-0F766E?style=flat-square) CrisperWhisper2.0 pro | 202 | **96.0%** | 98.2% | 94.5% | 94.9% | 91.5% | 3.7% |
 | 2 | ![Nyra Health](https://img.shields.io/badge/-Nyra%20Health-0F766E?style=flat-square) CrisperWhisper2.0 | 202 | 89.9% | 97.5% | 85.4% | 82.2% | 87.6% | 5.8% |
-| 3 | ![ElevenLabs](https://img.shields.io/badge/-ElevenLabs-000000?style=flat-square&logo=elevenlabs&logoColor=white) ElevenLabs Scribe v2 | 202 | 89.3% | 98.5% | 80.4% | 77.7% | 88.1% | 4.2% |
-| 4 | ![Microsoft](https://img.shields.io/badge/-Microsoft-5E5E5E?style=flat-square&logo=microsoft&logoColor=white) MAI-Transcribe-1.5 (Microsoft, mai-transcribe-1.5) | 202 | 85.0% | 97.5% | 0.0% | 89.5% | 88.9% | 6.6% |
-| 5 | ![Nyra Health](https://img.shields.io/badge/-Nyra%20Health-0F766E?style=flat-square) CrisperWhisper 1.0 (nyrahealth/CrisperWhisper) | 202 | 58.3% | 69.6% | 0.0% | 61.9% | 60.5% | 15.2% |
-| 6 | ![Inworld](https://img.shields.io/badge/-Inworld-FF6B00?style=flat-square) Inworld STT (inworld/inworld-stt-1) | 202 | 46.9% | 63.0% | 17.2% | 18.0% | 67.7% | 15.9% |
-| 7 | ![xAI](https://img.shields.io/badge/-xAI-111111?style=flat-square) xAI Grok Speech-to-Text | 202 | 34.4% | 49.1% | 0.9% | 14.2% | 54.1% | 18.2% |
-| 8 | ![AssemblyAI](https://img.shields.io/badge/-AssemblyAI-111111?style=flat-square&logo=assemblyai&logoColor=white) AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 1) | 202 | 26.2% | 7.8% | 0.0% | 34.4% | 70.9% | 18.8% |
-| 9 | ![AssemblyAI](https://img.shields.io/badge/-AssemblyAI-111111?style=flat-square&logo=assemblyai&logoColor=white) AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 2) | 202 | 23.4% | 3.2% | 0.9% | 23.9% | 79.9% | 18.8% |
-| 10 | ![Deepgram](https://img.shields.io/badge/-Deepgram-13EF93?style=flat-square&logo=deepgram&logoColor=black) Deepgram Nova-3 (nova-3) | 202 | 20.4% | 1.0% | 0.0% | 14.1% | 79.8% | 19.2% |
-| 11 | ![Fish Audio](https://img.shields.io/badge/-Fish%20Audio-2563EB?style=flat-square) Fish Audio ASR | 202 | 13.1% | 0.0% | 0.0% | 6.4% | 63.5% | 20.3% |
-| 12 | ![Cohere](https://img.shields.io/badge/-Cohere-39594D?style=flat-square&logo=cohere&logoColor=white) Cohere Transcribe (CohereLabs/cohere-transcribe-03-2026) | 202 | 4.0% | 5.4% | 0.0% | 1.5% | 10.3% | 28.2% |
-| 13 | ![Gradium](https://img.shields.io/badge/-Gradium-7C3AED?style=flat-square) Gradium ASR | 202 | 3.4% | 0.0% | 0.0% | 6.4% | 13.7% | 23.5% |
-| 14 | ![NVIDIA](https://img.shields.io/badge/-NVIDIA-76B900?style=flat-square&logo=nvidia&logoColor=white) NVIDIA Canary 1B v2 (nvidia/canary-1b-v2) | 202 | 1.0% | 0.7% | 0.0% | 1.5% | 2.7% | 24.4% |
-| 15 | ![Cartesia](https://img.shields.io/badge/-Cartesia-5B5BD6?style=flat-square) Cartesia Ink-Whisper (ink-whisper) | 202 | 0.7% | 0.0% | 0.0% | 1.0% | 4.1% | 24.1% |
-| 16 | ![OpenAI](https://img.shields.io/badge/-OpenAI-412991?style=flat-square&logo=openai&logoColor=white) Whisper Large v3 (openai/whisper-large-v3) | 202 | 0.6% | 0.0% | 0.0% | 0.5% | 4.0% | 24.2% |
+| 3 | ![ElevenLabs](https://img.shields.io/badge/-ElevenLabs-000000?style=flat-square&logo=elevenlabs&logoColor=white) ElevenLabs Scribe v3 (scribe_v3) | 202 | 89.9% | 97.7% | 84.9% | 78.2% | 89.7% | 4.2% |
+| 4 | ![ElevenLabs](https://img.shields.io/badge/-ElevenLabs-000000?style=flat-square&logo=elevenlabs&logoColor=white) ElevenLabs Scribe v2 | 202 | 89.3% | 98.5% | 80.4% | 77.7% | 88.1% | 4.2% |
+| 5 | ![Microsoft](https://img.shields.io/badge/-Microsoft-5E5E5E?style=flat-square&logo=microsoft&logoColor=white) MAI-Transcribe-1.5 (Microsoft, mai-transcribe-1.5) | 202 | 85.0% | 97.5% | 0.0% | 89.5% | 88.9% | 6.6% |
+| 6 | ![Nyra Health](https://img.shields.io/badge/-Nyra%20Health-0F766E?style=flat-square) CrisperWhisper 1.0 (nyrahealth/CrisperWhisper) | 202 | 58.3% | 69.6% | 0.0% | 61.9% | 60.5% | 15.2% |
+| 7 | ![Inworld](https://img.shields.io/badge/-Inworld-FF6B00?style=flat-square) Inworld STT (inworld/inworld-stt-1) | 202 | 46.9% | 63.0% | 17.2% | 18.0% | 67.7% | 15.9% |
+| 8 | ![xAI](https://img.shields.io/badge/-xAI-111111?style=flat-square) xAI Grok Speech-to-Text | 202 | 34.4% | 49.1% | 0.9% | 14.2% | 54.1% | 18.2% |
+| 9 | ![AssemblyAI](https://img.shields.io/badge/-AssemblyAI-111111?style=flat-square&logo=assemblyai&logoColor=white) AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 1) | 202 | 26.2% | 7.8% | 0.0% | 34.4% | 70.9% | 18.8% |
+| 10 | ![AssemblyAI](https://img.shields.io/badge/-AssemblyAI-111111?style=flat-square&logo=assemblyai&logoColor=white) AssemblyAI Universal-3 Pro (universal-3-pro, Prompt 2) | 202 | 23.4% | 3.2% | 0.9% | 23.9% | 79.9% | 18.8% |
+| 11 | ![Deepgram](https://img.shields.io/badge/-Deepgram-13EF93?style=flat-square&logo=deepgram&logoColor=black) Deepgram Nova-3 (nova-3) | 202 | 20.4% | 1.0% | 0.0% | 14.1% | 79.8% | 19.2% |
+| 12 | ![Fish Audio](https://img.shields.io/badge/-Fish%20Audio-2563EB?style=flat-square) Fish Audio ASR | 202 | 13.1% | 0.0% | 0.0% | 6.4% | 63.5% | 20.3% |
+| 13 | ![Cohere](https://img.shields.io/badge/-Cohere-39594D?style=flat-square&logo=cohere&logoColor=white) Cohere Transcribe (CohereLabs/cohere-transcribe-03-2026) | 202 | 4.0% | 5.4% | 0.0% | 1.5% | 10.3% | 28.2% |
+| 14 | ![Gradium](https://img.shields.io/badge/-Gradium-7C3AED?style=flat-square) Gradium ASR | 202 | 3.4% | 0.0% | 0.0% | 6.4% | 13.7% | 23.5% |
+| 15 | ![NVIDIA](https://img.shields.io/badge/-NVIDIA-76B900?style=flat-square&logo=nvidia&logoColor=white) NVIDIA Canary 1B v2 (nvidia/canary-1b-v2) | 202 | 1.0% | 0.7% | 0.0% | 1.5% | 2.7% | 24.4% |
+| 16 | ![Cartesia](https://img.shields.io/badge/-Cartesia-5B5BD6?style=flat-square) Cartesia Ink-Whisper (ink-whisper) | 202 | 0.7% | 0.0% | 0.0% | 1.0% | 4.1% | 24.1% |
+| 17 | ![OpenAI](https://img.shields.io/badge/-OpenAI-412991?style=flat-square&logo=openai&logoColor=white) Whisper Large v3 (openai/whisper-large-v3) | 202 | 0.6% | 0.0% | 0.0% | 0.5% | 4.0% | 24.2% |
 
 ## Table of Contents
 
@@ -124,7 +126,7 @@ The `n` column shows how many cached predictions were scored.
 
 - Languages: **English** and **German**
 - Datasets: [`nyralabs/disfluency_speech_english`](https://huggingface.co/datasets/nyralabs/disfluency_speech_english) and [`nyralabs/disfluency_speech_german`](https://huggingface.co/datasets/nyralabs/disfluency_speech_german)
-- Cached model families include AssemblyAI, Canary, Cartesia, Cohere, CrisperWhisper 1.0/2.0, Deepgram, ElevenLabs, Fish Audio, Gradium, Inworld, MAI-Transcribe, Whisper Large v3, and xAI Grok.
+- Cached model families include AssemblyAI, Canary, Cartesia, Cohere, CrisperWhisper 1.0/2.0, Deepgram, ElevenLabs (Scribe v2, v3), Fish Audio, Gradium, Inworld, MAI-Transcribe, Whisper Large v3, and xAI Grok.
 
 The evaluator is model-agnostic: any ASR system can be scored if its outputs are
 converted to the benchmark prediction format.

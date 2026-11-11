@@ -20,6 +20,7 @@ predictions directly into the benchmark schema.
 | `generate_crisperwhisper_1.py` | CrisperWhisper 1.0 (`nyrahealth/CrisperWhisper`) |
 | `generate_crisperwhisper_2.py` | CrisperWhisper 2.0 (`nyralabs/CrisperWhisper2.0_large` via the `crisperwhisper` package) |
 | `generate_deepgram_nova3.py` | Deepgram Nova-3 (`nova-3`) |
+| `generate_elevenlabs_scribe_v3.py` | ElevenLabs Scribe v3 (`scribe_v3`); set `ELEVENLABS_API_BASE` for data-residency keys, e.g. `https://api.eu.residency.elevenlabs.io` |
 | `generate_fish_audio_asr.py` | Fish Audio ASR |
 | `generate_gradium_asr.py` | Gradium ASR |
 | `generate_inworld_stt1.py` | Inworld STT (`inworld/inworld-stt-1`) |

@@ -1360,6 +1360,96 @@
           ]
         }
       }
+    },
+    {
+      "id": "elevenlabs_scribe_v3",
+      "display_name": "ElevenLabs Scribe v3 (scribe_v3)",
+      "adapter": "default",
+      "single_output": true,
+      "languages": {
+        "en": {
+          "raw_file": "predictions/raw/elevenlabs_scribe_v3/en.json",
+          "source_file": "",
+          "dataset": "nyralabs/disfluency_speech_english",
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ]
+        },
+        "de": {
+          "raw_file": "predictions/raw/elevenlabs_scribe_v3/de.json",
+          "source_file": "",
+          "dataset": "nyralabs/disfluency_speech_german",
+          "splits": [
+            "test"
+          ]
+        },
+        "es": {
+          "raw_file": "predictions/raw/elevenlabs_scribe_v3/es.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_es",
+          "splits": [
+            "test"
+          ]
+        },
+        "nl": {
+          "raw_file": "predictions/raw/elevenlabs_scribe_v3/nl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_nl",
+          "splits": [
+            "test"
+          ]
+        },
+        "fr": {
+          "raw_file": "predictions/raw/elevenlabs_scribe_v3/fr.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_fr",
+          "splits": [
+            "test"
+          ]
+        },
+        "it": {
+          "raw_file": "predictions/raw/elevenlabs_scribe_v3/it.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_it",
+          "splits": [
+            "test"
+          ]
+        },
+        "pl": {
+          "raw_file": "predictions/raw/elevenlabs_scribe_v3/pl.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pl",
+          "splits": [
+            "test"
+          ]
+        },
+        "pt": {
+          "raw_file": "predictions/raw/elevenlabs_scribe_v3/pt.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_pt",
+          "splits": [
+            "test"
+          ]
+        },
+        "ru": {
+          "raw_file": "predictions/raw/elevenlabs_scribe_v3/ru.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_ru",
+          "splits": [
+            "test"
+          ]
+        },
+        "sv": {
+          "raw_file": "predictions/raw/elevenlabs_scribe_v3/sv.json",
+          "source_file": "",
+          "dataset": "synth_verbatim_sv",
+          "splits": [
+            "test"
+          ]
+        }
+      }
     }
   ]
 }
